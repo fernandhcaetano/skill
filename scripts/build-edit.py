@@ -3,6 +3,7 @@
 Uso: python3 -I scripts/build-edit.py  (rodar na raiz do projeto)
 """
 import json
+import os
 import subprocess
 import wave
 import array
@@ -109,11 +110,13 @@ for k, sg in enumerate(segments):
     chains.append(f"[0:a]atrim={sg['srcStart']}:{sg['srcEnd']},asetpts=PTS-STARTPTS,"
                   f"afade=t=in:d=0.01,afade=t=out:st={max(0, d - 0.015)}:d=0.015[a{k}]")
     labels.append(f"[a{k}]")
+# DENOISE=0 gera public/voice_raw.wav: mesmos cortes, só volume ajustado, sem mexer no ruído.
+DENOISE = os.environ.get("DENOISE", "1") != "0"
+clean = "highpass=f=80,afftdn=nr=14:nf=-30:tn=1,lowpass=f=12000," \
+    "acompressor=threshold=-20dB:ratio=3:attack=5:release=80," if DENOISE else ""
 graph = ";".join(chains) + ";" + "".join(labels) + f"concat=n={len(labels)}:v=0:a=1," \
-    "highpass=f=80,afftdn=nr=14:nf=-30:tn=1,lowpass=f=12000," \
-    "acompressor=threshold=-20dB:ratio=3:attack=5:release=80," \
-    "loudnorm=I=-14:TP=-1.5:LRA=7[out]"
-subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", "raw/audio48.wav", "-filter_complex", graph,
-                "-map", "[out]", "-ar", "48000", "public/voice.wav"], check=True)
+    + clean + "loudnorm=I=-14:TP=-1.5:LRA=7[out]"
+subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", "raw/audio48.wav", "-filter_complex", graph, "-map", "[out]",
+                "-ar", "48000", "public/voice.wav" if DENOISE else "public/voice_raw.wav"], check=True)
 
 print(f"{len(segments)} cortes, {len(words)} palavras, duração final {out_t:.1f}s (original 187.8s)")
