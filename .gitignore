@@ -8,3 +8,6 @@ out
 
 # Local Whisper install (binary + models)
 whisper.cpp
+raw
+public/video_proxy.mp4
+public/voice.wav

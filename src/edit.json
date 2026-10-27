@@ -1,0 +1,2118 @@
+{
+ "fps": 30,
+ "duration": 111.5,
+ "segments": [
+  {
+   "srcStart": 4.066666666666666,
+   "srcEnd": 6.933333333333334,
+   "outStart": 0
+  },
+  {
+   "srcStart": 7.233333333333333,
+   "srcEnd": 10.333333333333334,
+   "outStart": 2.867
+  },
+  {
+   "srcStart": 10.5,
+   "srcEnd": 11.633333333333333,
+   "outStart": 5.967
+  },
+  {
+   "srcStart": 12.1,
+   "srcEnd": 18.5,
+   "outStart": 7.1
+  },
+  {
+   "srcStart": 20.066666666666666,
+   "srcEnd": 22.2,
+   "outStart": 13.5
+  },
+  {
+   "srcStart": 22.866666666666667,
+   "srcEnd": 24.333333333333332,
+   "outStart": 15.633
+  },
+  {
+   "srcStart": 32.333333333333336,
+   "srcEnd": 35.5,
+   "outStart": 17.1
+  },
+  {
+   "srcStart": 35.93333333333333,
+   "srcEnd": 37.233333333333334,
+   "outStart": 20.267
+  },
+  {
+   "srcStart": 37.4,
+   "srcEnd": 38.766666666666666,
+   "outStart": 21.567
+  },
+  {
+   "srcStart": 39.03333333333333,
+   "srcEnd": 40.36666666666667,
+   "outStart": 22.933
+  },
+  {
+   "srcStart": 42.233333333333334,
+   "srcEnd": 45.36666666666667,
+   "outStart": 24.267
+  },
+  {
+   "srcStart": 46.03333333333333,
+   "srcEnd": 48.233333333333334,
+   "outStart": 27.4
+  },
+  {
+   "srcStart": 49.06666666666667,
+   "srcEnd": 50.1,
+   "outStart": 29.6
+  },
+  {
+   "srcStart": 51.266666666666666,
+   "srcEnd": 53.63333333333333,
+   "outStart": 30.633
+  },
+  {
+   "srcStart": 54.06666666666667,
+   "srcEnd": 56.86666666666667,
+   "outStart": 33.0
+  },
+  {
+   "srcStart": 57.13333333333333,
+   "srcEnd": 59.46666666666667,
+   "outStart": 35.8
+  },
+  {
+   "srcStart": 85.76666666666667,
+   "srcEnd": 88.23333333333333,
+   "outStart": 38.133
+  },
+  {
+   "srcStart": 88.4,
+   "srcEnd": 90.13333333333334,
+   "outStart": 40.6
+  },
+  {
+   "srcStart": 91.0,
+   "srcEnd": 94.0,
+   "outStart": 42.333
+  },
+  {
+   "srcStart": 94.43333333333334,
+   "srcEnd": 97.23333333333333,
+   "outStart": 45.333
+  },
+  {
+   "srcStart": 97.8,
+   "srcEnd": 101.73333333333333,
+   "outStart": 48.133
+  },
+  {
+   "srcStart": 101.9,
+   "srcEnd": 103.43333333333334,
+   "outStart": 52.067
+  },
+  {
+   "srcStart": 104.5,
+   "srcEnd": 108.53333333333333,
+   "outStart": 53.6
+  },
+  {
+   "srcStart": 108.66666666666667,
+   "srcEnd": 109.56666666666666,
+   "outStart": 57.633
+  },
+  {
+   "srcStart": 109.93333333333334,
+   "srcEnd": 112.76666666666667,
+   "outStart": 58.533
+  },
+  {
+   "srcStart": 112.9,
+   "srcEnd": 115.1,
+   "outStart": 61.367
+  },
+  {
+   "srcStart": 124.83333333333333,
+   "srcEnd": 126.06666666666666,
+   "outStart": 63.567
+  },
+  {
+   "srcStart": 127.06666666666666,
+   "srcEnd": 129.8,
+   "outStart": 64.8
+  },
+  {
+   "srcStart": 130.16666666666666,
+   "srcEnd": 134.8,
+   "outStart": 67.533
+  },
+  {
+   "srcStart": 135.0,
+   "srcEnd": 136.03333333333333,
+   "outStart": 72.167
+  },
+  {
+   "srcStart": 136.2,
+   "srcEnd": 136.53333333333333,
+   "outStart": 73.2
+  },
+  {
+   "srcStart": 137.43333333333334,
+   "srcEnd": 141.86666666666667,
+   "outStart": 73.533
+  },
+  {
+   "srcStart": 142.33333333333334,
+   "srcEnd": 146.36666666666667,
+   "outStart": 77.967
+  },
+  {
+   "srcStart": 146.53333333333333,
+   "srcEnd": 150.93333333333334,
+   "outStart": 82.0
+  },
+  {
+   "srcStart": 153.33333333333334,
+   "srcEnd": 154.66666666666666,
+   "outStart": 86.4
+  },
+  {
+   "srcStart": 155.06666666666666,
+   "srcEnd": 159.06666666666666,
+   "outStart": 87.733
+  },
+  {
+   "srcStart": 159.23333333333332,
+   "srcEnd": 161.03333333333333,
+   "outStart": 91.733
+  },
+  {
+   "srcStart": 161.2,
+   "srcEnd": 162.4,
+   "outStart": 93.533
+  },
+  {
+   "srcStart": 164.2,
+   "srcEnd": 167.0,
+   "outStart": 94.733
+  },
+  {
+   "srcStart": 167.23333333333332,
+   "srcEnd": 170.46666666666667,
+   "outStart": 97.533
+  },
+  {
+   "srcStart": 170.73333333333332,
+   "srcEnd": 172.56666666666666,
+   "outStart": 100.767
+  },
+  {
+   "srcStart": 173.8,
+   "srcEnd": 175.43333333333334,
+   "outStart": 102.6
+  },
+  {
+   "srcStart": 177.53333333333333,
+   "srcEnd": 180.36666666666667,
+   "outStart": 104.233
+  },
+  {
+   "srcStart": 180.63333333333333,
+   "srcEnd": 183.53333333333333,
+   "outStart": 107.067
+  },
+  {
+   "srcStart": 183.83333333333334,
+   "srcEnd": 185.36666666666667,
+   "outStart": 109.967
+  }
+ ],
+ "words": [
+  {
+   "text": "Lula",
+   "start": 0.026,
+   "end": 0.206
+  },
+  {
+   "text": "é",
+   "start": 0.206,
+   "end": 0.326
+  },
+  {
+   "text": "eleito,",
+   "start": 0.326,
+   "end": 0.806
+  },
+  {
+   "text": "mas",
+   "start": 0.806,
+   "end": 0.986
+  },
+  {
+   "text": "agora",
+   "start": 0.986,
+   "end": 1.296
+  },
+  {
+   "text": "que",
+   "start": 1.296,
+   "end": 1.476
+  },
+  {
+   "text": "vem",
+   "start": 1.476,
+   "end": 1.656
+  },
+  {
+   "text": "a",
+   "start": 1.656,
+   "end": 1.716
+  },
+  {
+   "text": "parte",
+   "start": 1.716,
+   "end": 2.026
+  },
+  {
+   "text": "mais",
+   "start": 2.026,
+   "end": 2.266
+  },
+  {
+   "text": "difícil.",
+   "start": 2.266,
+   "end": 2.866
+  },
+  {
+   "text": "nós",
+   "start": 2.919,
+   "end": 3.119
+  },
+  {
+   "text": "sabemos",
+   "start": 3.119,
+   "end": 3.629
+  },
+  {
+   "text": "que",
+   "start": 3.629,
+   "end": 3.799
+  },
+  {
+   "text": "ele",
+   "start": 3.799,
+   "end": 4.009
+  },
+  {
+   "text": "já",
+   "start": 4.009,
+   "end": 4.199
+  },
+  {
+   "text": "tem",
+   "start": 4.199,
+   "end": 4.529
+  },
+  {
+   "text": "uma",
+   "start": 4.529,
+   "end": 4.649
+  },
+  {
+   "text": "Câmara",
+   "start": 4.649,
+   "end": 5.109
+  },
+  {
+   "text": "dos",
+   "start": 5.109,
+   "end": 5.309
+  },
+  {
+   "text": "Deputados.",
+   "start": 5.309,
+   "end": 5.949
+  },
+  {
+   "text": "e",
+   "start": 6.04,
+   "end": 6.08
+  },
+  {
+   "text": "um",
+   "start": 6.08,
+   "end": 6.35
+  },
+  {
+   "text": "Senado",
+   "start": 6.35,
+   "end": 7.08
+  },
+  {
+   "text": "com",
+   "start": 7.141,
+   "end": 7.291
+  },
+  {
+   "text": "a",
+   "start": 7.291,
+   "end": 7.361
+  },
+  {
+   "text": "maioria",
+   "start": 7.361,
+   "end": 7.871
+  },
+  {
+   "text": "contra",
+   "start": 7.871,
+   "end": 8.311
+  },
+  {
+   "text": "o",
+   "start": 8.311,
+   "end": 8.371
+  },
+  {
+   "text": "seu",
+   "start": 8.371,
+   "end": 8.621
+  },
+  {
+   "text": "tipo",
+   "start": 8.621,
+   "end": 8.891
+  },
+  {
+   "text": "de",
+   "start": 8.891,
+   "end": 9.031
+  },
+  {
+   "text": "governo.",
+   "start": 9.031,
+   "end": 9.791
+  },
+  {
+   "text": "então",
+   "start": 9.791,
+   "end": 10.081
+  },
+  {
+   "text": "a",
+   "start": 10.081,
+   "end": 10.131
+  },
+  {
+   "text": "gente",
+   "start": 10.131,
+   "end": 10.371
+  },
+  {
+   "text": "sabe",
+   "start": 10.371,
+   "end": 10.591
+  },
+  {
+   "text": "que",
+   "start": 10.591,
+   "end": 10.691
+  },
+  {
+   "text": "qualquer",
+   "start": 10.691,
+   "end": 10.961
+  },
+  {
+   "text": "proposta",
+   "start": 10.961,
+   "end": 11.231
+  },
+  {
+   "text": "que",
+   "start": 11.231,
+   "end": 11.321
+  },
+  {
+   "text": "ele",
+   "start": 11.321,
+   "end": 11.451
+  },
+  {
+   "text": "quiser",
+   "start": 11.451,
+   "end": 11.691
+  },
+  {
+   "text": "passar",
+   "start": 11.691,
+   "end": 12.311
+  },
+  {
+   "text": "vai",
+   "start": 12.311,
+   "end": 12.491
+  },
+  {
+   "text": "ser",
+   "start": 12.491,
+   "end": 12.671
+  },
+  {
+   "text": "muito",
+   "start": 12.671,
+   "end": 12.951
+  },
+  {
+   "text": "difícil.",
+   "start": 12.951,
+   "end": 13.5
+  },
+  {
+   "text": "ou",
+   "start": 13.556,
+   "end": 13.606
+  },
+  {
+   "text": "melhor,",
+   "start": 13.606,
+   "end": 14.096
+  },
+  {
+   "text": "quase",
+   "start": 14.096,
+   "end": 14.406
+  },
+  {
+   "text": "impossível",
+   "start": 14.406,
+   "end": 15.166
+  },
+  {
+   "text": "de",
+   "start": 15.166,
+   "end": 15.206
+  },
+  {
+   "text": "passar.",
+   "start": 15.206,
+   "end": 15.626
+  },
+  {
+   "text": "e",
+   "start": 15.687,
+   "end": 15.717
+  },
+  {
+   "text": "aí",
+   "start": 15.717,
+   "end": 15.867
+  },
+  {
+   "text": "que",
+   "start": 15.867,
+   "end": 16.047
+  },
+  {
+   "text": "vem",
+   "start": 16.047,
+   "end": 16.227
+  },
+  {
+   "text": "o",
+   "start": 16.227,
+   "end": 16.287
+  },
+  {
+   "text": "nosso",
+   "start": 16.287,
+   "end": 16.587
+  },
+  {
+   "text": "dever.",
+   "start": 16.587,
+   "end": 17.1
+  },
+  {
+   "text": "essas",
+   "start": 17.135,
+   "end": 17.345
+  },
+  {
+   "text": "eleições",
+   "start": 17.345,
+   "end": 17.925
+  },
+  {
+   "text": "a",
+   "start": 17.925,
+   "end": 17.975
+  },
+  {
+   "text": "gente",
+   "start": 17.975,
+   "end": 18.265
+  },
+  {
+   "text": "ganhou",
+   "start": 18.265,
+   "end": 18.645
+  },
+  {
+   "text": "por",
+   "start": 18.645,
+   "end": 18.835
+  },
+  {
+   "text": "conta",
+   "start": 18.835,
+   "end": 19.115
+  },
+  {
+   "text": "da",
+   "start": 19.115,
+   "end": 19.225
+  },
+  {
+   "text": "nossa",
+   "start": 19.225,
+   "end": 19.505
+  },
+  {
+   "text": "mobilização.",
+   "start": 19.505,
+   "end": 20.265
+  },
+  {
+   "text": "nós",
+   "start": 20.33,
+   "end": 20.6
+  },
+  {
+   "text": "fomos",
+   "start": 20.6,
+   "end": 21.02
+  },
+  {
+   "text": "pra",
+   "start": 21.02,
+   "end": 21.27
+  },
+  {
+   "text": "rua.",
+   "start": 21.27,
+   "end": 21.54
+  },
+  {
+   "text": "nós",
+   "start": 21.617,
+   "end": 21.847
+  },
+  {
+   "text": "fizemos",
+   "start": 21.847,
+   "end": 22.367
+  },
+  {
+   "text": "barulho.",
+   "start": 22.367,
+   "end": 22.907
+  },
+  {
+   "text": "nós",
+   "start": 22.987,
+   "end": 23.137
+  },
+  {
+   "text": "divulgamos",
+   "start": 23.137,
+   "end": 24.197
+  },
+  {
+   "text": "esquerda",
+   "start": 24.323,
+   "end": 24.783
+  },
+  {
+   "text": "e",
+   "start": 24.783,
+   "end": 24.843
+  },
+  {
+   "text": "direita",
+   "start": 24.843,
+   "end": 25.313
+  },
+  {
+   "text": "se",
+   "start": 25.313,
+   "end": 25.453
+  },
+  {
+   "text": "juntaram",
+   "start": 25.453,
+   "end": 26.013
+  },
+  {
+   "text": "contra",
+   "start": 26.013,
+   "end": 26.353
+  },
+  {
+   "text": "a",
+   "start": 26.353,
+   "end": 26.423
+  },
+  {
+   "text": "família",
+   "start": 26.423,
+   "end": 26.853
+  },
+  {
+   "text": "Bolsonaro.",
+   "start": 26.853,
+   "end": 27.373
+  },
+  {
+   "text": "e",
+   "start": 27.429,
+   "end": 27.449
+  },
+  {
+   "text": "agora",
+   "start": 27.449,
+   "end": 27.749
+  },
+  {
+   "text": "cabe",
+   "start": 27.749,
+   "end": 27.999
+  },
+  {
+   "text": "a",
+   "start": 27.999,
+   "end": 28.059
+  },
+  {
+   "text": "gente",
+   "start": 28.059,
+   "end": 28.369
+  },
+  {
+   "text": "continuar",
+   "start": 28.369,
+   "end": 29.569
+  },
+  {
+   "text": "e",
+   "start": 29.663,
+   "end": 29.703
+  },
+  {
+   "text": "para",
+   "start": 29.703,
+   "end": 30.143
+  },
+  {
+   "text": "a",
+   "start": 30.143,
+   "end": 30.253
+  },
+  {
+   "text": "rua.",
+   "start": 30.253,
+   "end": 30.593
+  },
+  {
+   "text": "fazer",
+   "start": 30.67,
+   "end": 30.91
+  },
+  {
+   "text": "barulho",
+   "start": 30.91,
+   "end": 31.34
+  },
+  {
+   "text": "na",
+   "start": 31.34,
+   "end": 31.45
+  },
+  {
+   "text": "internet,",
+   "start": 31.45,
+   "end": 32.11
+  },
+  {
+   "text": "fazer",
+   "start": 32.11,
+   "end": 32.39
+  },
+  {
+   "text": "de",
+   "start": 32.39,
+   "end": 32.57
+  },
+  {
+   "text": "tudo.",
+   "start": 32.57,
+   "end": 32.9
+  },
+  {
+   "text": "para",
+   "start": 33.034,
+   "end": 33.394
+  },
+  {
+   "text": "que",
+   "start": 33.394,
+   "end": 33.714
+  },
+  {
+   "text": "o",
+   "start": 33.714,
+   "end": 33.824
+  },
+  {
+   "text": "bem",
+   "start": 33.824,
+   "end": 34.144
+  },
+  {
+   "text": "do",
+   "start": 34.144,
+   "end": 34.364
+  },
+  {
+   "text": "povo",
+   "start": 34.364,
+   "end": 34.784
+  },
+  {
+   "text": "aconteça.",
+   "start": 34.784,
+   "end": 35.8
+  },
+  {
+   "text": "porque",
+   "start": 35.849,
+   "end": 36.039
+  },
+  {
+   "text": "a",
+   "start": 36.039,
+   "end": 36.079
+  },
+  {
+   "text": "gente",
+   "start": 36.079,
+   "end": 36.289
+  },
+  {
+   "text": "já",
+   "start": 36.289,
+   "end": 36.419
+  },
+  {
+   "text": "sabe",
+   "start": 36.419,
+   "end": 36.589
+  },
+  {
+   "text": "que",
+   "start": 36.589,
+   "end": 36.719
+  },
+  {
+   "text": "a",
+   "start": 36.719,
+   "end": 36.759
+  },
+  {
+   "text": "maioria",
+   "start": 36.759,
+   "end": 37.169
+  },
+  {
+   "text": "que",
+   "start": 37.169,
+   "end": 37.189
+  },
+  {
+   "text": "tá",
+   "start": 37.189,
+   "end": 37.319
+  },
+  {
+   "text": "lá",
+   "start": 37.319,
+   "end": 37.449
+  },
+  {
+   "text": "não",
+   "start": 37.449,
+   "end": 37.619
+  },
+  {
+   "text": "quer",
+   "start": 37.619,
+   "end": 37.789
+  },
+  {
+   "text": "isso.",
+   "start": 37.789,
+   "end": 38.133
+  },
+  {
+   "text": "e",
+   "start": 38.167,
+   "end": 38.187
+  },
+  {
+   "text": "eu",
+   "start": 38.187,
+   "end": 38.277
+  },
+  {
+   "text": "acho",
+   "start": 38.277,
+   "end": 38.497
+  },
+  {
+   "text": "que",
+   "start": 38.497,
+   "end": 38.677
+  },
+  {
+   "text": "a",
+   "start": 38.677,
+   "end": 38.727
+  },
+  {
+   "text": "gente",
+   "start": 38.727,
+   "end": 39.017
+  },
+  {
+   "text": "tem",
+   "start": 39.017,
+   "end": 39.187
+  },
+  {
+   "text": "que",
+   "start": 39.187,
+   "end": 39.377
+  },
+  {
+   "text": "ensinar",
+   "start": 39.377,
+   "end": 39.757
+  },
+  {
+   "text": "pra",
+   "start": 39.757,
+   "end": 39.927
+  },
+  {
+   "text": "população",
+   "start": 39.927,
+   "end": 40.6
+  },
+  {
+   "text": "qual",
+   "start": 40.665,
+   "end": 40.865
+  },
+  {
+   "text": "é",
+   "start": 40.865,
+   "end": 41.015
+  },
+  {
+   "text": "o",
+   "start": 41.015,
+   "end": 41.085
+  },
+  {
+   "text": "dever",
+   "start": 41.085,
+   "end": 41.455
+  },
+  {
+   "text": "de",
+   "start": 41.455,
+   "end": 41.615
+  },
+  {
+   "text": "cada",
+   "start": 41.615,
+   "end": 41.905
+  },
+  {
+   "text": "um?",
+   "start": 41.905,
+   "end": 42.305
+  },
+  {
+   "text": "galera",
+   "start": 42.379,
+   "end": 42.629
+  },
+  {
+   "text": "do",
+   "start": 42.629,
+   "end": 42.729
+  },
+  {
+   "text": "Rio,",
+   "start": 42.729,
+   "end": 43.019
+  },
+  {
+   "text": "vale",
+   "start": 43.019,
+   "end": 43.189
+  },
+  {
+   "text": "ressaltar",
+   "start": 43.189,
+   "end": 43.679
+  },
+  {
+   "text": "que",
+   "start": 43.679,
+   "end": 43.849
+  },
+  {
+   "text": "o",
+   "start": 43.849,
+   "end": 43.899
+  },
+  {
+   "text": "nosso",
+   "start": 43.899,
+   "end": 44.179
+  },
+  {
+   "text": "governador",
+   "start": 44.179,
+   "end": 45.299
+  },
+  {
+   "text": "é",
+   "start": 45.381,
+   "end": 45.421
+  },
+  {
+   "text": "ele",
+   "start": 45.421,
+   "end": 45.591
+  },
+  {
+   "text": "que",
+   "start": 45.591,
+   "end": 45.751
+  },
+  {
+   "text": "cuida",
+   "start": 45.751,
+   "end": 46.041
+  },
+  {
+   "text": "da",
+   "start": 46.041,
+   "end": 46.151
+  },
+  {
+   "text": "segurança",
+   "start": 46.151,
+   "end": 46.741
+  },
+  {
+   "text": "pública",
+   "start": 46.741,
+   "end": 47.211
+  },
+  {
+   "text": "do",
+   "start": 47.211,
+   "end": 47.321
+  },
+  {
+   "text": "Rio",
+   "start": 47.321,
+   "end": 47.491
+  },
+  {
+   "text": "de",
+   "start": 47.491,
+   "end": 47.601
+  },
+  {
+   "text": "Janeiro.",
+   "start": 47.601,
+   "end": 48.111
+  },
+  {
+   "text": "e,",
+   "start": 48.175,
+   "end": 48.335
+  },
+  {
+   "text": "de",
+   "start": 48.335,
+   "end": 48.485
+  },
+  {
+   "text": "novo,",
+   "start": 48.485,
+   "end": 48.945
+  },
+  {
+   "text": "a",
+   "start": 48.945,
+   "end": 49.035
+  },
+  {
+   "text": "gente",
+   "start": 49.035,
+   "end": 49.405
+  },
+  {
+   "text": "errou",
+   "start": 49.405,
+   "end": 49.815
+  },
+  {
+   "text": "colocando",
+   "start": 49.815,
+   "end": 50.615
+  },
+  {
+   "text": "uma",
+   "start": 50.615,
+   "end": 50.775
+  },
+  {
+   "text": "pessoa",
+   "start": 50.775,
+   "end": 51.195
+  },
+  {
+   "text": "do",
+   "start": 51.195,
+   "end": 51.315
+  },
+  {
+   "text": "canto",
+   "start": 51.315,
+   "end": 51.555
+  },
+  {
+   "text": "de",
+   "start": 51.555,
+   "end": 51.655
+  },
+  {
+   "text": "lá.",
+   "start": 51.655,
+   "end": 52.015
+  },
+  {
+   "text": "de",
+   "start": 52.131,
+   "end": 52.191
+  },
+  {
+   "text": "direita,",
+   "start": 52.191,
+   "end": 52.841
+  },
+  {
+   "text": "que",
+   "start": 52.841,
+   "end": 53.031
+  },
+  {
+   "text": "é",
+   "start": 53.031,
+   "end": 53.171
+  },
+  {
+   "text": "o",
+   "start": 53.171,
+   "end": 53.241
+  },
+  {
+   "text": "Ruas.",
+   "start": 53.241,
+   "end": 53.571
+  },
+  {
+   "text": "a",
+   "start": 53.644,
+   "end": 53.654
+  },
+  {
+   "text": "gente",
+   "start": 53.654,
+   "end": 54.084
+  },
+  {
+   "text": "sempre",
+   "start": 54.084,
+   "end": 54.594
+  },
+  {
+   "text": "coloca",
+   "start": 54.594,
+   "end": 55.104
+  },
+  {
+   "text": "e",
+   "start": 55.104,
+   "end": 55.184
+  },
+  {
+   "text": "sempre",
+   "start": 55.184,
+   "end": 55.694
+  },
+  {
+   "text": "não",
+   "start": 55.694,
+   "end": 56.044
+  },
+  {
+   "text": "muda",
+   "start": 56.044,
+   "end": 56.364
+  },
+  {
+   "text": "nada,",
+   "start": 56.364,
+   "end": 56.924
+  },
+  {
+   "text": "só",
+   "start": 56.924,
+   "end": 57.164
+  },
+  {
+   "text": "piora.",
+   "start": 57.164,
+   "end": 57.574
+  },
+  {
+   "text": "o",
+   "start": 58.579,
+   "end": 58.579
+  },
+  {
+   "text": "resto",
+   "start": 58.579,
+   "end": 58.949
+  },
+  {
+   "text": "do",
+   "start": 58.949,
+   "end": 59.099
+  },
+  {
+   "text": "Rio",
+   "start": 59.099,
+   "end": 59.319
+  },
+  {
+   "text": "de",
+   "start": 59.319,
+   "end": 59.509
+  },
+  {
+   "text": "Janeiro",
+   "start": 59.509,
+   "end": 59.989
+  },
+  {
+   "text": "decidiu",
+   "start": 59.989,
+   "end": 60.509
+  },
+  {
+   "text": "colocar",
+   "start": 60.509,
+   "end": 61.029
+  },
+  {
+   "text": "Ruas.",
+   "start": 61.029,
+   "end": 61.367
+  },
+  {
+   "text": "então,",
+   "start": 61.431,
+   "end": 61.961
+  },
+  {
+   "text": "cabe",
+   "start": 61.961,
+   "end": 62.321
+  },
+  {
+   "text": "a",
+   "start": 62.321,
+   "end": 62.401
+  },
+  {
+   "text": "gente",
+   "start": 62.401,
+   "end": 62.821
+  },
+  {
+   "text": "fiscalizar",
+   "start": 62.821,
+   "end": 63.561
+  },
+  {
+   "text": "e",
+   "start": 63.611,
+   "end": 63.641
+  },
+  {
+   "text": "se",
+   "start": 63.641,
+   "end": 63.841
+  },
+  {
+   "text": "mobilizar.",
+   "start": 63.841,
+   "end": 64.781
+  },
+  {
+   "text": "pedindo",
+   "start": 64.837,
+   "end": 65.187
+  },
+  {
+   "text": "que",
+   "start": 65.187,
+   "end": 65.367
+  },
+  {
+   "text": "as",
+   "start": 65.367,
+   "end": 65.507
+  },
+  {
+   "text": "coisas",
+   "start": 65.507,
+   "end": 65.847
+  },
+  {
+   "text": "sejam",
+   "start": 65.847,
+   "end": 66.147
+  },
+  {
+   "text": "realmente",
+   "start": 66.147,
+   "end": 66.687
+  },
+  {
+   "text": "feitas",
+   "start": 66.687,
+   "end": 67.047
+  },
+  {
+   "text": "dessa",
+   "start": 67.047,
+   "end": 67.347
+  },
+  {
+   "text": "vez.",
+   "start": 67.347,
+   "end": 67.533
+  },
+  {
+   "text": "a",
+   "start": 67.567,
+   "end": 67.597
+  },
+  {
+   "text": "gente",
+   "start": 67.597,
+   "end": 67.767
+  },
+  {
+   "text": "sabe",
+   "start": 67.767,
+   "end": 67.927
+  },
+  {
+   "text": "que",
+   "start": 67.927,
+   "end": 68.047
+  },
+  {
+   "text": "a",
+   "start": 68.047,
+   "end": 68.087
+  },
+  {
+   "text": "questão",
+   "start": 68.087,
+   "end": 68.417
+  },
+  {
+   "text": "de",
+   "start": 68.417,
+   "end": 68.497
+  },
+  {
+   "text": "segurança",
+   "start": 68.497,
+   "end": 68.937
+  },
+  {
+   "text": "pública",
+   "start": 68.937,
+   "end": 69.287
+  },
+  {
+   "text": "do",
+   "start": 69.287,
+   "end": 69.377
+  },
+  {
+   "text": "Rio",
+   "start": 69.377,
+   "end": 69.527
+  },
+  {
+   "text": "de",
+   "start": 69.527,
+   "end": 69.657
+  },
+  {
+   "text": "Janeiro",
+   "start": 69.657,
+   "end": 70.147
+  },
+  {
+   "text": "é",
+   "start": 70.147,
+   "end": 70.277
+  },
+  {
+   "text": "algo",
+   "start": 70.277,
+   "end": 70.527
+  },
+  {
+   "text": "que",
+   "start": 70.527,
+   "end": 70.737
+  },
+  {
+   "text": "tem",
+   "start": 70.737,
+   "end": 70.937
+  },
+  {
+   "text": "que",
+   "start": 70.937,
+   "end": 71.137
+  },
+  {
+   "text": "ser",
+   "start": 71.137,
+   "end": 71.337
+  },
+  {
+   "text": "prioritário.",
+   "start": 71.337,
+   "end": 72.147
+  },
+  {
+   "text": "mas",
+   "start": 72.231,
+   "end": 72.311
+  },
+  {
+   "text": "eles",
+   "start": 72.311,
+   "end": 72.511
+  },
+  {
+   "text": "não",
+   "start": 72.511,
+   "end": 72.741
+  },
+  {
+   "text": "cuidam.",
+   "start": 72.741,
+   "end": 73.161
+  },
+  {
+   "text": "por",
+   "start": 73.596,
+   "end": 73.696
+  },
+  {
+   "text": "vários",
+   "start": 73.696,
+   "end": 74.106
+  },
+  {
+   "text": "motivos,",
+   "start": 74.106,
+   "end": 74.626
+  },
+  {
+   "text": "até",
+   "start": 74.626,
+   "end": 74.956
+  },
+  {
+   "text": "porque",
+   "start": 74.956,
+   "end": 75.146
+  },
+  {
+   "text": "muitos",
+   "start": 75.146,
+   "end": 75.456
+  },
+  {
+   "text": "deles",
+   "start": 75.456,
+   "end": 75.746
+  },
+  {
+   "text": "estão",
+   "start": 75.746,
+   "end": 76.066
+  },
+  {
+   "text": "envolvidos",
+   "start": 76.066,
+   "end": 76.656
+  },
+  {
+   "text": "com",
+   "start": 76.656,
+   "end": 76.726
+  },
+  {
+   "text": "tudo",
+   "start": 76.726,
+   "end": 77.026
+  },
+  {
+   "text": "o",
+   "start": 77.026,
+   "end": 77.066
+  },
+  {
+   "text": "que",
+   "start": 77.066,
+   "end": 77.186
+  },
+  {
+   "text": "está",
+   "start": 77.186,
+   "end": 77.386
+  },
+  {
+   "text": "acontecendo.",
+   "start": 77.386,
+   "end": 77.966
+  },
+  {
+   "text": "enfim,",
+   "start": 78.0,
+   "end": 78.28
+  },
+  {
+   "text": "gente,",
+   "start": 78.28,
+   "end": 78.64
+  },
+  {
+   "text": "então",
+   "start": 78.64,
+   "end": 78.95
+  },
+  {
+   "text": "eu",
+   "start": 78.95,
+   "end": 79.05
+  },
+  {
+   "text": "só",
+   "start": 79.05,
+   "end": 79.21
+  },
+  {
+   "text": "queria",
+   "start": 79.21,
+   "end": 79.51
+  },
+  {
+   "text": "dizer",
+   "start": 79.51,
+   "end": 79.83
+  },
+  {
+   "text": "que",
+   "start": 79.83,
+   "end": 79.93
+  },
+  {
+   "text": "essa",
+   "start": 79.93,
+   "end": 80.31
+  },
+  {
+   "text": "realmente",
+   "start": 80.31,
+   "end": 80.63
+  },
+  {
+   "text": "vai",
+   "start": 80.63,
+   "end": 80.78
+  },
+  {
+   "text": "ser",
+   "start": 80.78,
+   "end": 80.95
+  },
+  {
+   "text": "a",
+   "start": 80.95,
+   "end": 81.0
+  },
+  {
+   "text": "parte",
+   "start": 81.0,
+   "end": 81.27
+  },
+  {
+   "text": "mais",
+   "start": 81.27,
+   "end": 81.48
+  },
+  {
+   "text": "difícil.",
+   "start": 81.48,
+   "end": 81.93
+  },
+  {
+   "text": "a",
+   "start": 82.053,
+   "end": 82.063
+  },
+  {
+   "text": "parte",
+   "start": 82.063,
+   "end": 82.383
+  },
+  {
+   "text": "que",
+   "start": 82.383,
+   "end": 82.543
+  },
+  {
+   "text": "a",
+   "start": 82.543,
+   "end": 82.603
+  },
+  {
+   "text": "gente",
+   "start": 82.603,
+   "end": 82.913
+  },
+  {
+   "text": "tem",
+   "start": 82.913,
+   "end": 83.093
+  },
+  {
+   "text": "que",
+   "start": 83.093,
+   "end": 83.273
+  },
+  {
+   "text": "se",
+   "start": 83.273,
+   "end": 83.393
+  },
+  {
+   "text": "mobilizar,",
+   "start": 83.393,
+   "end": 84.063
+  },
+  {
+   "text": "que",
+   "start": 84.063,
+   "end": 84.163
+  },
+  {
+   "text": "a",
+   "start": 84.163,
+   "end": 84.193
+  },
+  {
+   "text": "gente",
+   "start": 84.193,
+   "end": 84.363
+  },
+  {
+   "text": "tem",
+   "start": 84.363,
+   "end": 84.463
+  },
+  {
+   "text": "que",
+   "start": 84.463,
+   "end": 84.653
+  },
+  {
+   "text": "olhar,",
+   "start": 84.653,
+   "end": 85.443
+  },
+  {
+   "text": "ficar",
+   "start": 85.443,
+   "end": 85.923
+  },
+  {
+   "text": "atento.",
+   "start": 85.923,
+   "end": 86.4
+  },
+  {
+   "text": "e",
+   "start": 86.451,
+   "end": 86.461
+  },
+  {
+   "text": "já",
+   "start": 86.461,
+   "end": 86.631
+  },
+  {
+   "text": "de",
+   "start": 86.631,
+   "end": 86.751
+  },
+  {
+   "text": "agora",
+   "start": 86.751,
+   "end": 87.631
+  },
+  {
+   "text": "começar",
+   "start": 87.792,
+   "end": 88.462
+  },
+  {
+   "text": "a",
+   "start": 88.462,
+   "end": 88.552
+  },
+  {
+   "text": "projetar",
+   "start": 88.552,
+   "end": 89.302
+  },
+  {
+   "text": "quem",
+   "start": 89.302,
+   "end": 89.542
+  },
+  {
+   "text": "vai",
+   "start": 89.542,
+   "end": 89.722
+  },
+  {
+   "text": "ser",
+   "start": 89.722,
+   "end": 89.922
+  },
+  {
+   "text": "a",
+   "start": 89.922,
+   "end": 89.972
+  },
+  {
+   "text": "próxima",
+   "start": 89.972,
+   "end": 90.412
+  },
+  {
+   "text": "pessoa",
+   "start": 90.412,
+   "end": 90.762
+  },
+  {
+   "text": "para",
+   "start": 90.762,
+   "end": 91.052
+  },
+  {
+   "text": "os",
+   "start": 91.052,
+   "end": 91.212
+  },
+  {
+   "text": "4",
+   "start": 91.212,
+   "end": 91.412
+  },
+  {
+   "text": "anos.",
+   "start": 91.412,
+   "end": 91.722
+  },
+  {
+   "text": "porque",
+   "start": 91.797,
+   "end": 92.037
+  },
+  {
+   "text": "o",
+   "start": 92.037,
+   "end": 92.087
+  },
+  {
+   "text": "Lula",
+   "start": 92.087,
+   "end": 92.287
+  },
+  {
+   "text": "não",
+   "start": 92.287,
+   "end": 92.497
+  },
+  {
+   "text": "vai",
+   "start": 92.497,
+   "end": 92.647
+  },
+  {
+   "text": "poder",
+   "start": 92.647,
+   "end": 92.907
+  },
+  {
+   "text": "ser",
+   "start": 92.907,
+   "end": 93.057
+  },
+  {
+   "text": "reeleito.",
+   "start": 93.057,
+   "end": 93.527
+  },
+  {
+   "text": "e",
+   "start": 93.588,
+   "end": 93.588
+  },
+  {
+   "text": "eu",
+   "start": 93.588,
+   "end": 93.738
+  },
+  {
+   "text": "acredito",
+   "start": 93.738,
+   "end": 94.328
+  },
+  {
+   "text": "que",
+   "start": 94.328,
+   "end": 94.548
+  },
+  {
+   "text": "o",
+   "start": 94.548,
+   "end": 94.618
+  },
+  {
+   "text": "PT",
+   "start": 94.618,
+   "end": 94.733
+  },
+  {
+   "text": "ele",
+   "start": 94.809,
+   "end": 94.949
+  },
+  {
+   "text": "tá",
+   "start": 94.949,
+   "end": 95.249
+  },
+  {
+   "text": "meio",
+   "start": 95.249,
+   "end": 95.479
+  },
+  {
+   "text": "manchado,",
+   "start": 95.479,
+   "end": 96.239
+  },
+  {
+   "text": "né?",
+   "start": 96.239,
+   "end": 96.709
+  },
+  {
+   "text": "o",
+   "start": 96.709,
+   "end": 96.879
+  },
+  {
+   "text": "partido.",
+   "start": 96.879,
+   "end": 97.533
+  },
+  {
+   "text": "pra",
+   "start": 97.588,
+   "end": 97.678
+  },
+  {
+   "text": "gente",
+   "start": 97.678,
+   "end": 97.958
+  },
+  {
+   "text": "entender",
+   "start": 97.958,
+   "end": 98.388
+  },
+  {
+   "text": "qual",
+   "start": 98.388,
+   "end": 98.608
+  },
+  {
+   "text": "vai",
+   "start": 98.608,
+   "end": 98.768
+  },
+  {
+   "text": "ser",
+   "start": 98.768,
+   "end": 98.928
+  },
+  {
+   "text": "essa",
+   "start": 98.928,
+   "end": 99.158
+  },
+  {
+   "text": "pessoa",
+   "start": 99.158,
+   "end": 99.518
+  },
+  {
+   "text": "que",
+   "start": 99.518,
+   "end": 99.718
+  },
+  {
+   "text": "vai",
+   "start": 99.718,
+   "end": 99.918
+  },
+  {
+   "text": "nascer",
+   "start": 99.918,
+   "end": 100.318
+  },
+  {
+   "text": "agora.",
+   "start": 100.318,
+   "end": 100.698
+  },
+  {
+   "text": "é",
+   "start": 100.819,
+   "end": 100.869
+  },
+  {
+   "text": "o",
+   "start": 100.869,
+   "end": 100.929
+  },
+  {
+   "text": "momento",
+   "start": 100.929,
+   "end": 101.339
+  },
+  {
+   "text": "dessa",
+   "start": 101.339,
+   "end": 101.639
+  },
+  {
+   "text": "pessoa",
+   "start": 101.639,
+   "end": 101.989
+  },
+  {
+   "text": "nascer.",
+   "start": 101.989,
+   "end": 102.549
+  },
+  {
+   "text": "e",
+   "start": 102.659,
+   "end": 102.659
+  },
+  {
+   "text": "da",
+   "start": 102.659,
+   "end": 102.799
+  },
+  {
+   "text": "gente",
+   "start": 102.799,
+   "end": 103.179
+  },
+  {
+   "text": "ficar",
+   "start": 103.179,
+   "end": 103.499
+  },
+  {
+   "text": "ligado",
+   "start": 103.499,
+   "end": 103.919
+  },
+  {
+   "text": "nela",
+   "start": 103.919,
+   "end": 104.233
+  },
+  {
+   "text": "daqui",
+   "start": 104.233,
+   "end": 104.579
+  },
+  {
+   "text": "a",
+   "start": 104.579,
+   "end": 104.649
+  },
+  {
+   "text": "quatro",
+   "start": 104.649,
+   "end": 105.099
+  },
+  {
+   "text": "anos",
+   "start": 105.099,
+   "end": 105.399
+  },
+  {
+   "text": "a",
+   "start": 105.399,
+   "end": 105.469
+  },
+  {
+   "text": "gente",
+   "start": 105.469,
+   "end": 105.839
+  },
+  {
+   "text": "saber",
+   "start": 105.839,
+   "end": 106.209
+  },
+  {
+   "text": "em",
+   "start": 106.209,
+   "end": 106.359
+  },
+  {
+   "text": "quem",
+   "start": 106.359,
+   "end": 106.659
+  },
+  {
+   "text": "votar.",
+   "start": 106.659,
+   "end": 107.067
+  },
+  {
+   "text": "e",
+   "start": 107.109,
+   "end": 107.109
+  },
+  {
+   "text": "tirar",
+   "start": 107.109,
+   "end": 107.459
+  },
+  {
+   "text": "qualquer",
+   "start": 107.459,
+   "end": 108.019
+  },
+  {
+   "text": "possibilidade",
+   "start": 108.019,
+   "end": 108.939
+  },
+  {
+   "text": "de",
+   "start": 108.939,
+   "end": 109.089
+  },
+  {
+   "text": "pessoas",
+   "start": 109.089,
+   "end": 109.559
+  },
+  {
+   "text": "ruins.",
+   "start": 109.559,
+   "end": 109.967
+  },
+  {
+   "text": "como",
+   "start": 109.975,
+   "end": 110.165
+  },
+  {
+   "text": "o",
+   "start": 110.165,
+   "end": 110.215
+  },
+  {
+   "text": "bolsonarismo",
+   "start": 110.215,
+   "end": 110.885
+  },
+  {
+   "text": "sempre",
+   "start": 110.885,
+   "end": 111.245
+  },
+  {
+   "text": "foi.",
+   "start": 111.245,
+   "end": 111.475
+  }
+ ]
+}

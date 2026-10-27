@@ -1,5 +1,7 @@
 import { Composition, Folder } from "remotion";
 import { HelloWorld } from "./HelloWorld";
+import { Main } from "./Edit/Main";
+import { DURATION, FPS } from "./Edit/data";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
 
@@ -8,6 +10,14 @@ import { Title } from "./HelloWorld/Title";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition
+        id="Edit"
+        component={Main}
+        durationInFrames={Math.ceil(DURATION * FPS)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
       <Folder name="Elements">
         <Composition
           id="Logo"
