@@ -21,4 +21,8 @@ Referência completa com medidas: `estilo-trabalho.md`. Exemplo analisado: `raw/
 6. Render, conferência (stills, duração, loudness) e envio — igual à skill `editar-video`, passo 4.
 
 ## Aprendizados
-- (registrar aqui ajustes que o usuário pedir nos vídeos do trabalho)
+- **Reels "5 motivos – Extra Natal" (Oficina)**: o vídeo já veio editado com legendas; o pedido foi só atualizar. Não mexer no começo.
+  Entre os motivos entra uma **cartela de parede branca** (2 s) com o texto do briefing centralizado em preto: `MOTIVO N —` (Oswald 500, 50 px, espaçado) + título (Oswald 600, 104 px, caixa alta). Inserida exatamente nos cortes do vídeo onde cada motivo começa (sem fala), pausando o vídeo.
+  Efeitos sonoros sintetizados (`scripts/make-sfx.py`): whoosh entrando na cartela + toque grave quando o texto aparece; sino natalino na tela final. Volume ~8 dB abaixo da voz.
+  Final: tela de parede branca com o logo (`public/oficina.svg`, preto, 620 px de largura), 2,5 s. Código: `src/Natal/Natal.tsx` — reaproveitar como modelo para "cartelas entre blocos".
+- Logo da Oficina: o PDF `logo_oficina_preto` enviado estava vazio; o SVG vetorial está no Drive (`oficina.svg`, id 1THEhMK1gi8i_W0abHIx6m3IgHgcXSms-).
