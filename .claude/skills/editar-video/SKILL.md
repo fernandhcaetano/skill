@@ -5,7 +5,7 @@ description: Edita um vídeo vertical de "falando para a câmera" em português 
 
 # Editar vídeo no estilo aprovado
 
-Projeto Remotion em `/home/user/my-video` (1080×1920, 30 fps). Referência visual: `estilo.md`.
+Projeto Remotion na raiz deste repositório (1080×1920, 30 fps). Numa sessão nova, rode antes: `npm install` e `node scripts/install-whisper.mjs`. Referência visual: `estilo.md`.
 Primeira versão aprovada pelo usuário: vídeo político de 3:08 → 1:51 (`out/edit_v1.mp4`).
 
 ## 0. Pré-requisitos
