@@ -22,7 +22,9 @@ Referência completa com medidas: `estilo-trabalho.md`. Exemplo analisado: `raw/
 
 ## Aprendizados
 - **Reels "5 motivos – Extra Natal" (Oficina)**: o vídeo já veio editado com legendas; o pedido foi só atualizar. Não mexer no começo.
-  Entre os motivos entra uma **cartela de parede branca** (2 s) com o texto do briefing centralizado em preto: `MOTIVO N —` (Oswald 500, 50 px, espaçado) + título (Oswald 600, 104 px, caixa alta). Inserida exatamente nos cortes do vídeo onde cada motivo começa (sem fala), pausando o vídeo.
-  Efeitos sonoros sintetizados (`scripts/make-sfx.py`): whoosh entrando na cartela + toque grave quando o texto aparece; sino natalino na tela final. Volume ~8 dB abaixo da voz.
+  Entre os motivos entra uma **cartela de parede branca** (2,5 s) com o texto do briefing centralizado em preto: `MOTIVO N` (Oswald 500, 50 px, espaçado, **sem travessão**) + título (Oswald 600, 104 px, caixa alta). Inserida exatamente nos cortes do vídeo onde cada motivo começa (sem fala), pausando o vídeo.
+  **Animação de digitação** com cursor piscando ("MOTIVO N" 2 frames/letra, título 1 frame/letra; letras não digitadas ficam invisíveis para o layout não andar) + **som de tecla** a cada letra (3 variações). Whoosh na entrada da cartela.
+  Tela final: som **reveal** (sopro que cresce + grave suave), sincronizado com o logo surgindo. O sino natalino foi rejeitado pelo usuário.
+  Efeitos sintetizados em `scripts/make-sfx.py`; picos ~7 dB abaixo da voz.
   Final: tela de parede branca com o logo (`public/oficina.svg`, preto, 620 px de largura), 2,5 s. Código: `src/Natal/Natal.tsx` — reaproveitar como modelo para "cartelas entre blocos".
 - Logo da Oficina: o PDF `logo_oficina_preto` enviado estava vazio; o SVG vetorial está no Drive (`oficina.svg`, id 1THEhMK1gi8i_W0abHIx6m3IgHgcXSms-).

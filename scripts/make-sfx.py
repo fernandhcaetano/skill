@@ -2,7 +2,9 @@
 
 whoosh.wav  - passagem de ar curta para entrar nas cartelas de motivo
 hit.wav     - toque grave e suave quando o texto da cartela aparece
-chime.wav   - sino natalino com brilho para a tela final com o logo
+chime.wav   - sino natalino com brilho (substituído pelo reveal na tela final)
+key1-3.wav  - teclas de digitação (3 variações) para o texto das cartelas
+reveal.wav  - entrada elegante do logo: sopro que cresce + impacto grave suave
 """
 import os
 import wave
@@ -71,4 +73,20 @@ for k in range(14):  # guizos: rajadas curtas de parciais agudos
     fb = rng.uniform(5000, 7500)
     bells += on * np.sin(2 * np.pi * fb * tl) * np.exp(-tl * 40) * (1 - k / 16)
 save("chime.wav", chime + 0.35 * bells, -8)
+# Teclas: clique agudo curto + "toc" grave, com variações de timbre.
+for k, (fc, ft) in enumerate(((4200, 190), (3600, 165), (4800, 210)), start=1):
+    tt = t(0.07)
+    click = lowpass(rng.standard_normal(len(tt)), fc) - lowpass(rng.standard_normal(len(tt)), 900)
+    key = click * np.exp(-tt * 260) + 0.6 * np.sin(2 * np.pi * ft * tt) * np.exp(-tt * 70)
+    save(f"key{k}.wav", key, -12)
+
+# Reveal: sopro filtrado que cresce por 0,4 s e resolve num grave suave com cauda.
+tt = t(2.2)
+rise = np.clip(tt / 0.4, 0, 1) ** 2 * (tt < 0.42) + (tt >= 0.42) * np.exp(-(tt - 0.42) * 7)
+air = lowpass(rng.standard_normal(len(tt)), 600 + 3400 * np.clip(tt / 0.4, 0, 1)) * rise
+tl = np.clip(tt - 0.4, 0, None)
+on = (tt >= 0.4).astype(float)
+boom = on * np.sin(2 * np.pi * (48 + 30 * np.exp(-tl * 6)) * tl) * np.exp(-tl * 3.2)
+pad = on * sum(a * np.sin(2 * np.pi * f * tl) for f, a in ((392, 0.10), (587.3, 0.07), (784, 0.04))) * np.exp(-tl * 1.6)
+save("reveal.wav", 0.5 * air + boom + pad, -8)
 print("sfx ok")

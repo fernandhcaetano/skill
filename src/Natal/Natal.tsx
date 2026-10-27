@@ -16,7 +16,7 @@ const MOTIVOS = [
   "ATENÇÃO AOS DETALHES",
   "TRABALHO EM EQUIPE",
 ];
-const CARD = 60; // 2 s
+const CARD = 75; // 2,5 s
 const END = 75; // 2,5 s
 const FADE = 2; // micro-fade de áudio nos pontos de corte
 
@@ -29,6 +29,16 @@ MOTIVO_CUTS.forEach((cut, i) => {
   prev = cut;
 });
 blocks.push({ kind: "video", from: prev, to: SOURCE_FRAMES }, { kind: "end" });
+
+// Digitação: "MOTIVO N" a 2 frames por letra, pausa curta, título a 1 frame por letra.
+const typing = (n: number) => {
+  const label = `MOTIVO ${n + 1}`;
+  const title = MOTIVOS[n];
+  const labelAt = [...label].map((_, i) => 4 + i * 2);
+  const titleStart = labelAt[labelAt.length - 1] + 6;
+  const titleAt = [...title].map((_, i) => titleStart + i);
+  return { label, title, labelAt, titleAt };
+};
 
 const len = (b: Block) => (b.kind === "video" ? b.to - b.from : b.kind === "card" ? CARD : END);
 export const NATAL_DURATION = blocks.reduce((s, b) => s + len(b), 0);
@@ -47,27 +57,46 @@ const Wall: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   </AbsoluteFill>
 );
 
+const Typed: React.FC<{ text: string; at: number[]; frame: number; cursor: boolean }> = ({ text, at, frame, cursor }) => (
+  <>
+    {[...text].map((ch, i) => (
+      // letras ainda não digitadas ficam invisíveis para o texto não "andar" ao crescer
+      <span key={i} style={{ opacity: frame >= at[i] ? 1 : 0 }}>
+        {ch}
+        {cursor && i === at.filter((f) => f <= frame).length - 1 && <Cursor frame={frame} />}
+      </span>
+    ))}
+  </>
+);
+
+const Cursor: React.FC<{ frame: number }> = ({ frame }) => (
+  <span
+    style={{
+      position: "absolute",
+      display: "inline-block",
+      width: "0.06em",
+      height: "0.9em",
+      marginLeft: "0.05em",
+      marginTop: "0.08em",
+      background: "#111",
+      opacity: Math.floor(frame / 8) % 2 === 0 ? 1 : 0,
+    }}
+  />
+);
+
 const MotivoCard: React.FC<{ n: number }> = ({ n }) => {
   const frame = useCurrentFrame();
-  const p = interpolate(frame, [3, 13], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const ease = 1 - (1 - p) ** 3;
+  const { label, title, labelAt, titleAt } = typing(n);
+  const titleStarted = frame >= titleAt[0];
   return (
     <Wall>
-      <div
-        style={{
-          width: 880,
-          textAlign: "center",
-          color: "#111",
-          fontFamily: "'Oswald', sans-serif",
-          textTransform: "uppercase",
-          opacity: ease,
-          transform: `translateY(${(1 - ease) * 24}px)`,
-        }}
-      >
-        <div style={{ fontSize: 50, fontWeight: 500, letterSpacing: `${0.22 - 0.08 * ease}em`, marginBottom: 18 }}>
-          Motivo {n + 1} —
+      <div style={{ width: 880, textAlign: "center", color: "#111", fontFamily: "'Oswald', sans-serif", textTransform: "uppercase" }}>
+        <div style={{ position: "relative", fontSize: 50, fontWeight: 500, letterSpacing: "0.14em", marginBottom: 18 }}>
+          <Typed text={label} at={labelAt} frame={frame} cursor={!titleStarted} />
         </div>
-        <div style={{ fontSize: 104, fontWeight: 600, lineHeight: 1.02, letterSpacing: "0.01em" }}>{MOTIVOS[n]}</div>
+        <div style={{ position: "relative", fontSize: 104, fontWeight: 600, lineHeight: 1.02, letterSpacing: "0.01em" }}>
+          <Typed text={title} at={titleAt} frame={frame} cursor={titleStarted} />
+        </div>
       </div>
     </Wall>
   );
@@ -75,7 +104,7 @@ const MotivoCard: React.FC<{ n: number }> = ({ n }) => {
 
 const EndCard: React.FC = () => {
   const frame = useCurrentFrame();
-  const p = interpolate(frame, [0, 18], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const p = interpolate(frame, [6, 16], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const ease = 1 - (1 - p) ** 3;
   return (
     <Wall>
@@ -118,14 +147,22 @@ export const Natal: React.FC = () => {
                 <Sequence from={start - 8} durationInFrames={17}>
                   <Audio src={staticFile("sfx/whoosh.wav")} volume={0.55} />
                 </Sequence>
-                <Sequence from={start + 5} durationInFrames={11}>
-                  <Audio src={staticFile("sfx/hit.wav")} volume={0.5} />
-                </Sequence>
+                {(() => {
+                  const { label, title, labelAt, titleAt } = typing(b.n);
+                  const keys = [...[...label].map((c, i) => [c, labelAt[i]] as const), ...[...title].map((c, i) => [c, titleAt[i]] as const)];
+                  return keys
+                    .filter(([c]) => c !== " ")
+                    .map(([, f], k) => (
+                      <Sequence key={k} from={start + f} durationInFrames={3}>
+                        <Audio src={staticFile(`sfx/key${(k * 7) % 3 + 1}.wav`)} volume={0.7 + ((k * 5) % 4) * 0.08} />
+                      </Sequence>
+                    ));
+                })()}
               </>
             )}
             {b.kind === "end" && (
               <Sequence from={start} durationInFrames={END}>
-                <Audio src={staticFile("sfx/chime.wav")} volume={0.45} />
+                <Audio src={staticFile("sfx/reveal.wav")} volume={0.6} />
               </Sequence>
             )}
           </React.Fragment>
