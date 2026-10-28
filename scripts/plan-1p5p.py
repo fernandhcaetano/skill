@@ -5,6 +5,9 @@ Assim, se os cortes mudarem (build-edit.py), basta rodar de novo:
 Gera src/Trabalho/plan-1p5p.json (cortes + legendas + planos no tempo final).
 """
 import json
+import os
+
+SEM_SEGUNDO_10_ANOS = os.environ.get("SEM_SEGUNDO_10_ANOS", "0") == "1"
 
 edit = json.load(open("src/Trabalho/edit-1p5p.json"))
 S = edit["segments"]
@@ -68,7 +71,7 @@ CAPTIONS = [
 # 15.4 = fim do trecho 3 (com END_EXTRA).
 SHOTS = [
     (1.47, None, 0),  # "Você sabia que a cada peça…"
-    (15.4, "IMG_4691", 0.2, 1, 320),  # parede "Gente boa e do bem", já com "Oi, eu sou a Ludy" por cima
+    (13.04 if SEM_SEGUNDO_10_ANOS else 15.4, "IMG_4691", 0.2, 1, 320),  # parede "Gente boa e do bem", já com "Oi, eu sou a Ludy" por cima
     (18.67, "IMG_4672", 0.3),  # "do time de Sustentabilidade do grupo" → Ludy no palco
     (21.0, "IMG_4671", 0),  # "estamos aqui para celebrar" → Ludy apresentando
     (23.05, "IMG_4688", 0),  # "Dia Mundial da Alimentação" → telão com alimentos
@@ -106,7 +109,8 @@ SHOTS = [
 
 plan = {
     **edit,
-    "captions": [{"start": out(a), "end": out(b), "text": t} for a, b, t in CAPTIONS],
+    "captions": [c for c in ({"start": out(a), "end": out(b), "text": t} for a, b, t in CAPTIONS)
+                 if c["end"] > c["start"]],  # frases cortadas somem
     "shots": [{"at": out(sh[0]), "clip": sh[1], "from": sh[2], "rate": sh[3] if len(sh) > 3 else 1,
                "lift": sh[4] if len(sh) > 4 else 0}
               for sh in SHOTS],
