@@ -13,17 +13,16 @@ PAD = 0.08  # respiro antes/depois de cada trecho (s)
 
 # Trechos (índices de raw/segs.json) que ficam. Os demais são silêncio,
 # ruído ou falas erradas/repetidas.
-KEEP = [1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 26, 27,
-        28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 45,
-        46, 47, 48, 49, 50, 51, 52, 53, 54]
+# Vídeo atual: Reserva 1P5P (raw/1p5p/fala.mov = entrada + só audio tb + só audio + final).
+# 11: ruído no começo do segundo "só audio".
+KEEP = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+        21, 22, 23, 24, 25]
 
 # Ajustes dentro de um trecho: lista de (início, fim) em segundos da fonte.
-# 48: "o PT já tem uma..." -> corta depois de "PT" (ele se corrige no 49).
-# 52: "pra ano que vem, não, né?" -> remove a correção.
-SPLIT = {
-    48: [(None, 162.47)],
-    52: [(None, 175.46), (177.51, None)],
-}
+SPLIT = {}
+
+# Silêncio (s) inserido depois de um trecho: "respiro" de marca com o plano do logo.
+GAP_AFTER = {3: 1.5, 25: 0.6}  # 25: respiro final antes do fim do vídeo
 
 segs = json.load(open("raw/segs.json"))
 
@@ -55,7 +54,7 @@ def words_of(i):
     return out
 
 
-pieces = []  # (src_start, src_end, words)
+pieces = []  # (src_start, src_end, words, gap)
 for i in KEEP:
     a, b = segs[i]
     parts = SPLIT.get(i, [(None, None)])
@@ -63,19 +62,22 @@ for i in KEEP:
         s = a - PAD if pa is None else snap(pa)
         e = b + PAD if pb is None else snap(pb)
         ws = [w for w in words_of(i) if s - 0.05 <= (w["start"] + w["end"]) / 2 <= e + 0.05]
-        pieces.append([max(0.0, s), e, ws])
+        pieces.append([max(0.0, s), e, ws, 0.0])
+    pieces[-1][3] = GAP_AFTER.get(i, 0.0)
 
 # Junta trechos que se encostam e alinha tudo em frames.
 merged = []
-for s, e, ws in pieces:
-    if merged and s - merged[-1][1] < 0.12:
+for s, e, ws, gap in pieces:
+    if merged and s - merged[-1][1] < 0.12 and not merged[-1][3]:
         merged[-1][1] = max(merged[-1][1], e)
         merged[-1][2] += ws
+        merged[-1][3] = gap
     else:
-        merged.append([s, e, ws])
+        merged.append([s, e, ws, gap])
 
 segments, words, out_t = [], [], 0
-for s, e, ws in merged:
+gaps = []  # (outStart, dur) dos silêncios inseridos
+for s, e, ws, gap in merged:
     fs, fe = round(s * FPS), round(e * FPS)
     s, e = fs / FPS, fe / FPS
     for w in ws:
@@ -84,6 +86,9 @@ for s, e, ws in merged:
                       "end": round(out_t + min(e - s, w["end"] - s), 3)})
     segments.append({"srcStart": s, "srcEnd": e, "outStart": round(out_t, 3)})
     out_t += e - s
+    if gap:
+        gaps.append((round(out_t, 3), gap))
+        out_t += gap
 
 # Limpeza do texto das legendas: erros do Whisper, reticências e maiúsculas.
 FIXES = {("vai", "ressaltar"): "vale", ("caber", "a"): "cabe"}
@@ -100,23 +105,32 @@ for k, w in enumerate(words):
         t = t[0].upper() + t[1:]
     w["text"] = t
 
-json.dump({"fps": FPS, "duration": round(out_t, 3), "segments": segments, "words": words},
+json.dump({"fps": FPS, "duration": round(out_t, 3), "segments": segments, "words": words,
+           "gaps": [{"outStart": a, "dur": d} for a, d in gaps]},
           open("src/edit.json", "w"), ensure_ascii=False, indent=1)
 
 # Áudio: cortes com micro-fade (evita estalos), redução de ruído e volume -14 LUFS.
 chains, labels = [], []
+# segmento k seguido de silêncio inserido
+GAP_AFTER_OUT = {k: d for k, sg in enumerate(segments) for a, d in gaps
+                 if abs(sg["outStart"] + sg["srcEnd"] - sg["srcStart"] - a) < 1e-3}
 for k, sg in enumerate(segments):
     d = sg["srcEnd"] - sg["srcStart"]
     chains.append(f"[0:a]atrim={sg['srcStart']}:{sg['srcEnd']},asetpts=PTS-STARTPTS,"
                   f"afade=t=in:d=0.01,afade=t=out:st={max(0, d - 0.015)}:d=0.015[a{k}]")
     labels.append(f"[a{k}]")
+    g = GAP_AFTER_OUT.get(k)
+    if g:
+        chains.append(f"anullsrc=r=48000:cl=mono,atrim=0:{g}[g{k}]")
+        labels.append(f"[g{k}]")
 # DENOISE=0 gera public/voice_raw.wav: mesmos cortes, só volume ajustado, sem mexer no ruído.
 DENOISE = os.environ.get("DENOISE", "1") != "0"
-clean = "highpass=f=80,afftdn=nr=14:nf=-30:tn=1,lowpass=f=12000," \
+# 1P5P: externa com ronco grave (vento/trânsito < 300 Hz) -> highpass 110 Hz e afftdn mais forte.
+clean = "highpass=f=110,afftdn=nr=18:nf=-38:tn=1,lowpass=f=12000," \
     "acompressor=threshold=-20dB:ratio=3:attack=5:release=80," if DENOISE else ""
 graph = ";".join(chains) + ";" + "".join(labels) + f"concat=n={len(labels)}:v=0:a=1," \
     + clean + "loudnorm=I=-14:TP=-1.5:LRA=7[out]"
 subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", "raw/audio48.wav", "-filter_complex", graph, "-map", "[out]",
                 "-ar", "48000", "public/voice.wav" if DENOISE else "public/voice_raw.wav"], check=True)
 
-print(f"{len(segments)} cortes, {len(words)} palavras, duração final {out_t:.1f}s (original 187.8s)")
+print(f"{len(segments)} cortes, {len(words)} palavras, duração final {out_t:.1f}s ")

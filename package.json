@@ -12,6 +12,7 @@
     "@fontsource/jetbrains-mono": "^5.3.0",
     "@fontsource/oswald": "^5.3.0",
     "@fontsource/plus-jakarta-sans": "^5.3.0",
+    "@fontsource/poppins": "^5.3.0",
     "@remotion/captions": "^4.0.539",
     "@remotion/cli": "4.0.539",
     "@remotion/install-whisper-cpp": "^4.0.539",
