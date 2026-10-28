@@ -33,7 +33,7 @@ TIGHT, TIGHT_PAD = set(range(4, 22)), 0.05
 # Respiro extra (s) no fim de um trecho, com o som ambiente original: a frase termina sem pressa.
 END_EXTRA = {3: 0.5}  # "…ele completa 10 anos." antes do logo
 
-GAP_AFTER = {3: 1.8, 25: 0.6}  # 25: respiro final antes do fim do vídeo
+GAP_AFTER = {3: 0, 25: 0.6}  # 25: respiro final antes do fim do vídeo
 
 segs = json.load(open("raw/segs.json"))
 

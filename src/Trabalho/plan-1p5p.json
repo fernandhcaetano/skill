@@ -1,6 +1,6 @@
 {
  "fps": 30,
- "duration": 66.467,
+ "duration": 64.667,
  "segments": [
   {
    "srcStart": 1.4666666666666666,
@@ -25,132 +25,132 @@
   {
    "srcStart": 17.1,
    "srcEnd": 20.966666666666665,
-   "outStart": 15.0
+   "outStart": 13.2
   },
   {
    "srcStart": 21.333333333333332,
    "srcEnd": 24.933333333333334,
-   "outStart": 18.867
+   "outStart": 17.067
   },
   {
    "srcStart": 25.166666666666668,
    "srcEnd": 28.033333333333335,
-   "outStart": 22.467
+   "outStart": 20.667
   },
   {
    "srcStart": 28.366666666666667,
    "srcEnd": 29.6,
-   "outStart": 25.333
+   "outStart": 23.533
   },
   {
    "srcStart": 30.033333333333335,
    "srcEnd": 31.233333333333334,
-   "outStart": 26.567
+   "outStart": 24.767
   },
   {
    "srcStart": 31.366666666666667,
    "srcEnd": 32.06666666666667,
-   "outStart": 27.767
+   "outStart": 25.967
   },
   {
    "srcStart": 32.233333333333334,
    "srcEnd": 33.03333333333333,
-   "outStart": 28.467
+   "outStart": 26.667
   },
   {
    "srcStart": 33.46666666666667,
    "srcEnd": 36.03333333333333,
-   "outStart": 29.267
+   "outStart": 27.467
   },
   {
    "srcStart": 36.233333333333334,
    "srcEnd": 37.4,
-   "outStart": 31.833
+   "outStart": 30.033
   },
   {
    "srcStart": 37.53333333333333,
    "srcEnd": 38.8,
-   "outStart": 33.0
+   "outStart": 31.2
   },
   {
    "srcStart": 40.4,
    "srcEnd": 43.166666666666664,
-   "outStart": 34.267
+   "outStart": 32.467
   },
   {
    "srcStart": 43.46666666666667,
    "srcEnd": 44.86666666666667,
-   "outStart": 37.033
+   "outStart": 35.233
   },
   {
    "srcStart": 45.0,
    "srcEnd": 46.9,
-   "outStart": 38.433
+   "outStart": 36.633
   },
   {
    "srcStart": 47.3,
    "srcEnd": 49.766666666666666,
-   "outStart": 40.333
+   "outStart": 38.533
   },
   {
    "srcStart": 50.03333333333333,
    "srcEnd": 52.86666666666667,
-   "outStart": 42.8
+   "outStart": 41.0
   },
   {
    "srcStart": 54.766666666666666,
    "srcEnd": 58.56666666666667,
-   "outStart": 45.633
+   "outStart": 43.833
   },
   {
    "srcStart": 59.1,
    "srcEnd": 59.8,
-   "outStart": 49.433
+   "outStart": 47.633
   },
   {
    "srcStart": 59.93333333333333,
    "srcEnd": 61.6,
-   "outStart": 50.133
+   "outStart": 48.333
   },
   {
    "srcStart": 61.86666666666667,
    "srcEnd": 64.46666666666667,
-   "outStart": 51.8
+   "outStart": 50.0
   },
   {
    "srcStart": 64.73333333333333,
    "srcEnd": 65.63333333333334,
-   "outStart": 54.4
+   "outStart": 52.6
   },
   {
    "srcStart": 65.83333333333333,
    "srcEnd": 66.9,
-   "outStart": 55.3
+   "outStart": 53.5
   },
   {
    "srcStart": 67.23333333333333,
    "srcEnd": 68.3,
-   "outStart": 56.367
+   "outStart": 54.567
   },
   {
    "srcStart": 70.16666666666667,
    "srcEnd": 72.96666666666667,
-   "outStart": 57.433
+   "outStart": 55.633
   },
   {
    "srcStart": 73.36666666666666,
    "srcEnd": 74.7,
-   "outStart": 60.233
+   "outStart": 58.433
   },
   {
    "srcStart": 74.9,
    "srcEnd": 77.8,
-   "outStart": 61.567
+   "outStart": 59.767
   },
   {
    "srcStart": 78.0,
    "srcEnd": 79.4,
-   "outStart": 64.467
+   "outStart": 62.667
   }
  ],
  "words": [
@@ -346,792 +346,788 @@
   },
   {
    "text": "oi,",
-   "start": 15.019,
-   "end": 15.369
+   "start": 13.219,
+   "end": 13.569
   },
   {
    "text": "eu",
-   "start": 15.369,
-   "end": 15.619
+   "start": 13.569,
+   "end": 13.819
   },
   {
    "text": "sou",
-   "start": 15.619,
-   "end": 15.889
+   "start": 13.819,
+   "end": 14.089
   },
   {
    "text": "a",
-   "start": 15.889,
-   "end": 15.989
+   "start": 14.089,
+   "end": 14.189
   },
   {
    "text": "ludi,",
-   "start": 15.989,
-   "end": 16.569
+   "start": 14.189,
+   "end": 14.769
   },
   {
    "text": "do",
-   "start": 16.569,
-   "end": 16.709
+   "start": 14.769,
+   "end": 14.909
   },
   {
    "text": "time",
-   "start": 16.709,
-   "end": 16.999
+   "start": 14.909,
+   "end": 15.199
   },
   {
    "text": "de",
-   "start": 16.999,
-   "end": 17.139
+   "start": 15.199,
+   "end": 15.339
   },
   {
    "text": "sustentabilidade",
-   "start": 17.139,
-   "end": 18.289
+   "start": 15.339,
+   "end": 16.489
   },
   {
    "text": "do",
-   "start": 18.289,
-   "end": 18.429
+   "start": 16.489,
+   "end": 16.629
   },
   {
    "text": "grupo.",
-   "start": 18.429,
-   "end": 18.867
+   "start": 16.629,
+   "end": 17.067
   },
   {
    "text": "hoje",
-   "start": 18.871,
-   "end": 19.061
+   "start": 17.071,
+   "end": 17.261
   },
   {
    "text": "estamos",
-   "start": 19.061,
-   "end": 19.521
+   "start": 17.261,
+   "end": 17.721
   },
   {
    "text": "aqui",
-   "start": 19.521,
-   "end": 19.771
+   "start": 17.721,
+   "end": 17.971
   },
   {
    "text": "para",
-   "start": 19.771,
-   "end": 20.051
+   "start": 17.971,
+   "end": 18.251
   },
   {
    "text": "celebrar",
-   "start": 20.051,
-   "end": 20.581
+   "start": 18.251,
+   "end": 18.781
   },
   {
    "text": "o",
-   "start": 20.581,
-   "end": 20.631
+   "start": 18.781,
+   "end": 18.831
   },
   {
    "text": "dia",
-   "start": 20.631,
-   "end": 20.791
+   "start": 18.831,
+   "end": 18.991
   },
   {
    "text": "mundial",
-   "start": 20.791,
-   "end": 21.161
+   "start": 18.991,
+   "end": 19.361
   },
   {
    "text": "da",
-   "start": 21.161,
-   "end": 21.271
+   "start": 19.361,
+   "end": 19.471
   },
   {
    "text": "alimentação.",
-   "start": 21.271,
-   "end": 22.161
+   "start": 19.471,
+   "end": 20.361
   },
   {
    "text": "e",
-   "start": 22.467,
-   "end": 22.482
+   "start": 20.667,
+   "end": 20.682
   },
   {
    "text": "trouxemos",
-   "start": 22.482,
-   "end": 23.192
+   "start": 20.682,
+   "end": 21.392
   },
   {
    "text": "pessoas",
-   "start": 23.192,
-   "end": 23.692
+   "start": 21.392,
+   "end": 21.892
   },
   {
    "text": "de",
-   "start": 23.692,
-   "end": 23.812
+   "start": 21.892,
+   "end": 22.012
   },
   {
    "text": "diferentes",
-   "start": 23.812,
-   "end": 24.452
+   "start": 22.012,
+   "end": 22.652
   },
   {
    "text": "áreas",
-   "start": 24.452,
-   "end": 24.832
+   "start": 22.652,
+   "end": 23.032
   },
   {
    "text": "da",
-   "start": 24.832,
-   "end": 24.952
+   "start": 23.032,
+   "end": 23.152
   },
   {
    "text": "marca.",
-   "start": 24.952,
-   "end": 25.312
+   "start": 23.152,
+   "end": 23.512
   },
   {
    "text": "para",
-   "start": 25.359,
-   "end": 25.559
+   "start": 23.559,
+   "end": 23.759
   },
   {
    "text": "poder",
-   "start": 25.559,
-   "end": 25.899
+   "start": 23.759,
+   "end": 24.099
   },
   {
    "text": "vivenciar.",
-   "start": 25.899,
-   "end": 26.529
+   "start": 24.099,
+   "end": 24.729
   },
   {
    "text": "esse",
-   "start": 26.584,
-   "end": 26.814
+   "start": 24.784,
+   "end": 25.014
   },
   {
    "text": "projeto",
-   "start": 26.814,
-   "end": 27.304
+   "start": 25.014,
+   "end": 25.504
   },
   {
    "text": "na",
-   "start": 27.304,
-   "end": 27.364
+   "start": 25.504,
+   "end": 25.564
   },
   {
    "text": "prática.",
-   "start": 27.364,
-   "end": 27.767
+   "start": 25.564,
+   "end": 25.967
   },
   {
    "text": "estamos",
-   "start": 27.781,
-   "end": 28.311
+   "start": 25.981,
+   "end": 26.511
   },
   {
    "text": "aqui",
-   "start": 28.311,
-   "end": 28.467
+   "start": 26.511,
+   "end": 26.667
   },
   {
    "text": "na",
-   "start": 28.494,
-   "end": 28.544
+   "start": 26.694,
+   "end": 26.744
   },
   {
    "text": "escola",
-   "start": 28.544,
-   "end": 28.824
+   "start": 26.744,
+   "end": 27.024
   },
   {
    "text": "d.o.",
-   "start": 28.824,
-   "end": 29.214
+   "start": 27.024,
+   "end": 27.414
   },
   {
    "text": "e",
-   "start": 29.279,
-   "end": 29.279
+   "start": 27.479,
+   "end": 27.479
   },
   {
    "text": "junto",
-   "start": 29.279,
-   "end": 29.649
+   "start": 27.479,
+   "end": 27.849
   },
   {
    "text": "com",
-   "start": 29.649,
-   "end": 29.869
+   "start": 27.849,
+   "end": 28.069
   },
   {
    "text": "times",
-   "start": 29.869,
-   "end": 30.379
+   "start": 28.069,
+   "end": 28.579
   },
   {
    "text": "de",
-   "start": 30.379,
-   "end": 30.379
+   "start": 28.579,
+   "end": 28.579
   },
   {
    "text": "sede,",
-   "start": 30.379,
-   "end": 30.939
+   "start": 28.579,
+   "end": 29.139
   },
   {
    "text": "cd",
-   "start": 30.939,
-   "end": 31.109
+   "start": 29.139,
+   "end": 29.309
   },
   {
    "text": "e",
-   "start": 31.109,
-   "end": 31.209
+   "start": 29.309,
+   "end": 29.409
   },
   {
    "text": "marca.",
-   "start": 31.209,
-   "end": 31.833
+   "start": 29.409,
+   "end": 30.033
   },
   {
    "text": "vamos",
-   "start": 31.87,
-   "end": 32.19
+   "start": 30.07,
+   "end": 30.39
   },
   {
    "text": "experienciar",
-   "start": 32.19,
-   "end": 33.0
+   "start": 30.39,
+   "end": 31.2
   },
   {
    "text": "essa",
-   "start": 33.027,
-   "end": 33.217
+   "start": 31.227,
+   "end": 31.417
   },
   {
    "text": "iniciativa",
-   "start": 33.217,
-   "end": 33.727
+   "start": 31.417,
+   "end": 31.927
   },
   {
    "text": "na",
-   "start": 33.727,
-   "end": 33.817
+   "start": 31.927,
+   "end": 32.017
   },
   {
    "text": "prática.",
-   "start": 33.817,
-   "end": 34.267
+   "start": 32.017,
+   "end": 32.467
   },
   {
    "text": "foi",
-   "start": 34.302,
-   "end": 34.412
+   "start": 32.502,
+   "end": 32.612
   },
   {
    "text": "um",
-   "start": 34.412,
-   "end": 34.532
+   "start": 32.612,
+   "end": 32.732
   },
   {
    "text": "dia",
-   "start": 34.532,
-   "end": 34.712
+   "start": 32.732,
+   "end": 32.912
   },
   {
    "text": "de",
-   "start": 34.712,
-   "end": 34.832
+   "start": 32.912,
+   "end": 33.032
   },
   {
    "text": "muita",
-   "start": 34.832,
-   "end": 35.132
+   "start": 33.032,
+   "end": 33.332
   },
   {
    "text": "troca,",
-   "start": 35.132,
-   "end": 35.692
+   "start": 33.332,
+   "end": 33.892
   },
   {
    "text": "aprendizado",
-   "start": 35.692,
-   "end": 36.212
+   "start": 33.892,
+   "end": 34.412
   },
   {
    "text": "e",
-   "start": 36.212,
-   "end": 36.272
+   "start": 34.412,
+   "end": 34.472
   },
   {
    "text": "celebração.",
-   "start": 36.272,
-   "end": 37.032
+   "start": 34.472,
+   "end": 35.232
   },
   {
    "text": "junto",
-   "start": 37.068,
-   "end": 37.378
+   "start": 35.268,
+   "end": 35.578
   },
   {
    "text": "com",
-   "start": 37.378,
-   "end": 37.508
+   "start": 35.578,
+   "end": 35.708
   },
   {
    "text": "a",
-   "start": 37.508,
-   "end": 37.558
+   "start": 35.708,
+   "end": 35.758
   },
   {
    "text": "chefe",
-   "start": 37.558,
-   "end": 37.868
+   "start": 35.758,
+   "end": 36.068
   },
   {
    "text": "neide",
-   "start": 37.868,
-   "end": 38.178
+   "start": 36.068,
+   "end": 36.378
   },
   {
    "text": "marcos,",
-   "start": 38.178,
-   "end": 38.433
+   "start": 36.378,
+   "end": 36.633
   },
   {
    "text": "já",
-   "start": 38.554,
-   "end": 38.694
+   "start": 36.754,
+   "end": 36.894
   },
   {
    "text": "parceira",
-   "start": 38.694,
-   "end": 39.074
+   "start": 36.894,
+   "end": 37.274
   },
   {
    "text": "de",
-   "start": 39.074,
-   "end": 39.164
+   "start": 37.274,
+   "end": 37.364
   },
   {
    "text": "longo",
-   "start": 39.164,
-   "end": 39.404
+   "start": 37.364,
+   "end": 37.604
   },
   {
    "text": "prazo",
-   "start": 39.404,
-   "end": 39.634
+   "start": 37.604,
+   "end": 37.834
   },
   {
    "text": "do",
-   "start": 39.634,
-   "end": 39.744
+   "start": 37.834,
+   "end": 37.944
   },
   {
    "text": "projeto?",
-   "start": 39.744,
-   "end": 40.284
+   "start": 37.944,
+   "end": 38.484
   },
   {
    "text": "as",
-   "start": 40.333,
-   "end": 40.382
+   "start": 38.533,
+   "end": 38.582
   },
   {
    "text": "crianças",
-   "start": 40.382,
-   "end": 40.892
+   "start": 38.582,
+   "end": 39.092
   },
   {
    "text": "participaram",
-   "start": 40.892,
-   "end": 41.532
+   "start": 39.092,
+   "end": 39.732
   },
   {
    "text": "de",
-   "start": 41.532,
-   "end": 41.672
+   "start": 39.732,
+   "end": 39.872
   },
   {
    "text": "uma",
-   "start": 41.672,
-   "end": 41.802
+   "start": 39.872,
+   "end": 40.002
   },
   {
    "text": "oficina",
-   "start": 41.802,
-   "end": 42.182
+   "start": 40.002,
+   "end": 40.382
   },
   {
    "text": "de",
-   "start": 42.182,
-   "end": 42.282
+   "start": 40.382,
+   "end": 40.482
   },
   {
    "text": "cupcakes.",
-   "start": 42.282,
-   "end": 42.8
+   "start": 40.482,
+   "end": 41.0
   },
   {
    "text": "e",
-   "start": 42.8,
-   "end": 42.834
+   "start": 41.0,
+   "end": 41.034
   },
   {
    "text": "puderam",
-   "start": 42.834,
-   "end": 43.204
+   "start": 41.034,
+   "end": 41.404
   },
   {
    "text": "mostrar",
-   "start": 43.204,
-   "end": 43.614
+   "start": 41.404,
+   "end": 41.814
   },
   {
    "text": "um",
-   "start": 43.614,
-   "end": 43.724
+   "start": 41.814,
+   "end": 41.924
   },
   {
    "text": "pouco",
-   "start": 43.724,
-   "end": 44.014
+   "start": 41.924,
+   "end": 42.214
   },
   {
    "text": "mais",
-   "start": 44.014,
-   "end": 44.244
+   "start": 42.214,
+   "end": 42.444
   },
   {
    "text": "da",
-   "start": 44.244,
-   "end": 44.434
+   "start": 42.444,
+   "end": 42.634
   },
   {
    "text": "escola",
-   "start": 44.434,
-   "end": 44.854
+   "start": 42.634,
+   "end": 43.054
   },
   {
    "text": "para",
-   "start": 44.854,
-   "end": 44.994
+   "start": 43.054,
+   "end": 43.194
   },
   {
    "text": "o",
-   "start": 44.994,
-   "end": 45.054
+   "start": 43.194,
+   "end": 43.254
   },
   {
    "text": "nosso",
-   "start": 45.054,
-   "end": 45.344
+   "start": 43.254,
+   "end": 43.544
   },
   {
    "text": "time.",
-   "start": 45.344,
-   "end": 45.624
+   "start": 43.544,
+   "end": 43.824
   },
   {
    "text": "isso",
-   "start": 45.668,
-   "end": 45.888
+   "start": 43.868,
+   "end": 44.088
   },
   {
    "text": "reforça",
-   "start": 45.888,
-   "end": 46.468
+   "start": 44.088,
+   "end": 44.668
   },
   {
    "text": "a",
-   "start": 46.468,
-   "end": 46.618
+   "start": 44.668,
+   "end": 44.818
   },
   {
    "text": "importância",
-   "start": 46.618,
-   "end": 47.528
+   "start": 44.818,
+   "end": 45.728
   },
   {
    "text": "do",
-   "start": 47.528,
-   "end": 47.598
+   "start": 45.728,
+   "end": 45.798
   },
   {
    "text": "aproveitamento",
-   "start": 47.598,
-   "end": 48.698
+   "start": 45.798,
+   "end": 46.898
   },
   {
    "text": "alimentar.",
-   "start": 48.698,
-   "end": 49.433
+   "start": 46.898,
+   "end": 47.633
   },
   {
    "text": "e",
-   "start": 49.439,
-   "end": 49.449
+   "start": 47.639,
+   "end": 47.649
   },
   {
    "text": "também",
-   "start": 49.449,
-   "end": 49.919
+   "start": 47.649,
+   "end": 48.119
   },
   {
    "text": "podemos,",
-   "start": 50.133,
-   "end": 50.395
+   "start": 48.333,
+   "end": 48.595
   },
   {
    "text": "nessa",
-   "start": 50.395,
-   "end": 50.815
+   "start": 48.595,
+   "end": 49.015
   },
   {
    "text": "troca,",
-   "start": 50.815,
-   "end": 51.255
+   "start": 49.015,
+   "end": 49.455
   },
   {
    "text": "trazer",
-   "start": 51.255,
-   "end": 51.765
+   "start": 49.455,
+   "end": 49.965
   },
   {
    "text": "o",
-   "start": 51.8,
-   "end": 51.817
+   "start": 50.0,
+   "end": 50.017
   },
   {
    "text": "nosso",
-   "start": 51.817,
-   "end": 52.097
+   "start": 50.017,
+   "end": 50.297
   },
   {
    "text": "encantamento",
-   "start": 52.097,
-   "end": 52.737
+   "start": 50.297,
+   "end": 50.937
   },
   {
    "text": "para",
-   "start": 52.737,
-   "end": 52.957
+   "start": 50.937,
+   "end": 51.157
   },
   {
    "text": "a",
-   "start": 52.957,
-   "end": 53.077
+   "start": 51.157,
+   "end": 51.277
   },
   {
    "text": "escola,",
-   "start": 53.077,
-   "end": 53.497
+   "start": 51.277,
+   "end": 51.697
   },
   {
    "text": "com",
-   "start": 53.497,
-   "end": 53.657
+   "start": 51.697,
+   "end": 51.857
   },
   {
    "text": "a",
-   "start": 53.657,
-   "end": 53.677
+   "start": 51.857,
+   "end": 51.877
   },
   {
    "text": "aparência",
-   "start": 53.677,
-   "end": 54.137
+   "start": 51.877,
+   "end": 52.337
   },
   {
    "text": "do",
-   "start": 54.137,
-   "end": 54.217
+   "start": 52.337,
+   "end": 52.417
   },
   {
    "text": "rê.",
-   "start": 54.217,
-   "end": 54.387
+   "start": 52.417,
+   "end": 52.587
   },
   {
    "text": "que",
-   "start": 55.334,
-   "end": 55.434
+   "start": 53.534,
+   "end": 53.634
   },
   {
    "text": "celebrou",
-   "start": 55.434,
-   "end": 55.744
+   "start": 53.634,
+   "end": 53.944
   },
   {
    "text": "com",
-   "start": 55.744,
-   "end": 55.884
+   "start": 53.944,
+   "end": 54.084
   },
   {
    "text": "a",
-   "start": 55.884,
-   "end": 55.924
+   "start": 54.084,
+   "end": 54.124
   },
   {
    "text": "gente.",
-   "start": 55.924,
-   "end": 56.304
+   "start": 54.124,
+   "end": 54.504
   },
   {
    "text": "esse",
-   "start": 56.373,
-   "end": 56.493
+   "start": 54.573,
+   "end": 54.693
   },
   {
    "text": "momento",
-   "start": 56.493,
-   "end": 56.833
+   "start": 54.693,
+   "end": 55.033
   },
   {
    "text": "tão",
-   "start": 56.833,
-   "end": 57.013
+   "start": 55.033,
+   "end": 55.213
   },
   {
    "text": "importante.",
-   "start": 57.013,
-   "end": 57.433
+   "start": 55.213,
+   "end": 55.633
   },
   {
    "text": "celebrar",
-   "start": 57.499,
-   "end": 57.839
+   "start": 55.699,
+   "end": 56.039
   },
   {
    "text": "10",
-   "start": 57.839,
-   "end": 58.139
+   "start": 56.039,
+   "end": 56.339
   },
   {
    "text": "anos",
-   "start": 58.139,
-   "end": 58.359
+   "start": 56.339,
+   "end": 56.559
   },
   {
    "text": "é",
-   "start": 58.359,
-   "end": 58.459
+   "start": 56.559,
+   "end": 56.659
   },
   {
    "text": "reconhece",
-   "start": 58.459,
-   "end": 58.959
+   "start": 56.659,
+   "end": 57.159
   },
   {
    "text": "que",
-   "start": 58.959,
-   "end": 59.159
+   "start": 57.159,
+   "end": 57.359
   },
   {
    "text": "cada",
-   "start": 59.159,
-   "end": 59.419
+   "start": 57.359,
+   "end": 57.619
   },
   {
    "text": "prato",
-   "start": 59.419,
-   "end": 59.739
+   "start": 57.619,
+   "end": 57.939
   },
   {
    "text": "importa.",
-   "start": 59.739,
-   "end": 60.229
+   "start": 57.939,
+   "end": 58.429
   },
   {
    "text": "e",
-   "start": 60.233,
-   "end": 60.28
+   "start": 58.433,
+   "end": 58.48
   },
   {
    "text": "que",
-   "start": 60.28,
-   "end": 60.53
+   "start": 58.48,
+   "end": 58.73
   },
   {
    "text": "seguimos",
-   "start": 60.53,
-   "end": 61.08
+   "start": 58.73,
+   "end": 59.28
   },
   {
    "text": "juntos.",
-   "start": 61.08,
-   "end": 61.53
+   "start": 59.28,
+   "end": 59.73
   },
   {
    "text": "fortalecendo",
-   "start": 61.631,
-   "end": 62.331
+   "start": 59.831,
+   "end": 60.531
   },
   {
    "text": "essa",
-   "start": 62.331,
-   "end": 62.591
+   "start": 60.531,
+   "end": 60.791
   },
   {
    "text": "rede,",
-   "start": 62.591,
-   "end": 62.981
+   "start": 60.791,
+   "end": 61.181
   },
   {
    "text": "que",
-   "start": 62.981,
-   "end": 63.131
+   "start": 61.181,
+   "end": 61.331
   },
   {
    "text": "trabalha",
-   "start": 63.131,
-   "end": 63.561
+   "start": 61.331,
+   "end": 61.761
   },
   {
    "text": "para",
-   "start": 63.561,
-   "end": 63.781
+   "start": 61.761,
+   "end": 61.981
   },
   {
    "text": "complementar",
-   "start": 63.781,
-   "end": 64.461
+   "start": 61.981,
+   "end": 62.661
   },
   {
    "text": "a",
-   "start": 64.506,
-   "end": 64.526
+   "start": 62.706,
+   "end": 62.726
   },
   {
    "text": "alimentação",
-   "start": 64.526,
-   "end": 65.156
+   "start": 62.726,
+   "end": 63.356
   },
   {
    "text": "de",
-   "start": 65.156,
-   "end": 65.256
+   "start": 63.356,
+   "end": 63.456
   },
   {
    "text": "quem",
-   "start": 65.256,
-   "end": 65.476
+   "start": 63.456,
+   "end": 63.676
   },
   {
    "text": "precisa.",
-   "start": 65.476,
-   "end": 65.836
+   "start": 63.676,
+   "end": 64.036
   }
  ],
  "gaps": [
   {
-   "outStart": 13.2,
-   "dur": 1.8
-  },
-  {
-   "outStart": 65.867,
+   "outStart": 64.067,
    "dur": 0.6
   }
  ],
@@ -1177,168 +1173,168 @@
    "text": "E esse ano, ele completa 10 anos."
   },
   {
-   "start": 15.0,
-   "end": 16.52,
+   "start": 13.2,
+   "end": 14.72,
    "text": "Oi, eu sou a Ludy,"
   },
   {
-   "start": 16.57,
-   "end": 18.867,
+   "start": 14.77,
+   "end": 17.067,
    "text": "do time de Sustentabilidade do grupo."
   },
   {
-   "start": 18.867,
-   "end": 20.584,
+   "start": 17.067,
+   "end": 18.784,
    "text": "Hoje estamos aqui para celebrar"
   },
   {
-   "start": 20.584,
-   "end": 22.467,
+   "start": 18.784,
+   "end": 20.667,
    "text": "o Dia Mundial da Alimentação"
   },
   {
-   "start": 22.467,
-   "end": 23.75,
+   "start": 20.667,
+   "end": 21.95,
    "text": "e trouxemos pessoas"
   },
   {
-   "start": 23.75,
-   "end": 25.333,
+   "start": 21.95,
+   "end": 23.533,
    "text": "de diferentes áreas da marca"
   },
   {
-   "start": 25.333,
-   "end": 26.567,
+   "start": 23.533,
+   "end": 24.767,
    "text": "para poder vivenciar"
   },
   {
-   "start": 26.567,
-   "end": 27.767,
+   "start": 24.767,
+   "end": 25.967,
    "text": "esse projeto na prática."
   },
   {
-   "start": 27.78,
-   "end": 29.267,
+   "start": 25.98,
+   "end": 27.467,
    "text": "Estamos aqui na Escola DOM"
   },
   {
-   "start": 29.267,
-   "end": 31.833,
+   "start": 27.467,
+   "end": 30.033,
    "text": "e, junto com times de sede, CD e marca,"
   },
   {
-   "start": 31.833,
-   "end": 34.267,
+   "start": 30.033,
+   "end": 32.467,
    "text": "vamos experienciar essa iniciativa na prática."
   },
   {
-   "start": 34.267,
-   "end": 35.667,
+   "start": 32.467,
+   "end": 33.867,
    "text": "Foi um dia de muita troca,"
   },
   {
-   "start": 35.667,
-   "end": 37.033,
+   "start": 33.867,
+   "end": 35.233,
    "text": "aprendizado e celebração."
   },
   {
-   "start": 37.036,
-   "end": 38.483,
+   "start": 35.236,
+   "end": 36.683,
    "text": "Junto com a chefe Neide Marco,"
   },
   {
-   "start": 38.483,
-   "end": 40.333,
+   "start": 36.683,
+   "end": 38.533,
    "text": "já parceira de longo prazo do projeto,"
   },
   {
-   "start": 40.333,
-   "end": 41.733,
+   "start": 38.533,
+   "end": 39.933,
    "text": "as crianças participaram"
   },
   {
-   "start": 41.733,
-   "end": 42.8,
+   "start": 39.933,
+   "end": 41.0,
    "text": "de uma oficina de cupcakes"
   },
   {
-   "start": 42.8,
-   "end": 44.217,
+   "start": 41.0,
+   "end": 42.417,
    "text": "e puderam mostrar um pouco mais"
   },
   {
-   "start": 44.217,
-   "end": 45.633,
+   "start": 42.417,
+   "end": 43.833,
    "text": "da escola para o nosso time."
   },
   {
-   "start": 45.636,
-   "end": 47.466,
+   "start": 43.836,
+   "end": 45.666,
    "text": "Isso reforça a importância"
   },
   {
-   "start": 47.466,
-   "end": 49.433,
+   "start": 45.666,
+   "end": 47.633,
    "text": "do aproveitamento alimentar."
   },
   {
-   "start": 49.433,
-   "end": 51.8,
+   "start": 47.633,
+   "end": 50.0,
    "text": "E também podemos, nessa troca, trazer"
   },
   {
-   "start": 51.8,
-   "end": 53.433,
+   "start": 50.0,
+   "end": 51.633,
    "text": "o nosso encantamento para a escola,"
   },
   {
-   "start": 53.433,
-   "end": 54.4,
+   "start": 51.633,
+   "end": 52.6,
    "text": "com a presença do Rê,"
   },
   {
-   "start": 54.4,
-   "end": 55.3,
+   "start": 52.6,
+   "end": 53.5,
    "text": "nosso mascote,"
   },
   {
-   "start": 55.3,
-   "end": 56.367,
+   "start": 53.5,
+   "end": 54.567,
    "text": "que celebrou com a gente"
   },
   {
-   "start": 56.367,
-   "end": 57.433,
+   "start": 54.567,
+   "end": 55.633,
    "text": "esse momento tão importante."
   },
   {
-   "start": 57.436,
-   "end": 58.916,
+   "start": 55.636,
+   "end": 57.116,
    "text": "Celebrar 10 anos é reconhecer"
   },
   {
-   "start": 58.916,
-   "end": 60.233,
+   "start": 57.116,
+   "end": 58.433,
    "text": "que cada prato importa"
   },
   {
-   "start": 60.236,
-   "end": 61.566,
+   "start": 58.436,
+   "end": 59.766,
    "text": "e que seguimos juntos,"
   },
   {
-   "start": 61.567,
-   "end": 62.967,
+   "start": 59.767,
+   "end": 61.167,
    "text": "fortalecendo essa rede,"
   },
   {
-   "start": 62.967,
-   "end": 64.467,
+   "start": 61.167,
+   "end": 62.667,
    "text": "que trabalha para complementar"
   },
   {
-   "start": 64.467,
-   "end": 65.867,
+   "start": 62.667,
+   "end": 64.067,
    "text": "a alimentação de quem precisa."
   }
  ],
@@ -1356,199 +1352,193 @@
    "rate": 1
   },
   {
-   "at": 15.0,
+   "at": 14.77,
    "clip": "IMG_4672",
    "from": 0.3,
    "rate": 1
   },
   {
-   "at": 16.57,
+   "at": 17.067,
    "clip": "IMG_4671",
    "from": 0,
    "rate": 1
   },
   {
-   "at": 18.867,
-   "clip": "IMG_4667",
-   "from": 0,
-   "rate": 1
-  },
-  {
-   "at": 20.584,
+   "at": 18.784,
    "clip": "IMG_4688",
    "from": 0,
    "rate": 1
   },
   {
-   "at": 22.467,
+   "at": 20.667,
    "clip": "IMG_4685",
    "from": 0.5,
    "rate": 1
   },
   {
-   "at": 23.75,
+   "at": 21.95,
    "clip": "IMG_4690",
    "from": 0.3,
    "rate": 1
   },
   {
-   "at": 25.333,
+   "at": 23.533,
    "clip": "IMG_4692",
    "from": 0,
    "rate": 1
   },
   {
-   "at": 27.78,
+   "at": 25.98,
    "clip": "IMG_4693",
    "from": 0,
    "rate": 1
   },
   {
-   "at": 28.467,
+   "at": 26.667,
    "clip": "IMG_4696",
    "from": 0,
    "rate": 0.5
   },
   {
-   "at": 29.53,
+   "at": 27.73,
    "clip": "IMG_4694",
    "from": 0.3,
    "rate": 1
   },
   {
-   "at": 31.833,
+   "at": 30.033,
    "clip": "IMG_4695",
    "from": 0.3,
    "rate": 1
   },
   {
-   "at": 34.267,
+   "at": 32.467,
    "clip": "IMG_4835",
    "from": 0,
    "rate": 1
   },
   {
-   "at": 35.667,
+   "at": 33.867,
    "clip": "IMG_4884",
    "from": 2.0,
    "rate": 1
   },
   {
-   "at": 37.036,
+   "at": 35.236,
    "clip": "IMG_4752",
    "from": 0.3,
    "rate": 1
   },
   {
-   "at": 38.483,
+   "at": 36.683,
    "clip": "IMG_4710",
    "from": 0.8,
    "rate": 1
   },
   {
-   "at": 40.333,
+   "at": 38.533,
    "clip": "IMG_4732",
    "from": 0.5,
    "rate": 1
   },
   {
-   "at": 41.733,
+   "at": 39.933,
    "clip": "IMG_4724",
    "from": 0.5,
    "rate": 1
   },
   {
-   "at": 42.8,
+   "at": 41.0,
    "clip": "IMG_4714",
    "from": 0.3,
    "rate": 1
   },
   {
-   "at": 44.217,
+   "at": 42.417,
    "clip": "IMG_4832",
    "from": 0,
    "rate": 1
   },
   {
-   "at": 45.636,
+   "at": 43.836,
    "clip": "IMG_4734",
    "from": 0.5,
    "rate": 1
   },
   {
-   "at": 47.466,
+   "at": 45.666,
    "clip": "IMG_4725",
    "from": 0,
    "rate": 1
   },
   {
-   "at": 48.466,
+   "at": 46.666,
    "clip": "IMG_4773",
    "from": 0.3,
    "rate": 1
   },
   {
-   "at": 49.433,
+   "at": 47.633,
    "clip": "IMG_4748",
    "from": 0.3,
    "rate": 1
   },
   {
-   "at": 50.67,
+   "at": 48.87,
    "clip": "IMG_4774",
    "from": 0.5,
    "rate": 1
   },
   {
-   "at": 51.8,
+   "at": 50.0,
    "clip": "IMG_4784",
    "from": 0,
    "rate": 1
   },
   {
-   "at": 53.433,
+   "at": 51.633,
    "clip": "IMG_4880",
    "from": 0,
    "rate": 1
   },
   {
-   "at": 55.3,
+   "at": 53.5,
    "clip": "IMG_4862",
    "from": 0,
    "rate": 1
   },
   {
-   "at": 56.367,
+   "at": 54.567,
    "clip": "IMG_4747",
    "from": 0.3,
    "rate": 1
   },
   {
-   "at": 57.436,
+   "at": 55.636,
    "clip": null,
    "from": 0,
    "rate": 1
   },
   {
-   "at": 58.916,
+   "at": 57.116,
    "clip": "IMG_4750",
    "from": 0.5,
    "rate": 1
   },
   {
-   "at": 60.236,
+   "at": 58.436,
    "clip": "IMG_4739",
    "from": 0.3,
    "rate": 1
   },
   {
-   "at": 61.567,
+   "at": 59.767,
    "clip": "IMG_4736",
    "from": 0.3,
    "rate": 1
   },
   {
-   "at": 62.967,
+   "at": 61.167,
    "clip": null,
    "from": 0,
    "rate": 1
