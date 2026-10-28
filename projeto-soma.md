@@ -7,12 +7,21 @@ Status: **estudo** (sem roteiro nem briefing ainda). Briefings serão montados d
 - Material principal: **fashion films já prontos das marcas**.
 - Desejo de acabamento: movimento, animação, texto sincronizado com a fala, "coisa profissional" — referência técnica em `estilo-soma-inspiracao.md` (filme Nubank feito com Claude Code + Remotion).
 
+## Marcas atuais do grupo (lista do usuário, out/2026)
+Animale · CRIS BARROS · NV · Reserva · Reserva Go · Reserva Mini · Ink · Foxton · Oficina · Maria Filó · OFF Premium
+
+Em relação ao vídeo antigo: Farm, Farm Global, Fábula, Hering (Kids/Intimates), Dzarm, Animale Oro/Jeans não estão na lista; Reserva, Reserva Go, Reserva Mini, Ink e Oficina são novas. Não citar marcas fora desta lista.
+
+## Logo +soma — observação para animação
+O logo é **uma linha contínua** (o "+" e o traço que forma s-o-m-a). Conversa diretamente com o **fio do tempo** do vídeo antigo: o fio pode atravessar o vídeo e, no final, se desenhar no próprio logo (animação de traço). Para isso o ideal é o logo em **SVG** (vetor).
+
 ## Referências
 | referência | onde | status |
 |---|---|---|
 | Inspiração técnica (Nubank, motion design) | `raw/soma/inspiracao.mp4` → análise em `estilo-soma-inspiracao.md` | analisada |
 | Vídeo institucional antigo — linha do tempo do Soma | `raw/soma/institucional_antigo.mp4` (Drive) → análise em `estilo-soma-antigo.md` | analisado |
-| Logo do Soma e das marcas | — | aguardando |
+| Logo do Soma (+soma) | `public/soma/logo_soma_preto.png` (cinza-escuro `#373435`) e `public/soma/logo_soma_branco.png`, PNG 1171×264 transparente | recebido (falta SVG) |
+| Logos das marcas | — | aguardando |
 | Brandbook do Soma | — | aguardando |
 | Fashion films das marcas | — | aguardando |
 
