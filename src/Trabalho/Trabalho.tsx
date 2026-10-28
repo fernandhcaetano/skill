@@ -7,7 +7,7 @@ import plan from "./plan-1p5p.json";
 // legenda pequena branca com contorno, por frase, centralizada em y ≈ 1460 px. Sem efeitos.
 
 // Gerado por scripts/build-edit.py + scripts/plan-1p5p.py (planos com clip null = A-roll).
-type Shot = { at: number; clip: string | null; from: number };
+type Shot = { at: number; clip: string | null; from: number; rate: number };
 const { fps: FPS, duration: DURATION, segments, captions } = plan;
 const shots: Shot[] = plan.shots;
 
@@ -38,7 +38,12 @@ const BRoll: React.FC = () => (
       const end = i + 1 < shots.length ? shots[i + 1].at : DURATION;
       return (
         <Sequence key={i} from={from} durationInFrames={Math.round(end * FPS) - from} premountFor={30}>
-          <OffthreadVideo src={staticFile(`1p5p/${sh.clip}.mp4`)} startFrom={Math.round(sh.from * FPS)} muted />
+          <OffthreadVideo
+            src={staticFile(`1p5p/${sh.clip}.mp4`)}
+            startFrom={Math.round(sh.from * FPS)}
+            playbackRate={sh.rate}
+            muted
+          />
         </Sequence>
       );
     })}

@@ -64,23 +64,22 @@ CAPTIONS = [
     (78.0, 79.4, "a alimentação de quem precisa."),
 ]
 
-# (tempo na fonte onde o plano começa, clipe ou None = A-roll, ponto de entrada no clipe)
-# 14.9 = fim do trecho 3: o plano do logo ocupa o silêncio inserido (GAP_AFTER).
+# (tempo na fonte onde o plano começa, clipe ou None = A-roll, ponto de entrada no clipe[, velocidade])
+# 15.4 = fim do trecho 3 (com END_EXTRA): o plano do logo ocupa o silêncio inserido (GAP_AFTER).
 SHOTS = [
     (1.47, None, 0),  # "Você sabia que a cada peça…"
     (6.43, "IMG_4681", 2.5),  # "esse é o 1P5P" → telão 1P=5P
     (8.36, None, 0),
-    (10.25, "IMG_4664", 0),  # "complementação alimentar" → mesa de comida
-    (13.1, None, 0),
-    (14.9, "IMG_4691", 0.2),  # respiro de marca: parede "Gente boa e do bem"
+    (15.4, "IMG_4691", 0.2),  # respiro de marca: parede "Gente boa e do bem"
     (17.07, "IMG_4672", 0.3),  # "Oi, eu sou a Ludy" → Ludy no palco
-    (21.0, "IMG_4671", 0),  # "estamos aqui para celebrar"
+    (18.67, "IMG_4671", 0),  # "do time de Sustentabilidade do grupo" → Ludy apresentando
+    (21.0, "IMG_4667", 0),  # "estamos aqui para celebrar" → equipe no café
     (23.05, "IMG_4688", 0),  # "Dia Mundial da Alimentação" → telão com alimentos
     (25.13, "IMG_4685", 0.5),  # "trouxemos pessoas"
     (26.45, "IMG_4690", 0.3),  # "de diferentes áreas da marca"
     (28.06, "IMG_4692", 0),  # "vivenciar esse projeto na prática" → chegando
     (31.38, "IMG_4693", 0),  # "Estamos aqui…" → mural "Sejam bem-vindos"
-    (32.17, "IMG_4696", 0),  # "Escola DOM" → camiseta DOM
+    (32.17, "IMG_4696", 0, 0.5),  # "Escola DOM" → camiseta DOM, câmera lenta (tremia)
     (33.73, "IMG_4694", 0.3),  # "times de sede, CD e marca"
     (36.06, "IMG_4695", 0.3),  # "vamos experienciar"
     # Ação na escola: vídeos novos (pasta "AQUI"), todos entram.
@@ -90,7 +89,7 @@ SHOTS = [
     (45.05, "IMG_4710", 0.8),  # "parceira de longo prazo do projeto"
     (47.27, "IMG_4732", 0.5),  # "as crianças participaram"
     (48.7, "IMG_4724", 0.5),  # "oficina de cupcakes" → confeitando de perto
-    (49.8, "IMG_4708", 0),  # "mostrar um pouco mais da escola"
+    (49.8, "IMG_4714", 0.3),  # "mostrar um pouco mais" → chef ajudando no cupcake
     (51.45, "IMG_4832", 0),  # "para o nosso time" → criança fazendo coração
     (54.77, "IMG_4734", 0.5),  # "Isso reforça a importância"
     (56.6, "IMG_4725", 0),  # "do aproveitamento alimentar"
@@ -111,7 +110,8 @@ SHOTS = [
 plan = {
     **edit,
     "captions": [{"start": out(a), "end": out(b), "text": t} for a, b, t in CAPTIONS],
-    "shots": [{"at": out(a), "clip": c, "from": f} for a, c, f in SHOTS],
+    "shots": [{"at": out(sh[0]), "clip": sh[1], "from": sh[2], "rate": sh[3] if len(sh) > 3 else 1}
+              for sh in SHOTS],
 }
 json.dump(plan, open("src/Trabalho/plan-1p5p.json", "w"), ensure_ascii=False, indent=1)
 # Confere se cada plano cabe no clipe (duração do clipe - ponto de entrada).
@@ -123,7 +123,7 @@ for k, sh in enumerate(shots):
     if sh["clip"]:
         dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
                                     f"public/1p5p/{sh['clip']}.mp4"], capture_output=True, text=True).stdout)
-        if sh["from"] + end - sh["at"] > dur:
+        if sh["from"] + (end - sh["at"]) * sh["rate"] > dur:
             note = f"  !! clipe curto ({dur:.1f}s)"
     print(f'{sh["at"]:6.2f} {end - sh["at"]:5.2f}s {sh["clip"] or "A-roll"}{note}')
 print(f'duração {edit["duration"]:.1f}s')

@@ -30,7 +30,10 @@ SPLIT = {i: [(None, ps[0][0] + 0.05)] + [(a[1] - 0.05, b[0] + 0.05) for a, b in 
 TIGHT, TIGHT_PAD = set(range(4, 22)), 0.05
 
 # Silêncio (s) inserido depois de um trecho: "respiro" de marca com o plano do logo.
-GAP_AFTER = {3: 2.5, 25: 0.6}  # 25: respiro final antes do fim do vídeo
+# Respiro extra (s) no fim de um trecho, com o som ambiente original: a frase termina sem pressa.
+END_EXTRA = {3: 0.5}  # "…ele completa 10 anos." antes do logo
+
+GAP_AFTER = {3: 1.8, 25: 0.6}  # 25: respiro final antes do fim do vídeo
 
 segs = json.load(open("raw/segs.json"))
 
@@ -69,7 +72,7 @@ for i in KEEP:
     for pa, pb in parts:
         pad = TIGHT_PAD if i in TIGHT else PAD
         s = a - pad if pa is None else snap(pa, 0.02)  # pausas já medidas: sem deslocar
-        e = b + pad if pb is None else snap(pb, 0.02)
+        e = b + pad + END_EXTRA.get(i, 0) if pb is None else snap(pb, 0.02)
         ws = [w for w in words_of(i) if s - 0.05 <= (w["start"] + w["end"]) / 2 <= e + 0.05]
         pieces.append([max(0.0, s), e, ws, 0.0])
     pieces[-1][3] = GAP_AFTER.get(i, 0.0)
