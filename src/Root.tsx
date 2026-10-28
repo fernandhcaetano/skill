@@ -12,7 +12,7 @@ import { Title } from "./HelloWorld/Title";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      <Composition id="Trabalho" component={Trabalho} durationInFrames={TRABALHO_DURATION} fps={30} width={1080} height={1920} />
+      <Composition id="Trabalho" component={Trabalho} durationInFrames={TRABALHO_DURATION} fps={30} width={1080} height={1920} defaultProps={{ legenda: false }} />
       <Composition id="Natal" component={Natal} durationInFrames={NATAL_DURATION} fps={30} width={1080} height={1920} />
       <Composition
         id="Edit"

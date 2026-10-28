@@ -1,14 +1,15 @@
 import React from "react";
 import "@fontsource/poppins/500.css";
 import { AbsoluteFill, Audio, OffthreadVideo, Sequence, staticFile, useCurrentFrame } from "remotion";
-import edit from "./edit-1p5p.json";
-import captions from "./captions-1p5p.json";
-import { shots } from "./shots-1p5p";
+import plan from "./plan-1p5p.json";
 
 // "Estilo Trabalho" (estilo-trabalho.md): cortes secos, A-roll intercalado com B-roll,
 // legenda pequena branca com contorno, por frase, centralizada em y ≈ 1460 px. Sem efeitos.
 
-const { fps: FPS, duration: DURATION, segments } = edit;
+// Gerado por scripts/build-edit.py + scripts/plan-1p5p.py (planos com clip null = A-roll).
+type Shot = { at: number; clip: string | null; from: number };
+const { fps: FPS, duration: DURATION, segments, captions } = plan;
+const shots: Shot[] = plan.shots;
 
 export const TRABALHO_DURATION = Math.ceil(DURATION * FPS);
 
@@ -77,11 +78,12 @@ const Caption: React.FC = () => {
   );
 };
 
-export const Trabalho: React.FC = () => (
+// legenda: o cliente pode pedir o vídeo sem legenda (padrão no 1P5P).
+export const Trabalho: React.FC<{ legenda: boolean }> = ({ legenda }) => (
   <AbsoluteFill style={{ background: "#000" }}>
     <ARoll />
     <BRoll />
-    <Caption />
+    {legenda && <Caption />}
     <Audio src={staticFile("voice.wav")} />
   </AbsoluteFill>
 );

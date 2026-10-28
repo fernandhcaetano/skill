@@ -19,10 +19,18 @@ KEEP = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20,
         21, 22, 23, 24, 25]
 
 # Ajustes dentro de um trecho: lista de (início, fim) em segundos da fonte.
-SPLIT = {}
+# Micro-pausas dentro das frases (só nos trechos cobertos por B-roll, 14–58 s do vídeo):
+# corta o miolo de cada pausa e deixa ~50 ms de cada lado.
+PAUSES = {4: [(19.27, 19.50)], 5: [(21.71, 21.90)], 8: [(31.17, 31.41), (32.05, 32.27)],
+          10: [(37.33, 37.59)], 13: [(44.78, 45.05)], 17: [(59.74, 59.97)]}
+SPLIT = {i: [(None, ps[0][0] + 0.05)] + [(a[1] - 0.05, b[0] + 0.05) for a, b in zip(ps, ps[1:])]
+         + [(ps[-1][1] - 0.05, None)] for i, ps in PAUSES.items()}
+
+# Trechos cobertos por B-roll: respiro menor entre as frases, para a fala ficar mais "colada".
+TIGHT, TIGHT_PAD = set(range(4, 22)), 0.05
 
 # Silêncio (s) inserido depois de um trecho: "respiro" de marca com o plano do logo.
-GAP_AFTER = {3: 1.5, 25: 0.6}  # 25: respiro final antes do fim do vídeo
+GAP_AFTER = {3: 2.5, 25: 0.6}  # 25: respiro final antes do fim do vídeo
 
 segs = json.load(open("raw/segs.json"))
 
@@ -59,8 +67,9 @@ for i in KEEP:
     a, b = segs[i]
     parts = SPLIT.get(i, [(None, None)])
     for pa, pb in parts:
-        s = a - PAD if pa is None else snap(pa)
-        e = b + PAD if pb is None else snap(pb)
+        pad = TIGHT_PAD if i in TIGHT else PAD
+        s = a - pad if pa is None else snap(pa, 0.02)  # pausas já medidas: sem deslocar
+        e = b + pad if pb is None else snap(pb, 0.02)
         ws = [w for w in words_of(i) if s - 0.05 <= (w["start"] + w["end"]) / 2 <= e + 0.05]
         pieces.append([max(0.0, s), e, ws, 0.0])
     pieces[-1][3] = GAP_AFTER.get(i, 0.0)
@@ -107,7 +116,7 @@ for k, w in enumerate(words):
 
 json.dump({"fps": FPS, "duration": round(out_t, 3), "segments": segments, "words": words,
            "gaps": [{"outStart": a, "dur": d} for a, d in gaps]},
-          open("src/edit.json", "w"), ensure_ascii=False, indent=1)
+          open(os.environ.get("EDIT_OUT", "src/edit.json"), "w"), ensure_ascii=False, indent=1)
 
 # Áudio: cortes com micro-fade (evita estalos), redução de ruído e volume -14 LUFS.
 chains, labels = [], []
@@ -125,8 +134,9 @@ for k, sg in enumerate(segments):
         labels.append(f"[g{k}]")
 # DENOISE=0 gera public/voice_raw.wav: mesmos cortes, só volume ajustado, sem mexer no ruído.
 DENOISE = os.environ.get("DENOISE", "1") != "0"
-# 1P5P: externa com ronco grave (vento/trânsito < 300 Hz) -> highpass 110 Hz e afftdn mais forte.
-clean = "highpass=f=110,afftdn=nr=18:nf=-38:tn=1,lowpass=f=12000," \
+# 1P5P: externa com ronco grave (vento/trânsito). RNNoise (arnndn) tira ~15 dB a mais que só o afftdn.
+# Modelo: curl -L -o raw/models/sh.rnnn https://raw.githubusercontent.com/richardpl/arnndn-models/master/sh.rnnn
+clean = "highpass=f=100,arnndn=m=raw/models/sh.rnnn,afftdn=nr=10:nf=-45:tn=1,lowpass=f=12000," \
     "acompressor=threshold=-20dB:ratio=3:attack=5:release=80," if DENOISE else ""
 graph = ";".join(chains) + ";" + "".join(labels) + f"concat=n={len(labels)}:v=0:a=1," \
     + clean + "loudnorm=I=-14:TP=-1.5:LRA=7[out]"
