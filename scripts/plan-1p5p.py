@@ -68,8 +68,6 @@ CAPTIONS = [
 # 15.4 = fim do trecho 3 (com END_EXTRA): o plano do logo ocupa o silêncio inserido (GAP_AFTER).
 SHOTS = [
     (1.47, None, 0),  # "Você sabia que a cada peça…"
-    (6.43, "IMG_4681", 2.5),  # "esse é o 1P5P" → telão 1P=5P
-    (8.36, None, 0),
     (15.4, "IMG_4691", 0.2),  # respiro de marca: parede "Gente boa e do bem"
     (17.07, "IMG_4672", 0.3),  # "Oi, eu sou a Ludy" → Ludy no palco
     (18.67, "IMG_4671", 0),  # "do time de Sustentabilidade do grupo" → Ludy apresentando
