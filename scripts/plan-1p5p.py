@@ -83,23 +83,28 @@ SHOTS = [
     (32.17, "IMG_4696", 0),  # "Escola DOM" → camiseta DOM
     (33.73, "IMG_4694", 0.3),  # "times de sede, CD e marca"
     (36.06, "IMG_4695", 0.3),  # "vamos experienciar"
-    (38.83, "IMG_4700", 3),  # "Foi um dia de muita troca"
-    (41.8, "IMG_4711", 0.5),  # "aprendizado e celebração"
-    (43.47, "IMG_4709", 0),  # "chefe Neide Marco" → chefs
-    (45.05, "IMG_4710", 0.8),
-    (47.27, "IMG_4713", 0),  # "as crianças participaram"
-    (48.7, "IMG_4714", 0.3),  # "oficina de cupcakes"
+    # Ação na escola: vídeos novos (pasta "AQUI"), todos entram.
+    (38.83, "IMG_4835", 0),  # "Foi um dia de muita troca" → meninas batendo palma
+    (41.8, "IMG_4884", 2.0),  # "aprendizado e celebração" → aluna falando
+    (43.47, "IMG_4752", 0.3),  # "chefe Neide Marco" → as chefs
+    (45.05, "IMG_4710", 0.8),  # "parceira de longo prazo do projeto"
+    (47.27, "IMG_4732", 0.5),  # "as crianças participaram"
+    (48.7, "IMG_4724", 0.5),  # "oficina de cupcakes" → confeitando de perto
     (49.8, "IMG_4708", 0),  # "mostrar um pouco mais da escola"
-    (51.45, "IMG_4706", 0.5),
-    (54.77, "IMG_4715", 0),  # "aproveitamento alimentar"
-    (56.6, "IMG_4716", 0.5),
-    (59.07, "IMG_4712", 0.3),  # "nessa troca"
-    (60.47, "438f643e", 1.5),  # "encantamento para a escola" → Rê chega nas mesas
-    (63.5, "729f8c30", 0),  # "presença do Rê, nosso mascote"
-    (65.84, "fe3cbf1e", 3.0),  # "que celebrou com a gente" → Rê dançando
-    (67.2, "438f643e", 6.2),  # "esse momento tão importante" → crianças de braços pra cima
+    (51.45, "IMG_4832", 0),  # "para o nosso time" → criança fazendo coração
+    (54.77, "IMG_4734", 0.5),  # "Isso reforça a importância"
+    (56.6, "IMG_4725", 0),  # "do aproveitamento alimentar"
+    (57.6, "IMG_4773", 0.3),
+    (59.07, "IMG_4748", 0.3),  # "nessa troca" → equipe com o cupcake
+    (60.47, "IMG_4774", 0.5),
+    (61.83, "IMG_4784", 0),  # "encantamento para a escola" → Rê chegando
+    (63.5, "IMG_4880", 0),  # "presença do Rê, nosso mascote"
+    (65.83, "IMG_4862", 0),  # "que celebrou com a gente" → Rê com as crianças
+    (67.2, "IMG_4747", 0.3),  # "esse momento tão importante"
     (70.17, None, 0),  # "Celebrar 10 anos…"
-    (73.37, "736c2a90", 0),  # "seguimos juntos, fortalecendo essa rede" → abraço do Rê
+    (71.65, "IMG_4750", 0.5),  # "cada prato importa"
+    (73.37, "IMG_4739", 0.3),  # "seguimos juntos" → crianças e equipe
+    (74.9, "IMG_4736", 0.3),  # "fortalecendo essa rede"
     (76.3, None, 0),  # fecha na Ludy
 ]
 
@@ -109,6 +114,16 @@ plan = {
     "shots": [{"at": out(a), "clip": c, "from": f} for a, c, f in SHOTS],
 }
 json.dump(plan, open("src/Trabalho/plan-1p5p.json", "w"), ensure_ascii=False, indent=1)
-for s in plan["shots"]:
-    print(f'{s["at"]:6.2f} {s["clip"] or "A-roll"}')
+# Confere se cada plano cabe no clipe (duração do clipe - ponto de entrada).
+import subprocess
+shots = plan["shots"]
+for k, sh in enumerate(shots):
+    end = shots[k + 1]["at"] if k + 1 < len(shots) else edit["duration"]
+    note = ""
+    if sh["clip"]:
+        dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                                    f"public/1p5p/{sh['clip']}.mp4"], capture_output=True, text=True).stdout)
+        if sh["from"] + end - sh["at"] > dur:
+            note = f"  !! clipe curto ({dur:.1f}s)"
+    print(f'{sh["at"]:6.2f} {end - sh["at"]:5.2f}s {sh["clip"] or "A-roll"}{note}')
 print(f'duração {edit["duration"]:.1f}s')
