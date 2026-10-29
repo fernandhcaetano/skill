@@ -71,9 +71,10 @@ CAPTIONS = [
 # 15.4 = fim do trecho 3 (com END_EXTRA).
 SHOTS = [
     (1.47, None, 0),  # "Você sabia que a cada peça…"
-    (13.04 if SEM_SEGUNDO_10_ANOS else 15.4, "IMG_4691", 0.2, 1, 320),  # parede "Gente boa e do bem", já com "Oi, eu sou a Ludy" por cima
-    (18.67, "IMG_4672", 0.3),  # "do time de Sustentabilidade do grupo" → Ludy no palco
-    (21.0, "IMG_4671", 0),  # "estamos aqui para celebrar" → Ludy apresentando
+    # (a parede "Gente boa e do bem", IMG_4691, saiu a pedido do cliente)
+    (17.07, "IMG_4672", 0.3),  # "Oi, eu sou a Ludy" → Ludy no palco
+    (18.67, "IMG_4671", 0),  # "do time de Sustentabilidade do grupo" → Ludy apresentando
+    (21.0, "IMG_4667", 0),  # "estamos aqui para celebrar" → equipe no café
     (23.05, "IMG_4688", 0),  # "Dia Mundial da Alimentação" → telão com alimentos
     (25.13, "IMG_4685", 0.5),  # "trouxemos pessoas"
     (26.45, "IMG_4690", 0.3),  # "de diferentes áreas da marca"
