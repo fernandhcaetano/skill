@@ -5,6 +5,7 @@ import { Natal, NATAL_DURATION } from "./Natal/Natal";
 import { DURATION, FPS } from "./Edit/data";
 import { Logo } from "./HelloWorld/Logo";
 import { Trabalho, TRABALHO_DURATION } from "./Trabalho/Trabalho";
+import { ReReel, RE_DURATION } from "./Trabalho/ReReel";
 import { Title } from "./HelloWorld/Title";
 
 // Each <Composition> is an entry in the sidebar!
@@ -12,6 +13,7 @@ import { Title } from "./HelloWorld/Title";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition id="ReReel" component={ReReel} durationInFrames={RE_DURATION} fps={30} width={1080} height={1920} />
       <Composition id="Trabalho" component={Trabalho} durationInFrames={TRABALHO_DURATION} fps={30} width={1080} height={1920} defaultProps={{ legenda: false }} />
       <Composition id="Natal" component={Natal} durationInFrames={NATAL_DURATION} fps={30} width={1080} height={1920} />
       <Composition
