@@ -7,19 +7,19 @@ import { AbsoluteFill, OffthreadVideo, Sequence, interpolate, staticFile, useCur
 type Cut = [clip: string, from: number, dur: number, zoom?: number];
 
 const CUTS: Cut[] = [
-  // chegada pela escada
-  ["IMG_4784", 0.0, 1.6],
-  ["IMG_4786", 1.4, 1.2, 1.12],
-  ["IMG_4785", 2.4, 1.3],
-  ["IMG_4787", 0.0, 0.9, 1.1],
-  ["IMG_4784", 5.2, 1.4],
+  // chegada rápida: escada, close, passando (≈ 2,5 s até as crianças)
+  ["IMG_4784", 0.4, 0.9],
+  ["IMG_4787", 0.0, 0.7, 1.1],
   // entrando no refeitório
-  ["IMG_4788", 0.0, 1.1],
+  ["IMG_4788", 0.0, 0.9],
   ["IMG_4790", 0.2, 1.4],
   ["IMG_4791", 0.0, 1.3],
   ["IMG_4793", 0.5, 1.2, 1.15],
   ["IMG_4791", 2.6, 1.2],
+  ["IMG_4791", 3.8, 1.1, 1.1],
   ["IMG_4796", 0.4, 1.2],
+  ["IMG_4774", 1.0, 1.0, 1.1],
+  ["IMG_4796", 2.0, 1.2],
   ["IMG_4790", 2.0, 1.4, 1.1],
   ["IMG_4791", 5.0, 1.4, 1.1],
   ["IMG_4793", 2.2, 1.1],
@@ -35,6 +35,7 @@ const CUTS: Cut[] = [
   ["IMG_4747", 0.3, 1.1, 1.1],
   ["IMG_4835", 0.0, 1.2, 1.1],
   ["IMG_4879", 0.0, 1.3],
+  ["IMG_4879", 1.3, 1.1],
   ["IMG_4879", 2.5, 1.5, 1.1],
   ["IMG_4832", 0.4, 1.2],
   ["IMG_4879", 4.9, 1.4],
