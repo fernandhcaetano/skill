@@ -14,8 +14,9 @@ PAD = 0.08  # respiro antes/depois de cada trecho (s)
 # Trechos (índices de raw/segs.json) que ficam. Os demais são silêncio,
 # ruído ou falas erradas/repetidas.
 # Vídeo atual: Reserva 1P5P (raw/1p5p/fala.mov = entrada + só audio tb + só audio + final).
+# 1: "Sim" curto e seco entre dois cortes (soava como um ruído no 0:04).
 # 11: ruído no começo do segundo "só audio".
-KEEP = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+KEEP = [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20,
         21, 22, 23, 24, 25]
 
 # Ajustes dentro de um trecho: lista de (início, fim) em segundos da fonte.

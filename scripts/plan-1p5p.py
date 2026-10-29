@@ -27,7 +27,7 @@ CAPTIONS = [
     (1.51, 3.20, "Você sabia que a cada peça"),
     (3.20, 4.50, "que você compra na Reserva,"),
     (4.55, 6.07, "cinco pratos são complementados?"),
-    (6.43, 8.10, "Sim, esse é o 1P5P,"),
+    (7.0, 8.10, "Esse é o 1P5P,"),
     (8.36, 10.20, "um projeto que há 10 anos"),
     (10.25, 12.25, "providencia complementação alimentar"),
     (12.29, 12.95, "para quem precisa."),
