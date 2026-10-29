@@ -12,7 +12,7 @@ const CUTS: Cut[] = [
   ["IMG_4787", 0.0, 0.7, 1.1],
   // entrando no refeitório
   ["IMG_4788", 0.0, 0.9],
-  ["IMG_4790", 0.2, 1.4],
+  ["IMG_4790", 0.2, 3.5],  // o pulo do Rê até chegar nas crianças, sem cortar
   ["IMG_4791", 0.0, 1.3],
   ["IMG_4793", 0.5, 1.2, 1.15],
   ["IMG_4791", 2.6, 1.2],
@@ -20,7 +20,6 @@ const CUTS: Cut[] = [
   ["IMG_4796", 0.4, 1.2],
   ["IMG_4774", 1.0, 1.0, 1.1],
   ["IMG_4796", 2.0, 1.2],
-  ["IMG_4790", 2.0, 1.4, 1.1],
   ["IMG_4791", 5.0, 1.4, 1.1],
   ["IMG_4793", 2.2, 1.1],
   // festa com as crianças
