@@ -106,8 +106,8 @@ Mistura: **estrutura e elegância da A + temperatura e cor da B**, pensada para 
 
 ## 6. Decisões do Fernando (05/11/2026)
 - **Energia: no meio** entre A e B → vale a proposta v1 acima.
-- **Cor de destaque fixa: sim.** Candidata principal **amarelo mostarda `#E3A81C`**; alternativas mostradas: amarelo-limão `#F2FF00`, laranja `#FF7A1A`
-  (prévia gerada sobre um quadro do vídeo do sushi). Aguardando escolha final.
+- **Cor de destaque fixa: amarelo mostarda `#E3A81C`** (escolhida em 05/11/2026; descartadas amarelo-limão `#F2FF00` e laranja `#FF7A1A`,
+  ver `preview-cores-lettering.jpg`). Usar sempre com a sombra suave, principalmente sobre fundo claro.
 - **Tipografia da v1 (prévia):** palavras-chave em **Anton** (condensada, caixa alta, na cor de destaque, ~150 px);
   texto de apoio em **TikTok Sans 500**, branco, minúsculo, ~52 px; sombra suave preta (blur 6 px, 55 %) só para legibilidade. Sem caixa de fundo.
 - **Música de fundo: depois.** Primeiro fechar lettering e efeitos.
@@ -116,6 +116,5 @@ Mistura: **estrutura e elegância da A + temperatura e cor da B**, pensada para 
   (projeto no CapCut só com o efeito sobre tela preta → exportar → pasta no Drive) para montar o banco `public/sfx/ferndoc/`.
 
 ## 7. Perguntas em aberto
-- Cor final de destaque.
 - Quais efeitos do CapCut/TikTok entram no banco (nomes) e em que momentos cada um é usado.
 - Série/nome recorrente (como "coisas óbvias…") para os vídeos de descoberta no Rio?
