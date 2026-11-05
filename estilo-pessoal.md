@@ -104,8 +104,18 @@ Mistura: **estrutura e elegância da A + temperatura e cor da B**, pensada para 
   (revelação do lugar, primeira mordida, reação). Preferir efeitos de banco real (CapCut/TikTok) em vez de sintetizados.
 - **Detalhe de persona:** 1 efeito visual curto por vídeo no momento mais engraçado (P&B, freeze ou zoom rápido).
 
-## 6. Perguntas em aberto
-- Qual energia combina mais com ele: A (calma), B (pop) ou o meio-termo da v1?
-- Paleta própria? (ex.: 1 cor de destaque fixa para virar marca: amarelo-limão, magenta…)
-- Música de fundo: sim ou não? Em vídeos de rolê costuma ajudar.
+## 6. Decisões do Fernando (05/11/2026)
+- **Energia: no meio** entre A e B → vale a proposta v1 acima.
+- **Cor de destaque fixa: sim.** Candidata principal **amarelo mostarda `#E3A81C`**; alternativas mostradas: amarelo-limão `#F2FF00`, laranja `#FF7A1A`
+  (prévia gerada sobre um quadro do vídeo do sushi). Aguardando escolha final.
+- **Tipografia da v1 (prévia):** palavras-chave em **Anton** (condensada, caixa alta, na cor de destaque, ~150 px);
+  texto de apoio em **TikTok Sans 500**, branco, minúsculo, ~52 px; sombra suave preta (blur 6 px, 55 %) só para legibilidade. Sem caixa de fundo.
+- **Música de fundo: depois.** Primeiro fechar lettering e efeitos.
+- **Efeitos sonoros: usar os do CapCut/TikTok, não sintetizados** (os sintetizados soaram artificiais).
+  Como as bibliotecas do CapCut/TikTok não são acessíveis daqui, o Fernando vai exportar os sons que gosta
+  (projeto no CapCut só com o efeito sobre tela preta → exportar → pasta no Drive) para montar o banco `public/sfx/ferndoc/`.
+
+## 7. Perguntas em aberto
+- Cor final de destaque.
+- Quais efeitos do CapCut/TikTok entram no banco (nomes) e em que momentos cada um é usado.
 - Série/nome recorrente (como "coisas óbvias…") para os vídeos de descoberta no Rio?
