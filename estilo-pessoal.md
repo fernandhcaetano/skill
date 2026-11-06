@@ -158,6 +158,13 @@ Mistura: **estrutura e elegância da A + temperatura e cor da B**, pensada para 
   na quina, o texto que passa sobre a madeira perde contraste (manteiga quase some, mostarda afunda); no todo preto, as três leem bem,
   mostarda tem mais personalidade e manteiga fica perto demais do branco.
 
+- **COR DO TEXTO: TUDO BRANCO (decisão final, 06/11/2026).** Sem cor de destaque — mostarda/manteiga descartadas.
+  Gancho: Archivo Black branco; resto: Bricolage 500 branco. Hierarquia só por tamanho/peso. Prévia: `preview-branco-vs-mostarda.jpg`.
+  Branco aguenta tanto a cortina quanto a madeira (gravar na quina fica liberado).
+- **Processo de edição (06/11/2026):** analisar o vídeo inteiro antes (repetições de fala, melhor tomada, assunto repetido entre partes
+  quando o celular descarrega), cortar todas as pausas de "pensando", juntar as partes num corte fluido e propor melhorias. Entrega profissional.
+  Fluxo e ferramentas na skill `.claude/skills/estilo-ferndoc/`.
+
 ## 7. Perguntas em aberto
 - Quais efeitos do CapCut/TikTok entram no banco (nomes) e em que momentos cada um é usado.
 - Legenda palavra a palavra ao lado do rosto (estilo ref C) ou só rótulos?
