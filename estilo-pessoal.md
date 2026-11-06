@@ -73,6 +73,29 @@ Arquivo: `ref2`. 1080×1920, 60 fps.
 
 ---
 
+## 2b. Referência C: história da Uniqlo (@sechamapedro, 2:22)
+Arquivo: upload do Fernando (06/11/2026). 576×1024, 30 fps.
+
+**Tom:** contador de histórias, didático e animado. Responde a um comentário ("Conta a história da Uniqlo").
+
+**Estrutura**
+- Abre com o **sticker de resposta a comentário** do TikTok no topo + frase de gancho ("essa é a bolsa de $20…").
+- História cronológica com **cartelas editoriais** a cada 10–20 s: fundo **off-white**, título **pequeno em CAIXA ALTA vermelha** no canto superior esquerdo
+  ("CHAMADA", "E TROCOU O NOME", "EM 2001", "O HEATTECH", "QUANTA COISA"), e **uma imagem centralizada** (foto de arquivo, mapa, produto, print de TikTok).
+  Cara de revista/apresentação. Duração 2–4 s cada.
+- ~27 trocas de cena em 142 s; o A-roll é um plano fixo só (sem zoom aparente).
+
+**Lettering**
+- **Legenda palavra a palavra, mínima:** 1–3 palavras por vez, **minúsculas, brancas, pequenas (~32 px em 1080), sans fina**, sem caixa/contorno,
+  **à esquerda do rosto, na altura dos olhos** (x ≈ 10 %, y ≈ 42 %). Discreta: dá pra seguir sem tampar nada.
+- **Destaques em vermelho, CAIXA ALTA, mesma fonte fina** (não é condensada pesada): números e fatos-chave ("DE $20", "EM 18 MESES", "FECHA 16", "1 BILHÃO"),
+  às vezes um de cada lado do rosto.
+- **A cor de destaque vem da cena**: o vermelho é o mesmo do microfone/objeto vermelho que ele segura e da marca (Uniqlo). Tudo combina.
+
+**Som**
+- Música de fundo **contínua e baixa** (o áudio nunca fica em silêncio); −18 LUFS integrado.
+- Efeito sonoro discreto na entrada das cartelas (≈6,1 s), não nos cortes do A-roll.
+
 ## 3. O que as duas têm em comum (base do padrão)
 1. **Sem legenda corrida.** Texto só para **gancho, nomes, rótulos e piadas**, sempre curto.
 2. **Texto sem caixa de fundo**, colocado no **espaço vazio** do quadro, longe do rosto.
@@ -80,6 +103,9 @@ Arquivo: `ref2`. 1080×1920, 60 fps.
 4. **Pausas cortadas + punch-in de zoom** alternado para dar ritmo sem transição visual.
 5. **Efeito sonoro com moderação**: só em ênfase (2–4 por minuto), não em todo corte. Nenhuma usa whoosh repetido.
 6. Persona e humor na fala (apartes, "galera", "meu amor") ganham um **detalhe visual** (P&B, palavra solta, "!").
+7. (A, B e C) **Uma cor de destaque só**, sempre usada para números, nomes e fatos. Em C ela vem de um objeto da própria cena.
+8. (B e C) **Música de fundo contínua e baixa**; SFX nas entradas de imagem/cartela, não em todo corte.
+9. (C) Quando tem informação (preço, endereço, data), ela vira **cartela limpa** com título curto + 1 imagem, em vez de texto em cima do vídeo.
 
 ## 4. Onde elas divergem (decisões a tomar com o Fernando)
 | | A — "coisas óbvias" | B — Arca |
