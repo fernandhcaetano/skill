@@ -141,6 +141,10 @@ Mistura: **estrutura e elegância da A + temperatura e cor da B**, pensada para 
   Como as bibliotecas do CapCut/TikTok não são acessíveis daqui, o Fernando vai exportar os sons que gosta
   (projeto no CapCut só com o efeito sobre tela preta → exportar → pasta no Drive) para montar o banco `public/sfx/ferndoc/`.
 
+- **Hierarquia de texto (06/11/2026): letra grande SÓ no gancho de abertura.** Depois do gancho, apenas texto pequeno
+  (TikTok Sans 500, branco minúsculo, palavra-chave em mostarda). Ênfases do meio/fim ("tava muito bom", "vale a pena") também ficam pequenas.
+
 ## 7. Perguntas em aberto
 - Quais efeitos do CapCut/TikTok entram no banco (nomes) e em que momentos cada um é usado.
+- Legenda palavra a palavra ao lado do rosto (estilo ref C) ou só rótulos?
 - Série/nome recorrente (como "coisas óbvias…") para os vídeos de descoberta no Rio?
