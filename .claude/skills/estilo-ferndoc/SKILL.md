@@ -83,6 +83,13 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Top 5 Anitta / Equilibrivm I (06/11)**: ranking com clipes em TELA CHEIA 9:16 depois de cada nome (`{"clipe":..., "enquadre":[[t,cx,zoom,cy]...]}`
+  no corte.json, um item por plano). Pedidos dele: clipe só no top 5 (menções sem clipe), **~5 s** por clipe, sempre no **refrão**;
+  se a Anitta não aparece no refrão, ainda assim usar o refrão (ele preferiu as dançarinas do refrão de Desgraça ao gancho com close
+  dela). Achar refrão: transcrever a música e ver a linha que repete; planos: `shots.py`/diferença de quadros; rosto: marcar à mão
+  (Haar falha em clipe escuro). **Tirar suspiros**: rodar `scripts/ferndoc/aparar.py` no corte.json (voz 55–60 dB acima do piso;
+  suspiro até ~26) e conferir palavras curtas do início ("Rankeando", "do") que ele pode comer. Nesse vídeo ele pediu **sem tratamento
+  de cor** (`"cor": "neutra"`), mantendo efeitos sonoros, animação do texto e zoom.
 - **Cor (06/11)**: bug sério corrigido no `montar.py` — o ffprobe devolve `arib-std-b67,` (vírgula extra, Dolby Vision) e a
   detecção de HDR falhava: v1/v2 saíram com HLG cru → "pálido, amarelado, cara de HDR". Também faltava etiquetar os trechos como bt709.
   Sempre conferir no `.tag` do trecho (`raw/ferndoc/segs/sNNN.mov.tag`) que a conversão entrou e comparar 1 quadro com a prévia aprovada.
