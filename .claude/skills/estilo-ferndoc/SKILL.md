@@ -83,4 +83,9 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Mondepars (06/11, 3 partes, 5min05 → 1min37)**: celular grava a frontal **espelhada** (texto da sacola invertido) — ele prefere **deixar como está**.
+  Abertura testada: cold open de 2,6 s com o item mais curioso já vestido ("essa gravata, espetacular") antes do "bora ver o que eu comprei".
+  Ele esqueceu a palavra "acervo" na fala → virou rótulo digitado "pro meu acervo" + som de teclado. Emendas entre partes ("eu tinha ficado
+  sem memória, continuando", "como eu estava falando") sempre saem. Rótulos no topo (y≈210) batem na cabeça em planos em pé/close:
+  conferir cada um e descer para o peito (y 900–1450) quando precisar. Montagem por trechos (`montar.py`, `REUSE=1` reaproveita).
 - 1ª tentativa (sushi, 04/11): caixa branca + whoosh em todo corte = "péssimo". Nunca repetir.

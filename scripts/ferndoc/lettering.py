@@ -11,7 +11,8 @@ lettering.json (tempos no vídeo FINAL; use raw/ferndoc/palavras_final.json):
      [["no", 2.2], ["rio", 2.4], ["de", 2.6], ["janeiro?", 2.8]]]},
   {"ate": 9.9, "y": 260, "linhas": [[["logo", 7.2], ["depois", 7.4], ["do", 7.7], ["pedágio", 7.9]]]}
 ]
-Palavra = [texto, entra_em] ou [texto, entra_em, "G"] (grande). Cada palavra entra com um pop curto e todas
+Palavra = [texto, entra_em] ou [texto, entra_em, "G"] (grande) ou [texto, entra_em, "D"] (digitado letra a letra,
+2 frames por letra, sem pop — combine com o som de teclado). Cada palavra entra com um pop curto e todas
 saem juntas em "ate". Regras do estilo: tudo branco, sombra suave, sem caixa de fundo.
 """
 import json
@@ -33,11 +34,12 @@ for it in items:
     y = it["y"]
     for linha in it["linhas"]:
         f = GRD if len(linha[0]) > 2 and linha[0][2] == "G" else PEQ
+        dig = [len(p) > 2 and p[2] == "D" for p in linha]
         sp = 22 if f is GRD else 14
         ws = [f.getlength(p[0]) for p in linha]
         x = (W - (sum(ws) + sp * (len(linha) - 1))) / 2
-        for p, wd in zip(linha, ws):
-            layout.append((p[1], it["ate"], x, y, p[0], f))
+        for p, wd, dg in zip(linha, ws, dig):
+            layout.append((p[1], it["ate"], x, y, p[0], f, dg))
             x += wd + sp
         a, d = f.getmetrics()
         y += (a + d - 8) if f is GRD else (a + d + 6)
@@ -65,11 +67,17 @@ def ease(x, s=1.9):
 ANIM, cache, out = 0.18, {}, sys.stdout.buffer
 for fi in range(int(round(DUR * FPS))):
     t = fi / FPS
-    vis = tuple((i, round(min(1, (t - L[0]) / ANIM), 3)) for i, L in enumerate(layout) if L[0] <= t < L[1])
+    vis = tuple((i, round(min(1, (t - L[0]) / ANIM), 3) if not L[6] else min(len(L[4]), int((t - L[0]) * FPS / 2) + 1))
+                for i, L in enumerate(layout) if L[0] <= t < L[1])
     if vis not in cache:
         fr = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         for i, p in vis:
-            _, _, x, y, w, f = layout[i]
+            t0, _, x, y, w, f, dg = layout[i]
+            if dg:  # digitação: mostra o prefixo, alinhado à esquerda
+                n = min(len(w), int((t - t0) * FPS / 2) + 1)
+                im, pad = img(w[:n], f)
+                fr.alpha_composite(im, (int(x - pad), int(y - pad)))
+                continue
             im, pad = img(w, f); fw, fh = im.size
             if p < 1:
                 sc = max(.05, .75 + .25 * ease(p))
