@@ -148,6 +148,11 @@ Mistura: **estrutura e elegância da A + temperatura e cor da B**, pensada para 
 - **Fonte pequena (06/11/2026): Bricolage Grotesque 500** (opção 5), ~54 px, branco minúsculo, palavra-chave em mostarda. Substitui a TikTok Sans.
   Descartada DM Mono (4): mais autoral, mas lê pior no escuro. Comparação em `preview-fontes-4x5.jpg`.
 
+- **Contexto (06/11/2026):** o vídeo do sushi já foi postado; ele foi só cobaia. O objetivo é o **padrão de criação de conteúdo** do Fernando.
+  Cenário fixo dos vídeos estáticos: **parede marrom + cortina preta**. Por isso a **cor de destaque foi reaberta**: mostarda tem pouco contraste
+  com a parede marrom (mesma família quente). Prévia com a paleta do TikTok sobre fundo simulado: `preview-cores-fundo-marrom.jpg`.
+  Aguardando foto real do cenário.
+
 ## 7. Perguntas em aberto
 - Quais efeitos do CapCut/TikTok entram no banco (nomes) e em que momentos cada um é usado.
 - Legenda palavra a palavra ao lado do rosto (estilo ref C) ou só rótulos?
