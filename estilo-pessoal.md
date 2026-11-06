@@ -153,6 +153,11 @@ Mistura: **estrutura e elegância da A + temperatura e cor da B**, pensada para 
   com a parede marrom (mesma família quente). Prévia com a paleta do TikTok sobre fundo simulado: `preview-cores-fundo-marrom.jpg`.
   Aguardando foto real do cenário.
 
+- **Cenário real (foto 06/11/2026):** parede de **madeira clara** (bege amadeirado, não marrom escuro) + cortina preta, piso de madeira.
+  Teste em `preview-cenario-cores.jpg` (mostarda × meio-termo `#F2C14E` × manteiga, na quina e no todo preto):
+  na quina, o texto que passa sobre a madeira perde contraste (manteiga quase some, mostarda afunda); no todo preto, as três leem bem,
+  mostarda tem mais personalidade e manteiga fica perto demais do branco.
+
 ## 7. Perguntas em aberto
 - Quais efeitos do CapCut/TikTok entram no banco (nomes) e em que momentos cada um é usado.
 - Legenda palavra a palavra ao lado do rosto (estilo ref C) ou só rótulos?
