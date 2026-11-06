@@ -11,7 +11,7 @@ corte.json:
     {"id": "3.01", "zoom": 1.12},   # força zoom (por padrão alterna 1.00 / 1.12 entre cortes da mesma câmera)
     {"espaco": "meia noite", "dur": 6},          # espaço reservado (tela escura + aviso) p/ inserir algo depois
     {"clipe": "raw/x.mp4", "ini": 30, "dur": 6, "vol": -8,   # clipe em TELA CHEIA 9:16 com o próprio áudio (vol em dB)
-     "enquadre": [[0, 0.45], [1.55, 0.52]]}      # centro do recorte 9:16 (fração da largura) a partir de t (s, relativo ao ini)
+     "enquadre": [[0, 0.45], [1.55, 0.52, 1.4, 0.4]]}  # por plano: [t (s, relativo ao ini), centro x, zoom, centro y]
   ],
   "lettering": "raw/ferndoc/lettering.json",  # opcional (ver lettering.py); tempos no vídeo FINAL
   "sfx": [{"arq": "clique/clique-1.wav", "t": 12.3, "db": -9, "dur": 1.5}]  # opcional; banco public/sfx/ferndoc,
@@ -94,20 +94,37 @@ for k, (p, s, e, z) in enumerate(pieces):
                             "-vf", f"drawtext=fontfile={FONTE}:text='{txt}':fontcolor=white@0.85:fontsize=54:"
                                    f"x=(w-text_w)/2:y=(h-text_h)/2,format=yuv420p,setsar=1,{TAG709}", *ENC, out], check=True)
         else:
+            # clipe em tela cheia 9:16. "enquadre": [[t, cx, zoom=1, cy=0.5], ...] — um item por plano do clipe:
+            # centro horizontal (cx) e vertical (cy) do recorte em fração do quadro, e zoom (1 = altura inteira).
+            # Cada plano vira um sub-trecho (recorte fixo); áudio contínuo, com fade só no começo e no fim.
             v = c["clipe"]
             tmc = ("zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=hable:desat=0,"
                    "zscale=t=bt709:m=bt709:r=tv,format=yuv420p,") if hdr(v) else ""
-            # recorte 9:16 que acompanha o rosto: centro constante por plano (lista "enquadre")
             enq = c.get("enquadre", [[0, 0.5]])
-            xe = f"{enq[-1][1]}"
-            for (t0, cx), (t1, _) in reversed(list(zip(enq[:-1], enq[1:]))):
-                xe = f"if(lt(t\\,{t1})\\,{cx}\\,{xe})"
-            crop = f"crop=w=ih*9/16:h=ih:x='clip(({xe})*iw-ih*9/32\\,0\\,iw-ih*9/16)':y=0"
-            subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{c.get('ini', 0):.3f}", "-i", v, "-t", f"{d:.3f}",
-                            "-vf", f"{tmc}{crop},scale=1080:1920,fps={FPS},"
-                                   f"format=yuv420p,setsar=1,{TAG709}",
-                            "-af", f"aresample=48000,aformat=channel_layouts=mono,volume={c.get('vol', -8)}dB,"
-                                   f"afade=t=in:d=0.15,afade=t=out:st={max(0, d - 0.3):.3f}:d=0.3", *ENC, out], check=True)
+            ini, sub = c.get("ini", 0), []
+            for j, it in enumerate(enq):
+                t0 = round(it[0] * FPS) / FPS
+                t1 = d if j + 1 == len(enq) else round(enq[j + 1][0] * FPS) / FPS
+                if t1 - t0 <= 0:
+                    continue
+                cx, zm = it[1], (it[2] if len(it) > 2 else 1.0)
+                cy = it[3] if len(it) > 3 else 0.5
+                ch_ = f"ih/{zm}"; cw_ = f"ih/{zm}*9/16"
+                crop = (f"crop=w={cw_}:h={ch_}:x='clip({cx}*iw-({cw_})/2\\,0\\,iw-({cw_}))'"
+                        f":y='clip({cy}*ih-({ch_})/2\\,0\\,ih-({ch_}))'")
+                af = "aresample=48000,aformat=channel_layouts=mono," + f"volume={c.get('vol', -8)}dB"
+                if j == 0:
+                    af += ",afade=t=in:d=0.15"
+                if j == len(enq) - 1:
+                    af += f",afade=t=out:st={max(0, t1 - t0 - 0.3):.3f}:d=0.3"
+                so = f"{SEG}/s{k:03d}_{j}.mov"
+                subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{ini + t0:.3f}", "-i", v, "-t", f"{t1 - t0:.3f}",
+                                "-vf", f"{tmc}{crop},scale=1080:1920:flags=lanczos,fps={FPS},format=yuv420p,setsar=1,{TAG709}",
+                                "-af", af, *ENC, so], check=True)
+                sub.append(so)
+            for so in sub:
+                lista.append(f"file '{os.path.abspath(so)}'")
+            continue
         lista.append(f"file '{os.path.abspath(out)}'")
         continue
     v = videos[p - 1]
