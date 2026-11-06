@@ -10,7 +10,8 @@ corte.json:
     {"id": "2.08", "fim": 20.10},   # corta o fim
     {"id": "3.01", "zoom": 1.12},   # força zoom (por padrão alterna 1.00 / 1.12 entre cortes da mesma câmera)
     {"espaco": "meia noite", "dur": 6},          # espaço reservado (tela escura + aviso) p/ inserir algo depois
-    {"clipe": "raw/x.mp4", "ini": 30, "dur": 6, "vol": 0}  # clipe em TELA CHEIA com o próprio áudio (vol em dB)
+    {"clipe": "raw/x.mp4", "ini": 30, "dur": 6, "vol": -8,   # clipe em TELA CHEIA 9:16 com o próprio áudio (vol em dB)
+     "enquadre": [[0, 0.45], [1.55, 0.52]]}      # centro do recorte 9:16 (fração da largura) a partir de t (s, relativo ao ini)
   ],
   "lettering": "raw/ferndoc/lettering.json",  # opcional (ver lettering.py); tempos no vídeo FINAL
   "sfx": [{"arq": "clique/clique-1.wav", "t": 12.3, "db": -9, "dur": 1.5}]  # opcional; banco public/sfx/ferndoc,
@@ -96,10 +97,16 @@ for k, (p, s, e, z) in enumerate(pieces):
             v = c["clipe"]
             tmc = ("zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=hable:desat=0,"
                    "zscale=t=bt709:m=bt709:r=tv,format=yuv420p,") if hdr(v) else ""
+            # recorte 9:16 que acompanha o rosto: centro constante por plano (lista "enquadre")
+            enq = c.get("enquadre", [[0, 0.5]])
+            xe = f"{enq[-1][1]}"
+            for (t0, cx), (t1, _) in reversed(list(zip(enq[:-1], enq[1:]))):
+                xe = f"if(lt(t\\,{t1})\\,{cx}\\,{xe})"
+            crop = f"crop=w=ih*9/16:h=ih:x='clip(({xe})*iw-ih*9/32\\,0\\,iw-ih*9/16)':y=0"
             subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{c.get('ini', 0):.3f}", "-i", v, "-t", f"{d:.3f}",
-                            "-vf", f"{tmc}scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps={FPS},"
+                            "-vf", f"{tmc}{crop},scale=1080:1920,fps={FPS},"
                                    f"format=yuv420p,setsar=1,{TAG709}",
-                            "-af", f"aresample=48000,aformat=channel_layouts=mono,volume={c.get('vol', 0)}dB,"
+                            "-af", f"aresample=48000,aformat=channel_layouts=mono,volume={c.get('vol', -8)}dB,"
                                    f"afade=t=in:d=0.15,afade=t=out:st={max(0, d - 0.3):.3f}:d=0.3", *ENC, out], check=True)
         lista.append(f"file '{os.path.abspath(out)}'")
         continue
