@@ -8,7 +8,9 @@ corte.json:
     {"id": "1.03"},                 # trecho inteiro de raw/ferndoc/chunks.json
     {"id": "2.07", "ini": 12.40},   # corta o começo (tempo da fonte, em s)
     {"id": "2.08", "fim": 20.10},   # corta o fim
-    {"id": "3.01", "zoom": 1.12}    # força zoom (por padrão alterna 1.00 / 1.12 entre cortes da mesma câmera)
+    {"id": "3.01", "zoom": 1.12},   # força zoom (por padrão alterna 1.00 / 1.12 entre cortes da mesma câmera)
+    {"espaco": "meia noite", "dur": 6},          # espaço reservado (tela escura + aviso) p/ inserir algo depois
+    {"clipe": "raw/x.mp4", "ini": 30, "dur": 6, "vol": 0}  # clipe em TELA CHEIA com o próprio áudio (vol em dB)
   ],
   "lettering": "raw/ferndoc/lettering.json",  # opcional (ver lettering.py); tempos no vídeo FINAL
   "sfx": [{"arq": "clique/clique-1.wav", "t": 12.3, "db": -9, "dur": 1.5}]  # opcional; banco public/sfx/ferndoc,
@@ -50,6 +52,10 @@ def hdr(v):
 
 pieces, palavras, out_t, last_p, z = [], [], 0.0, None, 1.0
 for c in cfg["cortes"]:
+    if "espaco" in c or "clipe" in c:   # inserções em tela cheia: não usam a fala nem o zoom alternado
+        d = round(c["dur"] * FPS) / FPS
+        pieces.append(("ins", c, d, None)); out_t += d; last_p = None; z = 1.0
+        continue
     ch = chunks[c["id"]]; p = ch["parte"]
     s = snap(p, c["ini"]) if "ini" in c else max(0.0, ch["ini"] - PAD)
     e = snap(p, c["fim"]) if "fim" in c else ch["fim"] + PAD
@@ -72,7 +78,31 @@ json.dump(palavras, open("raw/ferndoc/palavras_final.json", "w"), ensure_ascii=F
 SEG = "raw/ferndoc/segs"
 os.makedirs(SEG, exist_ok=True)
 lista = []
+FONTE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts", "BricolageGrotesque-500.ttf")
+ENC = ["-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709",
+       "-c:v", "libx264", "-preset", "fast", "-crf", "14", "-g", "1", "-c:a", "pcm_s16le"]
+TAG709 = "setparams=color_primaries=bt709:color_trc=bt709:colorspace=bt709:range=tv"
 for k, (p, s, e, z) in enumerate(pieces):
+    if p == "ins":
+        c, d = s, e
+        out = f"{SEG}/s{k:03d}.mov"
+        if "espaco" in c:
+            txt = f"CLIPE · {c['espaco']} · {c['dur']:g}s".replace(":", "\\:")
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", f"color=c=0x16161a:s=1080x1920:r={FPS}:d={d}",
+                            "-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", f"{d:.3f}",
+                            "-vf", f"drawtext=fontfile={FONTE}:text='{txt}':fontcolor=white@0.85:fontsize=54:"
+                                   f"x=(w-text_w)/2:y=(h-text_h)/2,format=yuv420p,setsar=1,{TAG709}", *ENC, out], check=True)
+        else:
+            v = c["clipe"]
+            tmc = ("zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=hable:desat=0,"
+                   "zscale=t=bt709:m=bt709:r=tv,format=yuv420p,") if hdr(v) else ""
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{c.get('ini', 0):.3f}", "-i", v, "-t", f"{d:.3f}",
+                            "-vf", f"{tmc}scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps={FPS},"
+                                   f"format=yuv420p,setsar=1,{TAG709}",
+                            "-af", f"aresample=48000,aformat=channel_layouts=mono,volume={c.get('vol', 0)}dB,"
+                                   f"afade=t=in:d=0.15,afade=t=out:st={max(0, d - 0.3):.3f}:d=0.3", *ENC, out], check=True)
+        lista.append(f"file '{os.path.abspath(out)}'")
+        continue
     v = videos[p - 1]
     # HDR (HLG/Dolby Vision do iPhone) -> SDR. Escolhido por ele em 06/11 (opção "2 menos amarelo" de
     # preview-cor-mondepars.jpg): hable npl=100, saturação +8 %, temperatura 7300 K (tira o amarelo), contraste +6 %.
