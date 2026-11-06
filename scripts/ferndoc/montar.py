@@ -44,7 +44,8 @@ def snap(p, t, r=0.12):
 def hdr(v):
     t = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=color_transfer",
                         "-of", "csv=p=0", v], capture_output=True, text=True).stdout.strip()
-    return t in ("arib-std-b67", "smpte2084")
+    # o ffprobe pode devolver "arib-std-b67," (vírgula extra por causa dos dados do Dolby Vision): comparar por conteúdo
+    return any(x in t for x in ("arib-std-b67", "smpte2084"))
 
 
 pieces, palavras, out_t, last_p, z = [], [], 0.0, None, 1.0
@@ -73,18 +74,24 @@ os.makedirs(SEG, exist_ok=True)
 lista = []
 for k, (p, s, e, z) in enumerate(pieces):
     v = videos[p - 1]
-    # HDR (HLG/Dolby Vision do iPhone) -> SDR. Aprovado em 06/11: hable com npl=100 + leve ajuste de gama.
-    # (mobius com npl=203 deixava a pele laranja e saturada demais — "a cor fica estranha".)
+    # HDR (HLG/Dolby Vision do iPhone) -> SDR. Escolhido por ele em 06/11 (opção "2 menos amarelo" de
+    # preview-cor-mondepars.jpg): hable npl=100, saturação +8 %, temperatura 7300 K (tira o amarelo), contraste +6 %.
+    # Rejeitados: mobius npl=203 (pele laranja, "cara de HDR") e gama 1.12 (pálido).
     tm = ("zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=hable:desat=0,"
-          "zscale=t=bt709:m=bt709:r=tv,format=yuv420p,eq=gamma=1.12:saturation=1.04,") if hdr(v) else ""
+          "zscale=t=bt709:m=bt709:r=tv,format=yuv420p,eq=saturation=1.08,colortemperature=temperature=7300,"
+          "eq=contrast=1.06,") if hdr(v) else ""
     W, H = round(1080 * z / 2) * 2, round(1920 * z / 2) * 2
     d = e - s
     out = f"{SEG}/s{k:03d}.mov"
-    tag = f"{v}|{s:.3f}|{e:.3f}|{z}|{tm}"
+    tag = f"{v}|{s:.3f}|{e:.3f}|{z}|{tm}|v709"
     if os.environ.get("REUSE") == "1" and os.path.exists(out + ".tag") and open(out + ".tag").read() == tag:
         lista.append(f"file '{os.path.abspath(out)}'"); continue   # trecho igual ao da última montagem
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{s:.3f}", "-i", v, "-t", f"{d:.3f}",
-                    "-vf", f"{tm}scale={W}:{H},crop=1080:1920:(iw-1080)/2:(ih-1920)*0.4,fps={FPS},format=yuv420p,setsar=1",
+                    "-vf", f"{tm}scale={W}:{H},crop=1080:1920:(iw-1080)/2:(ih-1920)*0.4,fps={FPS},format=yuv420p,setsar=1,"
+                    # etiqueta de cor CERTA: sem isso o trecho herda "bt2020" do HDR e a junção reconverte as cores
+                    # (imagem lavada/pálida/amarelada — o bug das v1/v2).
+                    "setparams=color_primaries=bt709:color_trc=bt709:colorspace=bt709:range=tv",
+                    "-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709",
                     "-af", f"aresample=48000,aformat=channel_layouts=mono,afade=t=in:d=0.01,afade=t=out:st={max(0, d - 0.015):.3f}:d=0.015",
                     "-c:v", "libx264", "-preset", "fast", "-crf", "14", "-g", "1", "-c:a", "pcm_s16le", out], check=True)
     open(out + ".tag", "w").write(tag)
