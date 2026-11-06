@@ -131,9 +131,11 @@ for k, (p, s, e, z) in enumerate(pieces):
     # HDR (HLG/Dolby Vision do iPhone) -> SDR. Escolhido por ele em 06/11 (opção "2 menos amarelo" de
     # preview-cor-mondepars.jpg): hable npl=100, saturação +8 %, temperatura 7300 K (tira o amarelo), contraste +6 %.
     # Rejeitados: mobius npl=203 (pele laranja, "cara de HDR") e gama 1.12 (pálido).
+    # "cor": "neutra" no corte.json = só a conversão HDR->SDR, sem o ajuste de cor (pedido dele no vídeo da Anitta).
+    grade = "" if cfg.get("cor") == "neutra" else \
+        "eq=saturation=1.08,colortemperature=temperature=7300,eq=contrast=1.06,"
     tm = ("zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=hable:desat=0,"
-          "zscale=t=bt709:m=bt709:r=tv,format=yuv420p,eq=saturation=1.08,colortemperature=temperature=7300,"
-          "eq=contrast=1.06,") if hdr(v) else ""
+          "zscale=t=bt709:m=bt709:r=tv,format=yuv420p," + grade) if hdr(v) else ""
     W, H = round(1080 * z / 2) * 2, round(1920 * z / 2) * 2
     d = e - s
     out = f"{SEG}/s{k:03d}.mov"
