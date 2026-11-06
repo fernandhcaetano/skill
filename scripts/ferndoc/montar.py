@@ -73,12 +73,14 @@ os.makedirs(SEG, exist_ok=True)
 lista = []
 for k, (p, s, e, z) in enumerate(pieces):
     v = videos[p - 1]
-    tm = ("zscale=t=linear:npl=203,format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=mobius:desat=0,"
-          "zscale=t=bt709:m=bt709:r=tv,") if hdr(v) else ""
+    # HDR (HLG/Dolby Vision do iPhone) -> SDR. Aprovado em 06/11: hable com npl=100 + leve ajuste de gama.
+    # (mobius com npl=203 deixava a pele laranja e saturada demais — "a cor fica estranha".)
+    tm = ("zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=hable:desat=0,"
+          "zscale=t=bt709:m=bt709:r=tv,format=yuv420p,eq=gamma=1.12:saturation=1.04,") if hdr(v) else ""
     W, H = round(1080 * z / 2) * 2, round(1920 * z / 2) * 2
     d = e - s
     out = f"{SEG}/s{k:03d}.mov"
-    tag = f"{v}|{s:.3f}|{e:.3f}|{z}"
+    tag = f"{v}|{s:.3f}|{e:.3f}|{z}|{tm}"
     if os.environ.get("REUSE") == "1" and os.path.exists(out + ".tag") and open(out + ".tag").read() == tag:
         lista.append(f"file '{os.path.abspath(out)}'"); continue   # trecho igual ao da última montagem
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{s:.3f}", "-i", v, "-t", f"{d:.3f}",

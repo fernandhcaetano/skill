@@ -83,6 +83,8 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Mondepars v1 aprovado ("ficou TUDO!")** — só pediu tirar a cara de HDR ("a cor fica estranha"). Conversão HDR→SDR do iPhone
+  agora é hable npl=100 + gama 1.12 (em `montar.py`); a antiga (mobius npl=203) saturava e alaranjava a pele.
 - **Mondepars (06/11, 3 partes, 5min05 → 1min37)**: celular grava a frontal **espelhada** (texto da sacola invertido) — ele prefere **deixar como está**.
   Abertura testada: cold open de 2,6 s com o item mais curioso já vestido ("essa gravata, espetacular") antes do "bora ver o que eu comprei".
   Ele esqueceu a palavra "acervo" na fala → virou rótulo digitado "pro meu acervo" + som de teclado. Emendas entre partes ("eu tinha ficado
