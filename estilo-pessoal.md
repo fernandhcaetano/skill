@@ -145,7 +145,8 @@ Mistura: **estrutura e elegância da A + temperatura e cor da B**, pensada para 
   (TikTok Sans 500, branco minúsculo, palavra-chave em mostarda). Ênfases do meio/fim ("tava muito bom", "vale a pena") também ficam pequenas.
 
 - **Fonte do gancho (06/11/2026): Archivo Black** (opção D), caixa alta, mostarda, ~112 px. Substitui a Anton.
-- Fonte pequena: em dúvida entre **DM Mono** (4) e **Bricolage Grotesque 500** (5); comparação em `preview-fontes-4x5.jpg`.
+- **Fonte pequena (06/11/2026): Bricolage Grotesque 500** (opção 5), ~54 px, branco minúsculo, palavra-chave em mostarda. Substitui a TikTok Sans.
+  Descartada DM Mono (4): mais autoral, mas lê pior no escuro. Comparação em `preview-fontes-4x5.jpg`.
 
 ## 7. Perguntas em aberto
 - Quais efeitos do CapCut/TikTok entram no banco (nomes) e em que momentos cada um é usado.
