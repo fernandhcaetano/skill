@@ -165,6 +165,12 @@ Mistura: **estrutura e elegância da A + temperatura e cor da B**, pensada para 
   quando o celular descarrega), cortar todas as pausas de "pensando", juntar as partes num corte fluido e propor melhorias. Entrega profissional.
   Fluxo e ferramentas na skill `.claude/skills/estilo-ferndoc/`.
 
+- **Efeitos sonoros (06/11/2026):** ele grava a tela do CapCut tocando as prévias e põe na pasta "Efeito Sonoros" (junto dos vídeos).
+  Gravação única: recortar e guardar no repo (`public/sfx/ferndoc/`). O banco é cardápio, não é para usar tudo; cada som tem função
+  (teclado = texto sendo digitado; clique = algo aparece na tela, foto, ou troca de vídeo/cena; etc.), como nas referências.
+  Tabela de uso na skill `estilo-ferndoc`, seção 5.
+- **Próximo vídeo:** compras na **Mondepars** (confirmar grafia), 2 peças, continuação de um vídeo anterior; 3 partes (celular descarregou 2×).
+
 ## 7. Perguntas em aberto
 - Quais efeitos do CapCut/TikTok entram no banco (nomes) e em que momentos cada um é usado.
 - Legenda palavra a palavra ao lado do rosto (estilo ref C) ou só rótulos?

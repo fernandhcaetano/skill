@@ -61,8 +61,21 @@ Estático: parede de **madeira clara** + **cortina preta** (foto em `estilo-pess
 (perde contraste). Sugestões já dadas: quina na diagonal (madeira só em ~1/3 lateral), luz quente rasante na cortina, objeto-assinatura no quadro.
 
 ## 5. Som
-- **Efeitos sonoros: do CapCut/TikTok**, enviados por ele (pasta no Drive) → banco em `public/sfx/ferndoc/`. **Nunca sintetizados** (soaram artificiais).
-  Poucos, só em ênfase (2–4 por vídeo). Até o banco existir, sem efeitos.
+- **Efeitos sonoros: do CapCut/TikTok**, gravados por ele **uma única vez** (gravação de tela do CapCut tocando as prévias; pasta
+  "Efeito Sonoros" dentro da pasta dos vídeos no Drive). Recortar cada som e **versionar no repo** em `public/sfx/ferndoc/<categoria>/<nome>.wav`
+  + `public/sfx/ferndoc/catalogo.md` (nome no CapCut, categoria, duração, uso). Ele não vai gravar de novo: nunca apagar esse banco.
+  **Nunca sintetizados** (soaram artificiais).
+- **O banco é um cardápio, não uma lista para usar tudo.** Cada som tem uma função, como nas referências estudadas:
+  | Som | Quando usar |
+  |---|---|
+  | Teclado/digitação | texto sendo **digitado** na tela (letra por letra) — o som acompanha a animação |
+  | Clique (mouse) | algo **aparece** na tela: foto, imagem, cartela, rótulo importante; ou **troca de vídeo/cena** marcante |
+  | Whoosh/transição | troca de assunto/bloco, entrada de cartela em tela cheia (não em todo corte) |
+  | Pop | entrada pontual de um elemento pequeno (sticker, emoji, número) |
+  | Ding/brilho | revelação, preço, "olha isso" |
+  | Boom/impacto grave | gancho forte ou virada (no máx. 1 por vídeo) |
+  Som sempre **motivado por algo que acontece na imagem**. Cortes comuns de fala (jump cuts) ficam **sem** som. Voz sempre na frente
+  (efeitos ~8–12 dB abaixo do pico da voz). Liste no relatório de decupagem onde cada efeito vai entrar.
 - Música de fundo: decidir depois (ainda não).
 
 ## 6. Revisar e entregar
