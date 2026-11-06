@@ -83,6 +83,10 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Cor (06/11)**: bug sério corrigido no `montar.py` — o ffprobe devolve `arib-std-b67,` (vírgula extra, Dolby Vision) e a
+  detecção de HDR falhava: v1/v2 saíram com HLG cru → "pálido, amarelado, cara de HDR". Também faltava etiquetar os trechos como bt709.
+  Sempre conferir no `.tag` do trecho (`raw/ferndoc/segs/sNNN.mov.tag`) que a conversão entrou e comparar 1 quadro com a prévia aprovada.
+  Look aprovado: opção "2 menos amarelo". Recomendação dada: desligar Vídeo HDR no iPhone (Ajustes → Câmera → Gravar Vídeo).
 - **Mondepars v1 aprovado ("ficou TUDO!")** — só pediu tirar a cara de HDR ("a cor fica estranha"). Conversão HDR→SDR do iPhone
   agora é hable npl=100 + gama 1.12 (em `montar.py`); a antiga (mobius npl=203) saturava e alaranjava a pele.
 - **Mondepars (06/11, 3 partes, 5min05 → 1min37)**: celular grava a frontal **espelhada** (texto da sacola invertido) — ele prefere **deixar como está**.
