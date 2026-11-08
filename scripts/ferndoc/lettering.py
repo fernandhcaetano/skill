@@ -11,7 +11,7 @@ lettering.json (tempos no vídeo FINAL; use raw/ferndoc/palavras_final.json):
      [["no", 2.2], ["rio", 2.4], ["de", 2.6], ["janeiro?", 2.8]]]},
   {"ate": 9.9, "y": 260, "linhas": [[["logo", 7.2], ["depois", 7.4], ["do", 7.7], ["pedágio", 7.9]]]}
 ]
-Palavra = [texto, entra_em] ou [texto, entra_em, "G"] (grande) ou [texto, entra_em, "D"] (digitado letra a letra,
+Palavra = [texto, entra_em] ou [texto, entra_em, "G"] (grande; "G88" = grande com 88 px) ou [texto, entra_em, "D"] (digitado letra a letra,
 2 frames por letra, sem pop — combine com o som de teclado). Cada palavra entra com um pop curto e todas
 saem juntas em "ate". Regras do estilo: tudo branco, sombra suave, sem caixa de fundo.
 """
@@ -33,16 +33,19 @@ layout = []
 for it in items:
     y = it["y"]
     for linha in it["linhas"]:
-        f = GRD if len(linha[0]) > 2 and linha[0][2] == "G" else PEQ
+        mk = linha[0][2] if len(linha[0]) > 2 else ""
+        # "G" = letra grande padrão (112 px); "G88" = grande com tamanho próprio (títulos longos)
+        f = (ImageFont.truetype(GRD.path, int(mk[1:])) if mk[1:].isdigit() else GRD) if mk.startswith("G") else PEQ
         dig = [len(p) > 2 and p[2] == "D" for p in linha]
-        sp = 22 if f is GRD else 14
+        big = f is not PEQ
+        sp = 22 if big else 14
         ws = [f.getlength(p[0]) for p in linha]
         x = (W - (sum(ws) + sp * (len(linha) - 1))) / 2
         for p, wd, dg in zip(linha, ws, dig):
             layout.append((p[1], it["ate"], x, y, p[0], f, dg))
             x += wd + sp
         a, d = f.getmetrics()
-        y += (a + d - 8) if f is GRD else (a + d + 6)
+        y += (a + d - 8) if big else (a + d + 6)
 
 _c = {}
 

@@ -83,6 +83,10 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Intolerância (08/11, opinião/sério)**: tom sério = quase sem efeito (só clique na cartela da manchete), sem coro/teclado/swish.
+  Print de manchete vira cartela off-white em tela cheia (3 s) via `{"clipe": cartela.mp4}`. Como editor, sinalizar falas que acusam
+  pessoa real identificável e dúvidas factuais (cargo/nome) e deixar ele decidir (ele cortou a acusação; Ana Elisa Santos = deputada
+  federal PT-MG). Título longo no gancho: `"G88"` no lettering (tamanho próprio).
 - **COR DEFINITIVA (08/11, aprovada: "Perfeito")**: SDR "sem mexer" = conversão HDR->SDR **calibrada pelo print da galeria do iPhone**: hable com
   **npl=280**, sem nenhum ajuste (`"cor": "neutra"`, `"npl": 280` = padrão do montar.py). npl=100 (antes) deixava a pele ~25 % mais
   clara que no iPhone = "estourado"/"cara de tratamento". Se um vídeo novo parecer diferente, pedir 1 print da galeria e recalibrar
