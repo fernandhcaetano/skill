@@ -83,6 +83,10 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **COR (08/11): ele não quer NENHUM tratamento nem conversão** — toda conversão HDR→SDR (hable, reinhard, BT.2408/clip, mobius) ou
+  "estourou" o rosto ou ficou com cara de tratada. Padrão agora: `"cor": "original"` no corte.json = mantém o HDR (HLG) do iPhone,
+  HEVC 10 bits (hvc1), igual à galeria; texto em cinza 191 (branco de referência HLG). Limitação: clipes SDR em tela cheia ainda não
+  são aceitos nesse modo (converter o clipe para HLG antes, se precisar). Prévias de quadro para mim: converter só na hora de olhar.
 - **Golden Goose True-Star (08/11)**: escreve-se **True-Star** (com hífen) e Ball Star. Sem tratamento de cor. `aparar.py` NÃO serve
   para cenas de ação sem fala (encurta/zera) nem para falas baixas ("Gostei!", "Bora") — use só em trechos de fala e confira; na
   dúvida, cortes manuais pela palavra + checar energia. Ações longas (calçar/amarrar) viram 1,5–2 s. Planos fechados em pé: sem rótulo
