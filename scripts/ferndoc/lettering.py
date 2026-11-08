@@ -25,7 +25,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 FONTS = os.path.join(ROOT, "fonts")
 items, DUR = json.load(open(sys.argv[1])), float(sys.argv[2])
 FPS, W, H, SS = 30, 1080, 1920, 2
-COR = (255, 255, 255, 255)
+COR = tuple(int(x) for x in os.environ.get("FERNDOC_COR_TEXTO", "255,255,255").split(",")) + (255,)
 PEQ = ImageFont.truetype(f"{FONTS}/BricolageGrotesque-500.ttf", 54)
 GRD = ImageFont.truetype(f"{FONTS}/ArchivoBlack-Regular.ttf", 112)
 

@@ -79,6 +79,9 @@ json.dump(palavras, open("raw/ferndoc/palavras_final.json", "w"), ensure_ascii=F
 SEG = "raw/ferndoc/segs"
 os.makedirs(SEG, exist_ok=True)
 lista = []
+ORIGINAL = cfg.get("cor") == "original"
+if ORIGINAL and any("clipe" in c or "espaco" in c for c in cfg["cortes"]):
+    sys.exit("cor 'original' (HDR) ainda não suporta clipes/espaços em tela cheia (são SDR)")
 FONTE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts", "BricolageGrotesque-500.ttf")
 ENC = ["-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709",
        "-c:v", "libx264", "-preset", "fast", "-crf", "14", "-g", "1", "-c:a", "pcm_s16le"]
@@ -139,17 +142,26 @@ for k, (p, s, e, z) in enumerate(pieces):
     W, H = round(1080 * z / 2) * 2, round(1920 * z / 2) * 2
     d = e - s
     out = f"{SEG}/s{k:03d}.mov"
-    tag = f"{v}|{s:.3f}|{e:.3f}|{z}|{tm}|v709"
+    af = f"aresample=48000,aformat=channel_layouts=mono,afade=t=in:d=0.01,afade=t=out:st={max(0, d - 0.015):.3f}:d=0.015"
+    if ORIGINAL:
+        # "cor": "original" = SEM NENHUMA conversão: mantém o HDR (HLG) do iPhone, 10 bits, igual à galeria.
+        tag = f"{v}|{s:.3f}|{e:.3f}|{z}|original-hlg"
+        vf = (f"scale={W}:{H},crop=1080:1920:(iw-1080)/2:(ih-1920)*0.4,fps={FPS},format=yuv420p10le,setsar=1,"
+              "setparams=color_primaries=bt2020:color_trc=arib-std-b67:colorspace=bt2020nc:range=tv")
+        enc = ["-color_primaries", "bt2020", "-color_trc", "arib-std-b67", "-colorspace", "bt2020nc",
+               "-c:v", "libx264", "-preset", "fast", "-crf", "12", "-g", "1", "-pix_fmt", "yuv420p10le", "-profile:v", "high10"]
+    else:
+        tag = f"{v}|{s:.3f}|{e:.3f}|{z}|{tm}|v709"
+        # etiqueta de cor CERTA: sem isso o trecho herda "bt2020" do HDR e a junção reconverte as cores
+        # (imagem lavada/pálida/amarelada — o bug das v1/v2).
+        vf = (f"{tm}scale={W}:{H},crop=1080:1920:(iw-1080)/2:(ih-1920)*0.4,fps={FPS},format=yuv420p,setsar=1,"
+              "setparams=color_primaries=bt709:color_trc=bt709:colorspace=bt709:range=tv")
+        enc = ["-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709",
+               "-c:v", "libx264", "-preset", "fast", "-crf", "14", "-g", "1"]
     if os.environ.get("REUSE") == "1" and os.path.exists(out + ".tag") and open(out + ".tag").read() == tag:
         lista.append(f"file '{os.path.abspath(out)}'"); continue   # trecho igual ao da última montagem
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{s:.3f}", "-i", v, "-t", f"{d:.3f}",
-                    "-vf", f"{tm}scale={W}:{H},crop=1080:1920:(iw-1080)/2:(ih-1920)*0.4,fps={FPS},format=yuv420p,setsar=1,"
-                    # etiqueta de cor CERTA: sem isso o trecho herda "bt2020" do HDR e a junção reconverte as cores
-                    # (imagem lavada/pálida/amarelada — o bug das v1/v2).
-                    "setparams=color_primaries=bt709:color_trc=bt709:colorspace=bt709:range=tv",
-                    "-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709",
-                    "-af", f"aresample=48000,aformat=channel_layouts=mono,afade=t=in:d=0.01,afade=t=out:st={max(0, d - 0.015):.3f}:d=0.015",
-                    "-c:v", "libx264", "-preset", "fast", "-crf", "14", "-g", "1", "-c:a", "pcm_s16le", out], check=True)
+                    "-vf", vf, "-af", af, *enc, "-c:a", "pcm_s16le", out], check=True)
     open(out + ".tag", "w").write(tag)
     lista.append(f"file '{os.path.abspath(out)}'")
 open(f"{SEG}/lista.txt", "w").write("\n".join(lista) + "\n")
@@ -176,15 +188,26 @@ if sfx:
 if cfg.get("lettering"):
     ov = "raw/ferndoc/lettering.mov"
     here = os.path.dirname(os.path.abspath(__file__))
+    # no HDR, o branco do texto vai no "branco de referência" (75 % HLG ≈ 203 nits), não no pico de brilho
+    envl = dict(os.environ, FERNDOC_COR_TEXTO="191,191,191" if ORIGINAL else "255,255,255")
     letter = subprocess.Popen([sys.executable, "-I", f"{here}/lettering.py", cfg["lettering"], str(out_t)],
-                              stdout=subprocess.PIPE)
+                              stdout=subprocess.PIPE, env=envl)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgba", "-s", "1080x1920",
                     "-r", str(FPS), "-i", "-", "-c:v", "qtrle", ov], stdin=letter.stdout, check=True)
     extra += ["-i", ov]
-    graph.append(f"[0:v][{n_in}:v]overlay=0:0:eof_action=pass,format=yuv420p[vf]"); vout = "[vf]"
+    if ORIGINAL:
+        graph.append(f"[{n_in}:v]format=yuva420p10le[lt];[0:v][lt]overlay=0:0:eof_action=pass:format=yuv420p10,"
+                     "format=yuv420p10le[vf]")
+    else:
+        graph.append(f"[0:v][{n_in}:v]overlay=0:0:eof_action=pass,format=yuv420p[vf]")
+    vout = "[vf]"
 
+VENC = (["-c:v", "libx265", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p10le", "-tag:v", "hvc1",
+         "-x265-params", "colorprim=bt2020:transfer=arib-std-b67:colormatrix=bt2020nc:range=limited",
+         "-color_primaries", "bt2020", "-color_trc", "arib-std-b67", "-colorspace", "bt2020nc"] if ORIGINAL else
+        ["-c:v", "libx264", "-preset", "medium", "-crf", "18", "-profile:v", "high",
+         "-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709"])
 subprocess.run(["ffmpeg", "-v", "error", "-stats", "-y", *ins, *extra, "-filter_complex", ";".join(graph),
-                "-map", vout, "-map", "[a]", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-profile:v", "high",
-                "-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709",
+                "-map", vout, "-map", "[a]", *VENC,
                 "-c:a", "aac", "-b:a", "256k", "-movflags", "+faststart", saida], check=True)
 print(f"{len(pieces)} cortes, duração final {out_t:.1f}s -> {saida}")
