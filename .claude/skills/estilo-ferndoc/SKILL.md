@@ -83,8 +83,8 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
-- **COR (08/11): ele não quer NENHUM tratamento nem conversão** — toda conversão HDR→SDR (hable, reinhard, BT.2408/clip, mobius) ou
-  "estourou" o rosto ou ficou com cara de tratada. Padrão agora: `"cor": "original"` no corte.json = mantém o HDR (HLG) do iPhone,
+- **COR (08/11)**: o modo `"cor": "original"` (HDR mantido) foi REJEITADO ("parece que o HDR está ativado"). Padrão = **`"cor": "neutra"`**
+  (igual à Anitta v2: só hable npl=100, sem ajuste). Modo original, se um dia precisar: mantém o HDR (HLG) do iPhone,
   HEVC 10 bits (hvc1), igual à galeria; texto em cinza 191 (branco de referência HLG). Limitação: clipes SDR em tela cheia ainda não
   são aceitos nesse modo (converter o clipe para HLG antes, se precisar). Prévias de quadro para mim: converter só na hora de olhar.
 - **Golden Goose True-Star (08/11)**: escreve-se **True-Star** (com hífen) e Ball Star. Sem tratamento de cor. `aparar.py` NÃO serve
