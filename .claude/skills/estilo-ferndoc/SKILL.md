@@ -83,6 +83,10 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Golden Goose True-Star (08/11)**: escreve-se **True-Star** (com hífen) e Ball Star. Sem tratamento de cor. `aparar.py` NÃO serve
+  para cenas de ação sem fala (encurta/zera) nem para falas baixas ("Gostei!", "Bora") — use só em trechos de fala e confira; na
+  dúvida, cortes manuais pela palavra + checar energia. Ações longas (calçar/amarrar) viram 1,5–2 s. Planos fechados em pé: sem rótulo
+  no topo (bate na cabeça).
 - **Top 5 Anitta / Equilibrivm I (06/11)**: ranking com clipes em TELA CHEIA 9:16 depois de cada nome (`{"clipe":..., "enquadre":[[t,cx,zoom,cy]...]}`
   no corte.json, um item por plano). Pedidos dele: clipe só no top 5 (menções sem clipe), **~5 s** por clipe, sempre no **refrão**;
   se a Anitta não aparece no refrão, ainda assim usar o refrão (ele preferiu as dançarinas do refrão de Desgraça ao gancho com close
