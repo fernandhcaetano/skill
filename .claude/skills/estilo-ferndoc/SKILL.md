@@ -83,6 +83,9 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Regra (08/11): ZERO silêncio.** Ele quer fora todo suspiro/respiração e toda cena olhando o iPad/lendo sem falar. Depois de
+  montar a lista de cortes, SEMPRE rodar `scripts/ferndoc/apertar.py raw/ferndoc/corte.json` (parte os trechos em todo intervalo sem
+  voz ≥ 0,25 s) e conferir pela transcrição que nenhuma palavra sumiu. Recalcular os tempos do lettering pelas palavras depois.
 - **Intolerância (08/11, opinião/sério)**: tom sério = quase sem efeito (só clique na cartela da manchete), sem coro/teclado/swish.
   Print de manchete vira cartela off-white em tela cheia (3 s) via `{"clipe": cartela.mp4}`. Como editor, sinalizar falas que acusam
   pessoa real identificável e dúvidas factuais (cargo/nome) e deixar ele decidir (ele cortou a acusação; Ana Elisa Santos = deputada
