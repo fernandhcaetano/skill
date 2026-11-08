@@ -83,6 +83,10 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **COR DEFINITIVA (08/11)**: SDR "sem mexer" = conversão HDR->SDR **calibrada pelo print da galeria do iPhone**: hable com
+  **npl=280**, sem nenhum ajuste (`"cor": "neutra"`, `"npl": 280` = padrão do montar.py). npl=100 (antes) deixava a pele ~25 % mais
+  clara que no iPhone = "estourado"/"cara de tratamento". Se um vídeo novo parecer diferente, pedir 1 print da galeria e recalibrar
+  o npl comparando madeira/cortina/pele (script em raw/ferndoc/goldengoose/calib).
 - **COR (08/11)**: o modo `"cor": "original"` (HDR mantido) foi REJEITADO ("parece que o HDR está ativado"). Padrão = **`"cor": "neutra"`**
   (igual à Anitta v2: só hable npl=100, sem ajuste). Modo original, se um dia precisar: mantém o HDR (HLG) do iPhone,
   HEVC 10 bits (hvc1), igual à galeria; texto em cinza 191 (branco de referência HLG). Limitação: clipes SDR em tela cheia ainda não

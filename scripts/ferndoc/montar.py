@@ -137,7 +137,11 @@ for k, (p, s, e, z) in enumerate(pieces):
     # "cor": "neutra" no corte.json = só a conversão HDR->SDR, sem o ajuste de cor (pedido dele no vídeo da Anitta).
     grade = "" if cfg.get("cor") == "neutra" else \
         "eq=saturation=1.08,colortemperature=temperature=7300,eq=contrast=1.06,"
-    tm = ("zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=hable:desat=0,"
+    # "npl" = brilho de referência da conversão HDR->SDR. Calibrado em 08/11 contra print da galeria do iPhone
+    # (mesmo cenário): npl 280, hable, sem nenhum ajuste -> madeira/pele/cortina a 3–5 níveis do iPhone. npl 100 (antigo)
+    # deixava tudo claro demais (pele 228 vs 180 no iPhone) = "estourado"/"com cara de tratamento".
+    npl = cfg.get("npl", 280)
+    tm = (f"zscale=t=linear:npl={npl},format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=hable:desat=0,"
           "zscale=t=bt709:m=bt709:r=tv,format=yuv420p," + grade) if hdr(v) else ""
     W, H = round(1080 * z / 2) * 2, round(1920 * z / 2) * 2
     d = e - s
