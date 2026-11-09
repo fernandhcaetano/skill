@@ -83,6 +83,9 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Ritmo (09/11, Renner v3)**: "zero silêncio" com folga mínima ficou SECO demais. Equilíbrio aprovado em teste: `apertar.py`
+  com padrões novos = só tira pausas ≥ 0,5 s, mantém 0,12 s antes e **0,28 s de respiro depois** de cada frase, + fundido 0,16 s.
+  Suspiro/leitura longa continuam saindo (são > 0,5 s).
 - **Renner (09/11)**: ele achou os cortes "muito secos" → `montar.py` agora faz **fundido de 0,16 s** (imagem + som) em todo corte
   (`"transicao"` no corte.json; 0 = seco). Pediu **um pouco mais claro**: npl 240 nesse vídeo (280 = calibrado do print; menor =
   mais claro). Foto em tela cheia: recortar 9:16 centrado nele (conferir o tamanho real do arquivo!), ~1,6 s, zoom leve.

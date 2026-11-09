@@ -1,6 +1,6 @@
 """Tira TODO intervalo sem voz de dentro dos trechos de fala: suspiros, respirações, pausas lendo o iPad.
 
-Uso: python3 -I scripts/ferndoc/apertar.py raw/ferndoc/corte.json [min_pausa=0.25]   (reescreve; guarda .bak2)
+Uso: python3 -I scripts/ferndoc/apertar.py raw/ferndoc/corte.json [min_pausa=0.5] [folga_antes=0.12] [folga_depois=0.28]   (reescreve; guarda .bak2)
 
 Para cada trecho {"id","ini","fim"}: mede a energia na faixa da voz (120–1000 Hz, 10 ms). Onde ela fica abaixo de
 piso_de_ruído + 30 dB por pelo menos `min_pausa` segundos, o trecho é partido e esse intervalo sai (deixa 70 ms
@@ -16,8 +16,11 @@ import numpy as np
 from scipy.signal import butter, sosfilt
 
 p = sys.argv[1]
-MIN = float(sys.argv[2]) if len(sys.argv) > 2 else 0.25
-PRE, POS, LIM = 0.07, 0.09, 30
+MIN = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5   # só tira pausas ≥ 0,5 s (antes 0,25 = seco demais)
+# Folga mantida antes/depois da voz. Ele achou 0,07/0,09 "seco demais" (09/11): padrão agora 0,12 / 0,28.
+PRE = float(sys.argv[3]) if len(sys.argv) > 3 else 0.12
+POS = float(sys.argv[4]) if len(sys.argv) > 4 else 0.28
+LIM = 30
 c = json.load(open(p))
 ch = {k["id"]: k for k in json.load(open("raw/ferndoc/chunks.json"))}
 env = {}
