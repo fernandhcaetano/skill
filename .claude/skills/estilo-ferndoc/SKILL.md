@@ -83,6 +83,10 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Renner v4 (09/11) — regra de corte**: NADA de fundido/transição ("não quero efeito de transição"): `transicao` padrão = 0.
+  O que ele quer é **respiro**: todo corte termina ≥ 0,35 s depois da última palavra (apertar.py garante pelas palavras) e começa
+  ≥ 0,12 s antes da primeira. Se dois cortes ficam a < 0,15 s um do outro, juntar num trecho contínuo (sem corte). Frase seguida de
+  ação (ex.: vestir a jaqueta) = deixar contínuo, não pular para o meio da ação.
 - **Ritmo (09/11, Renner v3)**: "zero silêncio" com folga mínima ficou SECO demais. Equilíbrio aprovado em teste: `apertar.py`
   com padrões novos = só tira pausas ≥ 0,5 s, mantém 0,12 s antes e **0,28 s de respiro depois** de cada frase, + fundido 0,16 s.
   Suspiro/leitura longa continuam saindo (são > 0,5 s).

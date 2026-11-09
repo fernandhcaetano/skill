@@ -52,7 +52,7 @@ def hdr(v):
 
 
 # Transição entre cortes: fundido curto (s) de imagem e som. Ele achou os cortes secos demais (09/11). 0 = corte seco.
-XF = float(cfg.get("transicao", 0.16))
+XF = float(cfg.get("transicao", 0))   # padrão: corte normal (ele NÃO quer fundido, 09/11)
 pieces, palavras, out_t, last_p, z = [], [], 0.0, None, 1.0
 for c in cfg["cortes"]:
     if "espaco" in c or "clipe" in c:   # inserções em tela cheia: não usam a fala nem o zoom alternado
@@ -70,7 +70,8 @@ for c in cfg["cortes"]:
     else:
         z = 1.0
     last_p = p
-    for w in ch["palavras"]:
+    # palavras de TODOS os trechos brutos da mesma parte dentro do intervalo (um corte pode atravessar dois trechos)
+    for w in (w for k in chunks.values() if k["parte"] == p for w in k["palavras"]):
         if s - 0.05 <= (w["s"] + w["e"]) / 2 <= e + 0.05:
             palavras.append({"w": w["w"], "s": round(out_t + w["s"] - s, 2), "e": round(out_t + w["e"] - s, 2)})
     pieces.append((p, s, e, z)); out_t += e - s - XF

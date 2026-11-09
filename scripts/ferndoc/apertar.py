@@ -79,6 +79,20 @@ novos = junt
 for x in novos:
     if "id" in x and x["fim"] - x["ini"] < 0.6:
         print(f"ATENÇÃO fragmento curto {x['id']} {x['ini']}-{x['fim']} ({x['fim'] - x['ini']:.2f}s): decidir na mão")
+# Nunca cortar palavra: o trecho termina >= 0,35 s depois da última palavra e começa >= 0,12 s antes da primeira
+# (sem invadir a palavra seguinte/anterior do mesmo trecho bruto). Ele reclamou de "vinho" cortado (09/11).
+for x in novos:
+    if "id" not in x:
+        continue
+    ws = ch[x["id"]]["palavras"]
+    dentro = [i for i, w in enumerate(ws) if x["ini"] - 0.05 <= (w["s"] + w["e"]) / 2 <= x["fim"] + 0.05]
+    if not dentro:
+        continue
+    i0, i1 = dentro[0], dentro[-1]
+    lim_fim = ws[i1 + 1]["s"] - 0.05 if i1 + 1 < len(ws) else ch[x["id"]]["fim"] + 0.4
+    lim_ini = ws[i0 - 1]["e"] + 0.05 if i0 > 0 else max(0.0, ch[x["id"]]["ini"] - 0.3)
+    x["fim"] = round(max(x["fim"], min(ws[i1]["e"] + 0.35, lim_fim)), 2)
+    x["ini"] = round(min(x["ini"], max(ws[i0]["s"] - 0.12, lim_ini)), 2)
 c["cortes"] = novos
 json.dump(c, open(p, "w"), ensure_ascii=False, indent=1)
 print(f"{sum(1 for k in novos if 'id' in k)} trechos de fala, {tirado:.1f}s sem voz removidos")
