@@ -61,6 +61,21 @@ for x in c["cortes"]:
         novos.append({**x, "ini": round(ini, 2), "fim": round(fim, 2)})
     tirado += (x["fim"] - x["ini"]) - sum(min(x["fim"], (a + s1) / 100 + POS) - max(x["ini"], (a + s0) / 100 - PRE)
                                           for s0, s1 in blocos if (s1 - s0) / 100 >= 0.06)
+# Fragmentos muito curtos (< 0,6 s) entre dois cortes dão sensação de "trava" (ele reclamou em 09/11).
+# Se a pausa até o vizinho for pequena (≤ 0,5 s), junta com ele; senão, só avisa para decidir na mão.
+junt = []
+for x in novos:
+    if junt and "id" in x and "id" in junt[-1] and x["id"] == junt[-1]["id"]:
+        a_, b_ = junt[-1], x
+        curto = (a_["fim"] - a_["ini"] < 0.6) or (b_["fim"] - b_["ini"] < 0.6)
+        if curto and b_["ini"] - a_["fim"] <= 0.5:
+            a_["fim"] = b_["fim"]
+            continue
+    junt.append(x)
+novos = junt
+for x in novos:
+    if "id" in x and x["fim"] - x["ini"] < 0.6:
+        print(f"ATENÇÃO fragmento curto {x['id']} {x['ini']}-{x['fim']} ({x['fim'] - x['ini']:.2f}s): decidir na mão")
 c["cortes"] = novos
 json.dump(c, open(p, "w"), ensure_ascii=False, indent=1)
 print(f"{sum(1 for k in novos if 'id' in k)} trechos de fala, {tirado:.1f}s sem voz removidos")
