@@ -83,6 +83,9 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **"Trava" (09/11)**: fragmento de fala < 0,6 s entre dois cortes ("E eu", "O", "mas gente") parece travamento. `apertar.py` agora
+  junta esses pedaços com o vizinho ou avisa; depois de montar, listar os trechos (< 0,6 s = problema) e conferir que nenhum corte
+  começa no meio de palavra (ex.: "…u não tô" — puxar o início para a palavra inteira).
 - **Regra (08/11): ZERO silêncio.** Ele quer fora todo suspiro/respiração e toda cena olhando o iPad/lendo sem falar. Depois de
   montar a lista de cortes, SEMPRE rodar `scripts/ferndoc/apertar.py raw/ferndoc/corte.json` (parte os trechos em todo intervalo sem
   voz ≥ 0,25 s) e conferir pela transcrição que nenhuma palavra sumiu. Recalcular os tempos do lettering pelas palavras depois.
