@@ -16,10 +16,10 @@ import numpy as np
 from scipy.signal import butter, sosfilt
 
 p = sys.argv[1]
-MIN = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5   # só tira pausas ≥ 0,5 s (antes 0,25 = seco demais)
+MIN = float(sys.argv[2]) if len(sys.argv) > 2 else 0.4   # só tira pausas ≥ 0,4 s (antes 0,25 = seco demais)
 # Folga mantida antes/depois da voz. Ele achou 0,07/0,09 "seco demais" (09/11): padrão agora 0,12 / 0,28.
 PRE = float(sys.argv[3]) if len(sys.argv) > 3 else 0.12
-POS = float(sys.argv[4]) if len(sys.argv) > 4 else 0.28
+POS = float(sys.argv[4]) if len(sys.argv) > 4 else 0.20
 LIM = 30
 c = json.load(open(p))
 ch = {k["id"]: k for k in json.load(open("raw/ferndoc/chunks.json"))}
@@ -79,7 +79,7 @@ novos = junt
 for x in novos:
     if "id" in x and x["fim"] - x["ini"] < 0.6:
         print(f"ATENÇÃO fragmento curto {x['id']} {x['ini']}-{x['fim']} ({x['fim'] - x['ini']:.2f}s): decidir na mão")
-# Nunca cortar palavra: o trecho termina >= 0,35 s depois da última palavra e começa >= 0,12 s antes da primeira
+# Nunca cortar palavra: o trecho termina >= 0,25 s depois da última palavra e começa >= 0,12 s antes da primeira
 # (sem invadir a palavra seguinte/anterior do mesmo trecho bruto). Ele reclamou de "vinho" cortado (09/11).
 for x in novos:
     if "id" not in x:
@@ -91,8 +91,15 @@ for x in novos:
     i0, i1 = dentro[0], dentro[-1]
     lim_fim = ws[i1 + 1]["s"] - 0.05 if i1 + 1 < len(ws) else ch[x["id"]]["fim"] + 0.4
     lim_ini = ws[i0 - 1]["e"] + 0.05 if i0 > 0 else max(0.0, ch[x["id"]]["ini"] - 0.3)
-    x["fim"] = round(max(x["fim"], min(ws[i1]["e"] + 0.35, lim_fim)), 2)
+    x["fim"] = round(max(x["fim"], min(ws[i1]["e"] + 0.25, lim_fim)), 2)
     x["ini"] = round(min(x["ini"], max(ws[i0]["s"] - 0.12, lim_ini)), 2)
+# Se as folgas se encostaram/sobrepuseram (pausa curta), vira um trecho contínuo — nunca repetir som.
+fin = []
+for x in novos:
+    if fin and "id" in x and "id" in fin[-1] and x["id"] == fin[-1]["id"] and x["ini"] <= fin[-1]["fim"] + 0.05:
+        fin[-1]["fim"] = max(fin[-1]["fim"], x["fim"]); continue
+    fin.append(x)
+novos = fin
 c["cortes"] = novos
 json.dump(c, open(p, "w"), ensure_ascii=False, indent=1)
 print(f"{sum(1 for k in novos if 'id' in k)} trechos de fala, {tirado:.1f}s sem voz removidos")

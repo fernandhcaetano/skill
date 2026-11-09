@@ -166,7 +166,14 @@ for k, (p, s, e, z) in enumerate(pieces):
               "setparams=color_primaries=bt709:color_trc=bt709:colorspace=bt709:range=tv")
         enc = ["-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709",
                "-c:v", "libx264", "-preset", "fast", "-crf", "14", "-g", "1"]
-    if os.environ.get("REUSE") == "1" and os.path.exists(out + ".tag") and open(out + ".tag").read() == tag:
+    def _ok(f, d):   # arquivo completo? (montagem interrompida deixa trecho pela metade com a etiqueta antiga)
+        try:
+            return abs(float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of",
+                                             "csv=p=0", f], capture_output=True, text=True).stdout) - d) < 0.1
+        except ValueError:
+            return False
+    if os.environ.get("REUSE") == "1" and os.path.exists(out + ".tag") and open(out + ".tag").read() == tag \
+            and _ok(out, round(d * FPS) / FPS):
         lista.append(f"file '{os.path.abspath(out)}'"); gk.append(k); continue   # trecho igual ao da última montagem
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{s:.3f}", "-i", v, "-t", f"{d:.3f}",
                     "-vf", vf, "-af", af, *enc, "-c:a", "pcm_s16le", out], check=True)

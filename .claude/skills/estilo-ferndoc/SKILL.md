@@ -83,6 +83,9 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Respiro final (09/11, Renner v5)**: "diminuir só um pouquinho" → padrão do apertar.py = pausas ≥ 0,4 s saem; folga 0,12 antes /
+  0,20 depois; palavra final + 0,25 s. Cuidado: NÃO interromper montagem com REUSE=1 (trecho fica pela metade) — montar.py agora
+  confere a duração antes de reaproveitar. Transcrever o resultado em blocos de 8 s (a transcrição corrida pula trechos).
 - **Renner v4 (09/11) — regra de corte**: NADA de fundido/transição ("não quero efeito de transição"): `transicao` padrão = 0.
   O que ele quer é **respiro**: todo corte termina ≥ 0,35 s depois da última palavra (apertar.py garante pelas palavras) e começa
   ≥ 0,12 s antes da primeira. Se dois cortes ficam a < 0,15 s um do outro, juntar num trecho contínuo (sem corte). Frase seguida de
