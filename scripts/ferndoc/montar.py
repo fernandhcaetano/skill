@@ -51,11 +51,13 @@ def hdr(v):
     return any(x in t for x in ("arib-std-b67", "smpte2084"))
 
 
+# Transição entre cortes: fundido curto (s) de imagem e som. Ele achou os cortes secos demais (09/11). 0 = corte seco.
+XF = float(cfg.get("transicao", 0.16))
 pieces, palavras, out_t, last_p, z = [], [], 0.0, None, 1.0
 for c in cfg["cortes"]:
     if "espaco" in c or "clipe" in c:   # inserções em tela cheia: não usam a fala nem o zoom alternado
         d = round(c["dur"] * FPS) / FPS
-        pieces.append(("ins", c, d, None)); out_t += d; last_p = None; z = 1.0
+        pieces.append(("ins", c, d, None)); out_t += d - XF; last_p = None; z = 1.0
         continue
     ch = chunks[c["id"]]; p = ch["parte"]
     s = snap(p, c["ini"]) if "ini" in c else max(0.0, ch["ini"] - PAD)
@@ -71,14 +73,15 @@ for c in cfg["cortes"]:
     for w in ch["palavras"]:
         if s - 0.05 <= (w["s"] + w["e"]) / 2 <= e + 0.05:
             palavras.append({"w": w["w"], "s": round(out_t + w["s"] - s, 2), "e": round(out_t + w["e"] - s, 2)})
-    pieces.append((p, s, e, z)); out_t += e - s
+    pieces.append((p, s, e, z)); out_t += e - s - XF
+out_t += XF if pieces else 0
 
 json.dump(palavras, open("raw/ferndoc/palavras_final.json", "w"), ensure_ascii=False, indent=0)
 
 # 1) Cada trecho vira um arquivo (busca direta com -ss: pouca memória mesmo com dezenas de cortes).
 SEG = "raw/ferndoc/segs"
 os.makedirs(SEG, exist_ok=True)
-lista = []
+lista, gk = [], []   # gk = índice do corte de cada arquivo (sub-planos de um clipe têm o mesmo)
 ORIGINAL = cfg.get("cor") == "original"
 if ORIGINAL and any("clipe" in c or "espaco" in c for c in cfg["cortes"]):
     sys.exit("cor 'original' (HDR) ainda não suporta clipes/espaços em tela cheia (são SDR)")
@@ -126,9 +129,9 @@ for k, (p, s, e, z) in enumerate(pieces):
                                 "-af", af, *ENC, so], check=True)
                 sub.append(so)
             for so in sub:
-                lista.append(f"file '{os.path.abspath(so)}'")
+                lista.append(f"file '{os.path.abspath(so)}'"); gk.append(k)
             continue
-        lista.append(f"file '{os.path.abspath(out)}'")
+        lista.append(f"file '{os.path.abspath(out)}'"); gk.append(k)
         continue
     v = videos[p - 1]
     # HDR (HLG/Dolby Vision do iPhone) -> SDR. Escolhido por ele em 06/11 (opção "2 menos amarelo" de
@@ -163,15 +166,51 @@ for k, (p, s, e, z) in enumerate(pieces):
         enc = ["-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709",
                "-c:v", "libx264", "-preset", "fast", "-crf", "14", "-g", "1"]
     if os.environ.get("REUSE") == "1" and os.path.exists(out + ".tag") and open(out + ".tag").read() == tag:
-        lista.append(f"file '{os.path.abspath(out)}'"); continue   # trecho igual ao da última montagem
+        lista.append(f"file '{os.path.abspath(out)}'"); gk.append(k); continue   # trecho igual ao da última montagem
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{s:.3f}", "-i", v, "-t", f"{d:.3f}",
                     "-vf", vf, "-af", af, *enc, "-c:a", "pcm_s16le", out], check=True)
     open(out + ".tag", "w").write(tag)
-    lista.append(f"file '{os.path.abspath(out)}'")
+    lista.append(f"file '{os.path.abspath(out)}'"); gk.append(k)
 open(f"{SEG}/lista.txt", "w").write("\n".join(lista) + "\n")
 
+# 1b) Fundido curto entre os cortes (os sub-planos de um mesmo clipe continuam em corte seco, como no original).
+def dur(f):
+    return float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f],
+                                capture_output=True, text=True).stdout)
+
+
+if XF > 0 and len(set(gk)) > 1:
+    arqs = [l.split("'")[1] for l in lista]
+    grupos = {}
+    for f, k in zip(arqs, gk):
+        grupos.setdefault(k, []).append(f)
+    files = []
+    for k in sorted(grupos):
+        fs = grupos[k]
+        if len(fs) == 1:
+            files.append(fs[0]); continue
+        lg = f"{SEG}/g{k:03d}.txt"; open(lg, "w").write("".join(f"file '{os.path.abspath(f)}'\n" for f in fs))
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lg, "-c", "copy",
+                        f"{SEG}/g{k:03d}.mov"], check=True)
+        files.append(f"{SEG}/g{k:03d}.mov")
+    g, vprev, aprev, acc = [], "[0:v]", "[0:a]", dur(files[0])
+    for i in range(1, len(files)):
+        g.append(f"{vprev}[{i}:v]xfade=transition=fade:duration={XF}:offset={acc - XF:.4f}[v{i}]")
+        g.append(f"{aprev}[{i}:a]acrossfade=d={XF}:c1=tri:c2=tri[a{i}]")
+        vprev, aprev = f"[v{i}]", f"[a{i}]"
+        acc += dur(files[i]) - XF
+    venc = (["-c:v", "libx264", "-preset", "fast", "-crf", "12", "-pix_fmt", "yuv420p10le", "-profile:v", "high10",
+             "-color_primaries", "bt2020", "-color_trc", "arib-std-b67", "-colorspace", "bt2020nc"] if ORIGINAL else
+            ["-c:v", "libx264", "-preset", "fast", "-crf", "14", "-pix_fmt", "yuv420p",
+             "-color_primaries", "bt709", "-color_trc", "bt709",
+             "-colorspace", "bt709"])
+    subprocess.run(["ffmpeg", "-v", "error", "-y", *sum((["-i", f] for f in files), []), "-filter_complex", ";".join(g),
+                    "-map", vprev, "-map", aprev, *venc, "-c:a", "pcm_s16le", f"{SEG}/juntado.mov"], check=True)
+    ins = ["-i", f"{SEG}/juntado.mov"]
+else:
+    ins = ["-f", "concat", "-safe", "0", "-i", f"{SEG}/lista.txt"]
+
 # 2) Junta, aplica lettering e efeitos, normaliza o áudio.
-ins = ["-f", "concat", "-safe", "0", "-i", f"{SEG}/lista.txt"]
 graph = []
 sfx = cfg.get("sfx", [])
 graph.append("[0:a]highpass=f=80,"

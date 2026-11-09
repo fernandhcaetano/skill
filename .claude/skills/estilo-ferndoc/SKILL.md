@@ -83,6 +83,9 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Renner (09/11)**: ele achou os cortes "muito secos" → `montar.py` agora faz **fundido de 0,16 s** (imagem + som) em todo corte
+  (`"transicao"` no corte.json; 0 = seco). Pediu **um pouco mais claro**: npl 240 nesse vídeo (280 = calibrado do print; menor =
+  mais claro). Foto em tela cheia: recortar 9:16 centrado nele (conferir o tamanho real do arquivo!), ~1,6 s, zoom leve.
 - **"Trava" (09/11)**: fragmento de fala < 0,6 s entre dois cortes ("E eu", "O", "mas gente") parece travamento. `apertar.py` agora
   junta esses pedaços com o vizinho ou avisa; depois de montar, listar os trechos (< 0,6 s = problema) e conferir que nenhum corte
   começa no meio de palavra (ex.: "…u não tô" — puxar o início para a palavra inteira).
