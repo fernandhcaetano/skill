@@ -83,6 +83,9 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Altura do texto (09/11)**: rótulos e gancho em **y = 270** (logo abaixo das abas Seguindo/Para você do TikTok, como a referência
+  que ele mandou). y 200 ficava "nas barras". Prévia: `preview-posicao-topo.jpg`. (Opção "embaixo" y≈1400 foi sugerida p/ venda,
+  ele preferiu o topo.)
 - **Respiro final (09/11, Renner v5)**: "diminuir só um pouquinho" → padrão do apertar.py = pausas ≥ 0,4 s saem; folga 0,12 antes /
   0,20 depois; palavra final + 0,25 s. Cuidado: NÃO interromper montagem com REUSE=1 (trecho fica pela metade) — montar.py agora
   confere a duração antes de reaproveitar. Transcrever o resultado em blocos de 8 s (a transcrição corrida pula trechos).
