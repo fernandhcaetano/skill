@@ -34,6 +34,12 @@ for it in items:
     y = it["y"]
     for linha in it["linhas"]:
         mk = linha[0][2] if len(linha[0]) > 2 else ""
+        if mk.startswith("A"):   # "A120" = Anton condensada com contorno preto, ESTÁTICA (gancho estilo TikTok, 11/11)
+            f = ImageFont.truetype(f"{FONTS}/Anton-Regular.ttf", int(mk[1:]))
+            w0 = f.getlength(linha[0][0])
+            layout.append((linha[0][1], it["ate"], (W - w0) / 2, y, linha[0][0], f, "A"))
+            a, d = f.getmetrics(); y += a + d - 18
+            continue
         # "G" = letra grande padrão (112 px); "G88" = grande com tamanho próprio (títulos longos)
         f = (ImageFont.truetype(GRD.path, int(mk[1:])) if mk[1:].isdigit() else GRD) if mk.startswith("G") else PEQ
         dig = [len(p) > 2 and p[2] == "D" for p in linha]
@@ -51,6 +57,12 @@ _c = {}
 
 
 def img(w, f):
+    if (w, id(f)) not in _c and "Anton" in f.path:
+        f2 = ImageFont.truetype(f.path, f.size * SS); a, d = f2.getmetrics(); pad = 24 * SS
+        im = Image.new("RGBA", (int(f2.getlength(w)) + pad * 2, a + d + pad * 2), (0, 0, 0, 0))
+        ImageDraw.Draw(im).text((pad, pad), w, font=f2, fill=(255, 255, 255, 255), stroke_width=max(2, f.size // 18) * SS,
+                                stroke_fill=(0, 0, 0, 255))
+        _c[(w, id(f))] = (im.resize((im.width // SS, im.height // SS), Image.LANCZOS), pad // SS)
     if (w, id(f)) not in _c:
         f2 = ImageFont.truetype(f.path, f.size * SS); a, d = f2.getmetrics(); pad = 20 * SS
         im = Image.new("RGBA", (int(f2.getlength(w)) + pad * 2, a + d + pad * 2), (0, 0, 0, 0))
@@ -70,12 +82,14 @@ def ease(x, s=1.9):
 ANIM, cache, out = 0.18, {}, sys.stdout.buffer
 for fi in range(int(round(DUR * FPS))):
     t = fi / FPS
-    vis = tuple((i, round(min(1, (t - L[0]) / ANIM), 3) if not L[6] else min(len(L[4]), int((t - L[0]) * FPS / 2) + 1))
+    vis = tuple((i, 1 if L[6] == "A" else round(min(1, (t - L[0]) / ANIM), 3) if not L[6] else min(len(L[4]), int((t - L[0]) * FPS / 2) + 1))
                 for i, L in enumerate(layout) if L[0] <= t < L[1])
     if vis not in cache:
         fr = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         for i, p in vis:
             t0, _, x, y, w, f, dg = layout[i]
+            if dg == "A":  # estático, sem animação
+                im, pad = img(w, f); fr.alpha_composite(im, (int(x - pad), int(y - pad))); continue
             if dg:  # digitação: mostra o prefixo, alinhado à esquerda
                 n = min(len(w), int((t - t0) * FPS / 2) + 1)
                 im, pad = img(w[:n], f)

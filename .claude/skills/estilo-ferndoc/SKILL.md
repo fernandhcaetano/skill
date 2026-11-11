@@ -83,6 +83,10 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Gancho novo (11/11, Welcome)**: ele quer o gancho **estático**, curto e forte, estilo TikTok: palavras-chave em **Anton branca com
+  contorno preto** (`["SALE", 0, "A130"]` no lettering), 2 linhas centralizadas em y≈395, acima da cabeça, sem animação, até o
+  1º corte. **Sem emoji** nos textos. Vídeo que ele já manda editado (voz + B-roll): manter os cortes dele (1 trecho só, sem
+  apertar.py), só lettering + efeitos; clique em cada peça no provador, swish nas mudanças de ambiente, coro no desconto.
 - **Altura do texto (09/11)**: rótulos e gancho em **y = 270** (logo abaixo das abas Seguindo/Para você do TikTok, como a referência
   que ele mandou). y 200 ficava "nas barras". Prévia: `preview-posicao-topo.jpg`. (Opção "embaixo" y≈1400 foi sugerida p/ venda,
   ele preferiu o topo.)
