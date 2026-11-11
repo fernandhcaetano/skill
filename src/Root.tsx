@@ -2,6 +2,7 @@ import { Composition, Folder } from "remotion";
 import { HelloWorld } from "./HelloWorld";
 import { Main } from "./Edit/Main";
 import { Natal, NATAL_DURATION } from "./Natal/Natal";
+import { SomaCGI, SOMA_CGI_DURATION, SOMA_CGI_FPS } from "./SomaCGI/SomaCGI";
 import { DURATION, FPS } from "./Edit/data";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
@@ -11,6 +12,7 @@ import { Title } from "./HelloWorld/Title";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition id="SomaCGI" component={SomaCGI} durationInFrames={SOMA_CGI_DURATION} fps={SOMA_CGI_FPS} width={1080} height={1920} />
       <Composition id="Natal" component={Natal} durationInFrames={NATAL_DURATION} fps={30} width={1080} height={1920} />
       <Composition
         id="Edit"
