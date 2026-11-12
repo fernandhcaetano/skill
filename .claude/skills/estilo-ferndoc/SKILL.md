@@ -83,6 +83,10 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Gula Gula (12/11, review de comida, 8 partes)**: pedido "só a junção dos cortes contando a história", SEM lettering e SEM efeitos.
+  Em prova de comida, manter ~1,5 s da mordida + a reação ("hmm", "nossa") de cada sabor — por isso NÃO usar apertar.py (ele apaga
+  trechos sem voz); cortes à mão pelas palavras com folga. Tirar fala trocada ("agora a carne desfiada" quando era o carpaccio),
+  ranking repetido (fica o final) e despedidas duplicadas.
 - **Gancho novo (11/11, Welcome)**: ele quer o gancho **estático**, curto e forte, estilo TikTok: palavras-chave em **Anton branca com
   contorno preto** (`["SALE", 0, "A130"]` no lettering), 2 linhas centralizadas em y≈395, acima da cabeça, sem animação, até o
   1º corte. **Sem emoji** nos textos. Vídeo que ele já manda editado (voz + B-roll): manter os cortes dele (1 trecho só, sem
