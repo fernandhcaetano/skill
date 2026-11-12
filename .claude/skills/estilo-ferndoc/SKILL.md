@@ -84,7 +84,7 @@ Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal
 
 ## Aprendizados
 - **Gancho animado Classic (12/11, Gula Gula v3)**: frase de abertura falada em blocos de 2–3 palavras, um substituindo o outro no
-  ritmo da fala, CAIXA ALTA, **TikTok Sans Bold ("Classic") 130 px** (`"C130"` no lettering), branco com sombra, centralizado na
+  ritmo da fala, CAIXA ALTA, **TikTok Sans Bold ("Classic") 96 px** (`"C96"`; 130 cortava nas bordas do TikTok, maior bloco ≤ ~740 px de largura no lettering), branco com sombra, centralizado na
   altura do peito (y 1180) para não cobrir o rosto. Referência: exemplo "BORA / UM PACOTE / DESCONHECIDO". Fontes testadas e
   disponíveis: Barlow, Barlow Condensed, Noto Sans, TikTok Sans (fonts/).
 - **Gula Gula (12/11, review de comida, 8 partes)**: pedido "só a junção dos cortes contando a história", SEM lettering e SEM efeitos.
