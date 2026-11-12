@@ -83,6 +83,10 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Gancho animado Classic (12/11, Gula Gula v3)**: frase de abertura falada em blocos de 2–3 palavras, um substituindo o outro no
+  ritmo da fala, CAIXA ALTA, **TikTok Sans Bold ("Classic") 130 px** (`"C130"` no lettering), branco com sombra, centralizado na
+  altura do peito (y 1180) para não cobrir o rosto. Referência: exemplo "BORA / UM PACOTE / DESCONHECIDO". Fontes testadas e
+  disponíveis: Barlow, Barlow Condensed, Noto Sans, TikTok Sans (fonts/).
 - **Gula Gula (12/11, review de comida, 8 partes)**: pedido "só a junção dos cortes contando a história", SEM lettering e SEM efeitos.
   Em prova de comida, manter ~1,5 s da mordida + a reação ("hmm", "nossa") de cada sabor — por isso NÃO usar apertar.py (ele apaga
   trechos sem voz); cortes à mão pelas palavras com folga. Tirar fala trocada ("agora a carne desfiada" quando era o carpaccio),

@@ -41,7 +41,10 @@ for it in items:
             a, d = f.getmetrics(); y += a + d - 18
             continue
         # "G" = letra grande padrão (112 px); "G88" = grande com tamanho próprio (títulos longos)
-        f = (ImageFont.truetype(GRD.path, int(mk[1:])) if mk[1:].isdigit() else GRD) if mk.startswith("G") else PEQ
+        if mk.startswith("C") and mk[1:].isdigit():   # "C130" = Classic do TikTok (TikTok Sans Bold) grande, com pop
+            f = ImageFont.truetype(f"{FONTS}/TikTokSans-Bold.ttf", int(mk[1:]))
+        else:
+            f = (ImageFont.truetype(GRD.path, int(mk[1:])) if mk[1:].isdigit() else GRD) if mk.startswith("G") else PEQ
         dig = [len(p) > 2 and p[2] == "D" for p in linha]
         big = f is not PEQ
         sp = 22 if big else 14
