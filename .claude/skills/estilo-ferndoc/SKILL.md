@@ -83,6 +83,9 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Onigiri (17/11, restaurante barulhento, 13 clipes com amigas)**: `apertar.py` apagou TUDO (ruído de fundo alto: voz não fica
+  30 dB acima do piso). Em ambiente barulhento, cortar à mão pelas palavras (whisper medium com word_timestamps) e não rodar apertar.
+  Clipes com rotação -90 (3840x2160 no arquivo) já saem verticais no ffmpeg.
 - **Gancho animado Classic (12/11, Gula Gula v3)**: frase de abertura falada em blocos de 2–3 palavras, um substituindo o outro no
   ritmo da fala, CAIXA ALTA, **TikTok Sans Bold ("Classic") 96 px** (`"C96"`; 130 cortava nas bordas do TikTok, maior bloco ≤ ~740 px de largura no lettering), branco com sombra, centralizado na
   altura do peito (y 1180) para não cobrir o rosto. Referência: exemplo "BORA / UM PACOTE / DESCONHECIDO". Fontes testadas e
