@@ -83,6 +83,9 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Onigiri v3 (17/11)**: ele sobe clipes em levas — antes de editar, LISTAR a pasta por createdTime e checar buracos na numeração
+  IMG_ (faltavam 6517 e 6521 = justamente tuna e camarão). Arquivo com mesmo nome em minúsculo (IMG_6513.mov) = versão que ele
+  já aparou: usar no lugar do original. Em review de vários sabores, cada sabor = anúncio + mordida + reação, na ordem que ele comeu.
 - **Onigiri (17/11, restaurante barulhento, 13 clipes com amigas)**: `apertar.py` apagou TUDO (ruído de fundo alto: voz não fica
   30 dB acima do piso). Em ambiente barulhento, cortar à mão pelas palavras (whisper medium com word_timestamps) e não rodar apertar.
   Clipes com rotação -90 (3840x2160 no arquivo) já saem verticais no ffmpeg.
