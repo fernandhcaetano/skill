@@ -83,6 +83,9 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Nomes de produto na tela (17/11, onigiri v5)**: quando ele fala o nome de um sabor/produto, colocar o nome CERTO na tela (ele
+  erra nomes ao falar): Classic `"C84"` no meio-baixo (y 1250) + nota mini `"S42"` embaixo quando precisa corrigir (ex.: "*não é
+  spicy"). Sabores do Hipoke: Spicy Tuna, Pork Kimchi, Rock Shrimp. Cortar pessoas de fora do grupo que aparecem por acaso.
 - **Onigiri v3 (17/11)**: ele sobe clipes em levas — antes de editar, LISTAR a pasta por createdTime e checar buracos na numeração
   IMG_ (faltavam 6517 e 6521 = justamente tuna e camarão). Arquivo com mesmo nome em minúsculo (IMG_6513.mov) = versão que ele
   já aparou: usar no lugar do original. Em review de vários sabores, cada sabor = anúncio + mordida + reação, na ordem que ele comeu.
