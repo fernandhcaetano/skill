@@ -43,6 +43,8 @@ for it in items:
         # "G" = letra grande padrão (112 px); "G88" = grande com tamanho próprio (títulos longos)
         if mk.startswith("C") and mk[1:].isdigit():   # "C130" = Classic do TikTok (TikTok Sans Bold) grande, com pop
             f = ImageFont.truetype(f"{FONTS}/TikTokSans-Bold.ttf", int(mk[1:]))
+        elif mk.startswith("S") and mk[1:].isdigit():  # "S44" = Classic semibold pequena (notas tipo "*não é spicy")
+            f = ImageFont.truetype(f"{FONTS}/TikTokSans-SemiBold.ttf", int(mk[1:]))
         else:
             f = (ImageFont.truetype(GRD.path, int(mk[1:])) if mk[1:].isdigit() else GRD) if mk.startswith("G") else PEQ
         dig = [len(p) > 2 and p[2] == "D" for p in linha]
