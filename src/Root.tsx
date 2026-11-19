@@ -2,6 +2,7 @@ import { Composition, Folder } from "remotion";
 import { HelloWorld } from "./HelloWorld";
 import { Main } from "./Edit/Main";
 import { Natal, NATAL_DURATION } from "./Natal/Natal";
+import { ModoFriday, MF_DURATION, MF_FPS } from "./ModoFriday/ModoFriday";
 import { DURATION, FPS } from "./Edit/data";
 import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
@@ -11,6 +12,7 @@ import { Title } from "./HelloWorld/Title";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      <Composition id="ModoFriday" component={ModoFriday} durationInFrames={MF_DURATION} fps={MF_FPS} width={1920} height={1080} />
       <Composition id="Natal" component={Natal} durationInFrames={NATAL_DURATION} fps={30} width={1080} height={1920} />
       <Composition
         id="Edit"
