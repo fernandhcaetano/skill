@@ -29,4 +29,5 @@ Onde posicionar cada elemento:
 ## Visual
 - Preferir o produto como foco (recortado, girando, em movimento) a fotos dentro de retângulos.
 - Garrafa e copo podem virar 3D girando 360° quando houver fotos de vários ângulos. Juntar as vistas numa estampa contínua e aplicar num cilindro com luz.
+- **Recorte de produto branco sobre fundo branco** (caneca, copo, garrafa): não confiar só na IA de recorte, porque ela deixa as bordas tortas e onduladas. Desenhar o corpo geometricamente (laterais retas e topo e base em elipse) e usar a IA só para as partes de fora do corpo (alça, chaveiro, tampa). Antes de recortar, apagar os selos do app ("1/20", setas).
 - Objeto branco em 3D: manter a iluminação clara para ele não ficar acinzentado ou parecendo prata, e usar boa resolução, porque a compressão da Shopee deixa tudo mais borrado.
