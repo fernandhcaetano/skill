@@ -83,6 +83,10 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Look Eleninha (22/11, montando look em casa, sem lettering)**: `apertar.py` comeu frases inteiras mesmo em casa
+  (piso de ruído do quarto alto). Alternativa usada: partir os trechos pelos tempos das palavras (gap > 0,75 s → corta,
+  folga 0,14 antes / 0,32 depois) e depois conferir com silencedetect/energia. Trechos sem fala de AÇÃO (olhar no espelho,
+  close no relógio) entram à mão, 1,5–2,5 s. Sempre checar se falta IMG_ na sequência (faltava o 6820) antes de propor.
 - **Nomes de produto na tela (17/11, onigiri v5)**: quando ele fala o nome de um sabor/produto, colocar o nome CERTO na tela (ele
   erra nomes ao falar): Classic `"C84"` no meio-baixo (y 1250) + nota mini `"S42"` embaixo quando precisa corrigir (ex.: "*não é
   spicy"). Sabores do Hipoke: Spicy Tuna, Pork Kimchi, Rock Shrimp. Cortar pessoas de fora do grupo que aparecem por acaso.
