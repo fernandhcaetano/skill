@@ -83,6 +83,10 @@ Quadros de conferência (gancho, cada rótulo, cortes com zoom), duração, loud
 Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal.md` tudo que ele aprovar ou corrigir.
 
 ## Aprendizados
+- **Case microfone (23/11)**: ele quer tropeços cortados "milimetricamente" (ex.: "os dois ada- adaptadores", "e não, não
+  consegue", "esse... esse microfone"). Achar com whisper medium + word_timestamps + energia a 10 ms (sílaba solta entre
+  dois vales), testar o corte concatenando só o áudio dos trechos e transcrevendo (scratchpad teste_corte.py) ANTES de renderizar.
+  Entrega: página de download (artifact com capability downloads, vídeo em partes de 14 MB) porque o app não mostra a seta.
 - **Look Eleninha (22/11, montando look em casa, sem lettering)**: `apertar.py` comeu frases inteiras mesmo em casa
   (piso de ruído do quarto alto). Alternativa usada: partir os trechos pelos tempos das palavras (gap > 0,75 s → corta,
   folga 0,14 antes / 0,32 depois) e depois conferir com silencedetect/energia. Trechos sem fala de AÇÃO (olhar no espelho,
