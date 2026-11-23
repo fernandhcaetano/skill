@@ -86,7 +86,10 @@ Envie o vídeo + a lista do que foi cortado. Registre aqui ou em `estilo-pessoal
 - **Case microfone v2 → "ficou péssimo" (23/11)**: cortes no meio da fala ficaram secos e comeram sílabas porque o
   `snap` do montar.py move cada ponta até 0,12 s. Corte milimétrico = `"snap": 0` no corte.json + pontas escolhidas à mão na
   energia a 5 ms, mantendo a pausa natural antes do erro; poucos cortes (trechos longos e contínuos). Só cortar tropeço quando
-  transcrição e energia concordam. ENTREGA: mandar SÓ o link da página de download (nada de SendUserFile junto).
+  transcrição e energia concordam. ENTREGA (corrigido): preview do vídeo no chat (SendUserFile display render) + UM link da página de download. Nada além disso.
+  Método v4 aprovado para testar: mapear a fala em pedaços (energia 5 ms, pausas < 0,15 s fundidas), manter trechos longos
+  contínuos com as pausas naturais (só encurtar pausa > 0,7 s para ~0,4 s), micro-cortes de tropeço SEM troca de zoom
+  ("zoom" fixo no corte), zoom alternado só onde sai conteúdo.
 - **Case microfone (23/11)**: ele quer tropeços cortados "milimetricamente" (ex.: "os dois ada- adaptadores", "e não, não
   consegue", "esse... esse microfone"). Achar com whisper medium + word_timestamps + energia a 10 ms (sílaba solta entre
   dois vales), testar o corte concatenando só o áudio dos trechos e transcrevendo (scratchpad teste_corte.py) ANTES de renderizar.
