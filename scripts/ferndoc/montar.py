@@ -39,7 +39,13 @@ for p in range(1, len(videos) + 1):
     rms[p] = np.sqrt(np.convolve(x ** 2, np.ones(160) / 160, "same")[::160])
 
 
-def snap(p, t, r=0.12):
+SNAP = float(cfg.get("snap", 0.12))   # 0 = usa os tempos exatos do corte.json (cortes milimétricos no meio da fala, 23/11)
+
+
+def snap(p, t, r=None):
+    r = SNAP if r is None else r
+    if r <= 0:
+        return t
     i0, i1 = max(0, int((t - r) * 100)), min(len(rms[p]) - 1, int((t + r) * 100))
     return (i0 + int(np.argmin(rms[p][i0:i1 + 1]))) / 100
 
