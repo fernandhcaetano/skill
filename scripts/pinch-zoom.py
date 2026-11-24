@@ -1,5 +1,5 @@
 """Trend "Pinch & Zoom": texto no centro que nasce minúsculo e cresce em degraus, cada degrau NA batida,
-com as aberturas de mão do vídeo encaixadas nas batidas (micro câmera lenta entre elas).
+com os momentos-chave do vídeo encaixados nas batidas por speed ramps (MAP).
 Uso: python3 -I scripts/pinch-zoom.py <video> <audio> <saida.mp4>
 Tempos: v = vídeo bruto, a = áudio da trend."""
 import math, subprocess, sys
@@ -7,18 +7,25 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 SRC, AUDIO, OUT = sys.argv[1:4]
 FPS, W, H, CX, CY = 30, 1080, 1920, 540, 960
-A0, A1 = 0.45, 10.74                     # trecho do áudio usado
-V_END = 20.70                            # vídeo segue até o fim (depois do áudio fica em silêncio)
-# Encaixe vídeo x áudio: mão abre (v) -> batida (a). Entre as duas aberturas o vídeo roda um pouco mais lento.
-SYNC = [(10.70, 4.56), (11.72, 5.67)]
-(V1, B1), (V2, B2) = SYNC
+A0, A1 = 0.45, 10.74                     # trecho do áudio usado (depois fica em silêncio)
+# Mapa vídeo bruto (v) -> tempo da música (a). Entre âncoras o vídeo roda em velocidade constante,
+# então cada momento-chave cai numa batida (grade de 0,58 s: ..., 4.56, 5.14, 5.67, 6.29, 6.88, 7.46, ...).
+MAP = [(6.59, 0.45),
+       (10.70, 4.56),   # 1ª abertura da mão  -> batida forte do rufo
+       (11.72, 5.67),   # 2ª abertura         -> pancada mais forte (0,92x entre as duas)
+       (12.70, 6.65),   # mão desce (normal)
+       (14.20, 7.46),   # recua e o microfone chega no peito ~1,85x -> batida
+       (16.65, 9.78),   # reação feliz com o microfone, velocidade ~normal; aceno -> batida
+       (17.25, 10.38),  # normal
+       (18.15, 10.98),  # sai andando 1,5x
+       (20.70, 13.53)]  # escritório vazio, normal (a partir de 10,74 a música é sua)
 def a2v(a):
-    if a <= B1: return V1 + (a - B1)
-    if a <= B2: return V1 + (a - B1) * (V2 - V1) / (B2 - B1)
-    return V2 + (a - B2)
+    for (va, aa), (vb, ab) in zip(MAP, MAP[1:]):
+        if a <= ab: return va + (a - aa) * (vb - va) / (ab - aa)
+    return MAP[-1][0]
 # Degraus do texto (largura em px) — cada um começa exatamente na batida
 STEPS = [(3.98, 70), (4.56, 380), (5.67, 940)]   # rufo/drop: aparece | 1ª abertura | 2ª abertura (tamanho final)
-PULSES = [6.29, 6.88, 7.46, 8.03, 8.62, 9.20, 9.78, 10.36]  # batidas seguintes: pulsadinha leve
+PULSES = [5.67 + 0.578 * k for k in range(1, 15)]  # batidas seguintes (grade da música): pulsadinha leve
 F = "public/fonts/playfair-display-latin-"
 LINES = [("A nossa", F + "600-italic.woff", 0.62), ("Black Friday", F + "800-normal.woff", 1.0),
          ("começa amanhã", F + "600-italic.woff", 0.62)]
@@ -53,12 +60,12 @@ def width(a):
     return w
 
 txt = render_text()
-s0, s1, s2, s3 = a2v(A0), V1, V2, V_END
-dur = A1 - A0; total = dur + (V_END - a2v(A1))
-slow = (B2 - B1) / (V2 - V1)
-vf = (f"[0:v]scale={W}:{H}:flags=lanczos,setsar=1,split=3[x][y][z];"
-      f"[x]trim={s0}:{s1},setpts=PTS-STARTPTS[p];[y]trim={s1}:{s2},setpts=(PTS-STARTPTS)*{slow:.5f}[q];"
-      f"[z]trim={s2}:{s3},setpts=PTS-STARTPTS[r];[p][q][r]concat=n=3:v=1:a=0,fps={FPS}[v];"
+dur = A1 - A0; total = MAP[-1][1] - A0
+segs = "".join(f"[s{i}]trim={va}:{vb},setpts=(PTS-STARTPTS)*{(ab - aa) / (vb - va):.5f}[t{i}];"
+               for i, ((va, aa), (vb, ab)) in enumerate(zip(MAP, MAP[1:])))
+k = len(MAP) - 1
+vf = (f"[0:v]scale={W}:{H}:flags=lanczos,setsar=1,split={k}" + "".join(f"[s{i}]" for i in range(k)) + ";" + segs +
+      "".join(f"[t{i}]" for i in range(k)) + f"concat=n={k}:v=1:a=0,fps={FPS}[v];"
       f"[v][1:v]overlay=format=auto,format=yuv420p[o];"
       f"[2:a]afade=t=in:d=0.05,afade=t=out:st={dur-0.35:.3f}:d=0.35,apad[au]")
 ff = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-i", SRC,
