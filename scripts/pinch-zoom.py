@@ -23,7 +23,8 @@ def a2v(a):
         if a <= ab: return va + (a - aa) * (vb - va) / (ab - aa)
     return MAP[-1][0]
 # Degraus do texto (largura em px) — cada um começa exatamente na batida
-STEPS = [(3.98, 70), (4.56, 380), (5.67, 940)]   # rufo/drop: aparece | 1ª abertura | 2ª abertura (tamanho final)
+W_START = 80                             # texto pequenininho no centro desde o primeiro quadro
+STEPS = [(3.98, 110), (4.56, 380), (5.67, 940)]  # rufo/drop | 1ª abertura | 2ª abertura (tamanho final)
 PULSES = [5.67 + 0.578 * k for k in range(1, 15)]  # batidas seguintes (grade da música): pulsadinha leve
 F = "public/fonts/playfair-display-latin-"
 LINES = [("A nossa", F + "600-italic.woff", 0.62), ("Black Friday", F + "800-normal.woff", 1.0),
@@ -50,8 +51,7 @@ def ease_back(x, s=1.6): x -= 1; return x * x * ((s + 1) * x + s) + 1
 SNAP = 0.12                               # duração do "pulo" de cada degrau
 
 def width(a):
-    if a < STEPS[0][0]: return None
-    w = 0
+    w = W_START
     for t, target in STEPS:
         if a >= t: w = w + (target - w) * ease_back(min(1, (a - t) / SNAP)) if a - t < SNAP else target
     if a >= STEPS[-1][0] + SNAP:
