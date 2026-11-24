@@ -8,6 +8,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 SRC, AUDIO, OUT = sys.argv[1:4]
 FPS, W, H, CX, CY = 30, 1080, 1920, 540, 960
 A0, A1 = 0.45, 10.74                     # trecho do áudio usado
+V_END = 20.70                            # vídeo segue até o fim (depois do áudio fica em silêncio)
 # Encaixe vídeo x áudio: mão abre (v) -> batida (a). Entre as duas aberturas o vídeo roda um pouco mais lento.
 SYNC = [(10.70, 4.56), (11.72, 5.67)]
 (V1, B1), (V2, B2) = SYNC
@@ -51,20 +52,21 @@ def width(a):
         w *= 1 + sum(0.03 * math.exp(-(a - p) / 0.12) for p in PULSES if a >= p)
     return w
 
-txt = render_text(); dur = A1 - A0
-s0, s1, s2, s3 = a2v(A0), V1, V2, a2v(A1)
+txt = render_text()
+s0, s1, s2, s3 = a2v(A0), V1, V2, V_END
+dur = A1 - A0; total = dur + (V_END - a2v(A1))
 slow = (B2 - B1) / (V2 - V1)
 vf = (f"[0:v]scale={W}:{H}:flags=lanczos,setsar=1,split=3[x][y][z];"
       f"[x]trim={s0}:{s1},setpts=PTS-STARTPTS[p];[y]trim={s1}:{s2},setpts=(PTS-STARTPTS)*{slow:.5f}[q];"
       f"[z]trim={s2}:{s3},setpts=PTS-STARTPTS[r];[p][q][r]concat=n=3:v=1:a=0,fps={FPS}[v];"
       f"[v][1:v]overlay=format=auto,format=yuv420p[o];"
-      f"[2:a]afade=t=in:d=0.05,afade=t=out:st={dur-0.35:.3f}:d=0.35[au]")
+      f"[2:a]afade=t=in:d=0.05,afade=t=out:st={dur-0.35:.3f}:d=0.35,apad[au]")
 ff = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-i", SRC,
     "-f", "rawvideo", "-pix_fmt", "rgba", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
     "-ss", str(A0), "-t", f"{dur:.3f}", "-i", AUDIO, "-filter_complex", vf,
-    "-map", "[o]", "-map", "[au]", "-t", f"{dur:.3f}", "-c:v", "libx264", "-crf", "17", "-preset", "slow",
+    "-map", "[o]", "-map", "[au]", "-t", f"{total:.3f}", "-c:v", "libx264", "-crf", "17", "-preset", "slow",
     "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", OUT], stdin=subprocess.PIPE)
-for n in range(round(dur * FPS)):
+for n in range(round(total * FPS)):
     frame = Image.new("RGBA", (W, H)); w = width(A0 + n / FPS)
     if w:
         h = max(1, round(txt.height * w / txt.width)); im = txt.resize((max(1, round(w)), h), Image.LANCZOS)
