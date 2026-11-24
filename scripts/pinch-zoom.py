@@ -17,8 +17,7 @@ MAP = [(6.59, 0.45),
        (14.20, 7.46),   # recua e o microfone chega no peito ~1,85x -> batida
        (16.65, 9.78),   # reação feliz com o microfone, velocidade ~normal; aceno -> batida
        (17.25, 10.38),  # normal
-       (18.15, 10.98),  # sai andando 1,5x
-       (20.70, 13.53)]  # escritório vazio, normal (a partir de 10,74 a música é sua)
+       (20.70, 13.83)]  # sai andando e escritório vazio, normal (a partir de 10,74 a música é sua)
 def a2v(a):
     for (va, aa), (vb, ab) in zip(MAP, MAP[1:]):
         if a <= ab: return va + (a - aa) * (vb - va) / (ab - aa)
