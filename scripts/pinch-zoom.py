@@ -25,7 +25,8 @@ def a2v(a):
 # Degraus do texto (largura em px) — cada um começa exatamente na batida
 W_START = 80                             # texto pequenininho no centro desde o primeiro quadro
 STEPS = [(3.98, 110), (4.56, 380), (5.67, 940)]  # rufo/drop | 1ª abertura | 2ª abertura (tamanho final)
-PULSES = [5.67 + 0.578 * k for k in range(1, 15)]  # batidas seguintes (grade da música): pulsadinha leve
+HOLD = 4.0                               # segundos extras no fim: último quadro congelado, texto pulsando
+PULSES = [5.67 + 0.578 * k for k in range(1, 22)]  # batidas seguintes (grade da música): pulsadinha leve
 F = "public/fonts/playfair-display-latin-"
 LINES = [("A nossa", F + "600-italic.woff", 0.62), ("Black Friday", F + "800-normal.woff", 1.0),
          ("começa amanhã", F + "600-italic.woff", 0.62)]
@@ -59,12 +60,12 @@ def width(a):
     return w
 
 txt = render_text()
-dur = A1 - A0; total = MAP[-1][1] - A0
+dur = A1 - A0; total = MAP[-1][1] - A0 + HOLD
 segs = "".join(f"[s{i}]trim={va}:{vb},setpts=(PTS-STARTPTS)*{(ab - aa) / (vb - va):.5f}[t{i}];"
                for i, ((va, aa), (vb, ab)) in enumerate(zip(MAP, MAP[1:])))
 k = len(MAP) - 1
 vf = (f"[0:v]scale={W}:{H}:flags=lanczos,setsar=1,split={k}" + "".join(f"[s{i}]" for i in range(k)) + ";" + segs +
-      "".join(f"[t{i}]" for i in range(k)) + f"concat=n={k}:v=1:a=0,fps={FPS}[v];"
+      "".join(f"[t{i}]" for i in range(k)) + f"concat=n={k}:v=1:a=0,fps={FPS},tpad=stop_mode=clone:stop_duration={HOLD}[v];"
       f"[v][1:v]overlay=format=auto,format=yuv420p[o];"
       f"[2:a]afade=t=in:d=0.05,afade=t=out:st={dur-0.35:.3f}:d=0.35,apad[au]")
 ff = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-i", SRC,
