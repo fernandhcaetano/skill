@@ -30,6 +30,5 @@ Referência completa com medidas: `estilo-trabalho.md`. Exemplo analisado: `raw/
 - Logo da Oficina: o PDF `logo_oficina_preto` enviado estava vazio; o SVG vetorial está no Drive (`oficina.svg`, id 1THEhMK1gi8i_W0abHIx6m3IgHgcXSms-).
 - **Entrevistas Reserva/Black Friday (Amanda)**: o usuário mandou um vídeo já editado (kit da Reserva) como **modelo** — não é para editar o modelo, é para copiar dele cor, volume e legenda. Só isso: sem cortes, zoom ou telas.
   Legenda: `src/Edit/Legenda.tsx` (Inter 500, 32 px, branco com contorno preto 2,5 px, top 1460, por frase); `CAPTIONS = "kit"` em `src/Edit/Main.tsx`. Volume: loudnorm −15,5 LUFS.
-  Cor: o usuário rejeitou o tom quente e achou "muito vermelho". **Aprovada** (opção 3, depois "escurece mais um pouco"), aplicada ao proxy com ffmpeg antes do render:
-  `eq=contrast=1.05:saturation=0.95:gamma=0.92:brightness=-0.02,colorbalance=rs=-0.06:rm=-0.08:rh=-0.04:gm=0.02:bs=0.03:bm=0.04:bh=0.01,unsharp=5:5:0.5`
-  Antes de renderizar, mandar **opções de cor em frames** (original | opções | referência) para o usuário escolher.
+  Cor: depois de testar várias correções (quente, opção 3, opção 3 mais escura), o usuário decidiu **não mexer na cor**: usar o vídeo com a cor original (proxy sem gradação).
+  Se for pedida correção de cor, mandar antes **opções de cor em frames** (original | opções | referência) para o usuário escolher.
