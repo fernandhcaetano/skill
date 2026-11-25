@@ -18,4 +18,4 @@ Frases curtas (3–8 palavras), separadas à mão em pontos naturais; tempos das
 Atenção: o Whisper inventa frases em trechos de silêncio no fim — conferir com a energia do áudio.
 
 ## Áudio
-`loudnorm=I=-11:TP=-1.0:LRA=11`, 48 kHz, AAC 192k.
+`acompressor=threshold=-24dB:ratio=4:attack=5:release=120:makeup=3,alimiter=limit=0.89:level=false,loudnorm=I=-10:TP=-1.0:LRA=7`, 48 kHz, AAC 192k.
