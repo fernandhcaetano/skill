@@ -1,5 +1,5 @@
 # Gera legenda pequena (.ass) a partir do JSON do whisper e de uma lista de frases (n_palavras, texto).
-# Tokens "-" (troca de falante) são ignorados. Tempos deslocados por -TRIM.
+# Tokens "-" (troca de falante) são ignorados. Linha 'N|' sem texto pula N palavras (sem legenda). Tempos deslocados por -TRIM.
 # Uso: python3 -I scripts/make_ass.py raw/x.json frases.txt saida.ass TRIM [FIM]
 import json, sys
 src, frases, dst, trim = sys.argv[1], sys.argv[2], sys.argv[3], float(sys.argv[4])
@@ -17,8 +17,8 @@ for s in json.load(open(src))['transcription']:
 i = 0; B = []
 for n, p in P:
     ws = W[i:i + n]; i += n
-    print(f"{' '.join(w[0] for w in ws):55s} | {p}")
-    B.append([p, ws[0][1], ws[-1][2]])
+    print(f"{' '.join(w[0] for w in ws):55s} | {p or '(sem legenda)'}")
+    if p: B.append([p, ws[0][1], ws[-1][2]])
 assert i == len(W), f"usou {i} de {len(W)} palavras"
 def ts(x): x = max(0, x); return f"0:{int(x // 60):02d}:{x % 60:05.2f}"
 hdr = open('raw/legendas.ass').read().split('[Events]')[0]
