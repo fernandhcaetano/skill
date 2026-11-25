@@ -5,9 +5,9 @@ import { theme } from "./theme";
 
 // Palavras que ganham destaque quando aparecem no bloco.
 const KEYWORDS = new Set([
-  "Amanda", "Reserva", "Friday", "arena", "expectativas", "Altíssimas", "altíssimas",
-  "animadíssima", "animado", "galera", "meta", "gritou", "expectativa", "evento",
-  "criadas", "ganhar", "jogo", "vambora", "atentos",
+  "marcas", "serviço", "Black", "kit", "colaborador", "Reserva", "boné", "lindíssimo",
+  "maravilhoso", "adesivo", "isso", "vontade", "tênis", "cartinha", "gracinha",
+  "digital", "melhor", "demais",
 ]);
 
 type Block = { words: Word[]; hi: number; start: number; end: number };

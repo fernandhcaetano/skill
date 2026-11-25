@@ -1,16 +1,20 @@
 import React from "react";
 import { AbsoluteFill, Audio, OffthreadVideo, Sequence, interpolate, staticFile, useCurrentFrame } from "remotion";
 import { Captions } from "./Captions";
+import { Legenda } from "./Legenda";
+
+// "kit": legenda pequena por frase (estilo do vídeo do kit da Reserva); "destaque": a do estilo.md.
+const CAPTIONS: "kit" | "destaque" = "kit";
 import { FPS, segments } from "./data";
 import { SceneLayer, scenes } from "./Scenes";
 
 // Alterna enquadramento a cada corte (aberto / fechado) para dar ritmo.
-const ZOOMS = [1.0, 1.14, 1.06, 1.18];
+const ZOOMS = [1.0];
 
 const Clip: React.FC<{ srcStart: number; dur: number; zoom: number }> = ({ srcStart, dur, zoom }) => {
   const frame = useCurrentFrame();
   // leve push-in contínuo dentro do plano
-  const push = interpolate(frame, [0, dur * FPS], [0, 0.03]);
+  const push = interpolate(frame, [0, dur * FPS], [0, 0]);
   return (
     <AbsoluteFill style={{ transform: `scale(${zoom + push})`, transformOrigin: "50% 42%" }}>
       <OffthreadVideo src={staticFile("video_proxy.mp4")} startFrom={Math.round(srcStart * FPS)} muted />
@@ -37,7 +41,7 @@ export const Main: React.FC = () => {
           <SceneLayer scene={sc} />
         </Sequence>
       ))}
-      <Captions onLight={onLight} />
+      {CAPTIONS === "kit" ? <Legenda /> : <Captions onLight={onLight} />}
       <Audio src={staticFile("voice.wav")} />
     </AbsoluteFill>
   );

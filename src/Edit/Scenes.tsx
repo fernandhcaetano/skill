@@ -106,37 +106,16 @@ export const Checklist: React.FC<{ title: string; items: { label: string; at: nu
 
 export type Scene = { start: number; end: number; render: (start: number) => React.ReactNode };
 
-const sc = (startPhrase: string, endPhrase: string, render: Scene["render"]): Scene => {
+export const sc = (startPhrase: string, endPhrase: string, render: Scene["render"]): Scene => {
   const [start] = findPhrase(startPhrase);
   const [, end] = findPhrase(endPhrase, start);
   return { start: start - 0.1, end: end + 0.25, render };
 };
 
-export const scenes: Scene[] = [
-  sc("primeira Black Friday", "na arena", () => (
-    <Center>
-      <Pill dark>RESERVA · NA ARENA</Pill>
-      <Card delay={4} style={{ width: 640, textAlign: "center", background: "#111" }}>
-        <div style={{ fontFamily: theme.mono, fontSize: 30, color: "#aaa", letterSpacing: "0.05em" }}>PRIMEIRA</div>
-        <div style={{ fontSize: 118, fontWeight: 800, color: "#fff", letterSpacing: "-0.03em", lineHeight: 1 }}>BLACK</div>
-        <div style={{ fontSize: 118, fontWeight: 800, color: theme.orange, letterSpacing: "-0.03em", lineHeight: 1 }}>FRIDAY</div>
-      </Card>
-    </Center>
-  )),
-  sc("bateu a primeira meta", "mais gritou", (s) => <Meta sceneStart={s} />),
-  sc("as expectativas foram criadas", "estão altíssimas", (s) => <Hype sceneStart={s} />),
-  sc("veio pra ganhar", "esse jogo", () => (
-    <Center>
-      <Card style={{ width: 300, height: 300, display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ fontSize: 190, lineHeight: 1 }}>🏆</div>
-      </Card>
-      <Pill dark>VEIO PRA GANHAR</Pill>
-    </Center>
-  )),
-];
+export const scenes: Scene[] = [];
 
 // Barra de meta que enche e marca no momento de "meta".
-const Meta: React.FC<{ sceneStart: number }> = ({ sceneStart }) => {
+export const Meta: React.FC<{ sceneStart: number }> = ({ sceneStart }) => {
   const frame = useCurrentFrame();
   const t = sceneStart + frame / FPS;
   const hit = findPhrase("meta")[0];
@@ -166,7 +145,7 @@ const Meta: React.FC<{ sceneStart: number }> = ({ sceneStart }) => {
 };
 
 // Medidor de expectativa que sobe até "altíssimas".
-const Hype: React.FC<{ sceneStart: number }> = ({ sceneStart }) => {
+export const Hype: React.FC<{ sceneStart: number }> = ({ sceneStart }) => {
   const frame = useCurrentFrame();
   const t = sceneStart + frame / FPS;
   const top = findPhrase("estão altíssimas")[1];

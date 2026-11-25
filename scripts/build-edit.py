@@ -98,7 +98,7 @@ for k, w in enumerate(words):
 
 # Punch-ins: sem cortes de fala, troca o zoom nesses pontos (s da fonte) para manter o ritmo.
 # Só afeta o vídeo; o áudio segue contínuo.
-PUNCH = [4.72, 11.62, 16.48, 20.67, 26.00, 29.08, 32.85]
+PUNCH = []
 vsegments = []
 for sg in segments:
     s, e = sg["srcStart"], sg["srcEnd"]
@@ -121,7 +121,7 @@ DENOISE = os.environ.get("DENOISE", "1") != "0"
 clean = "highpass=f=80,afftdn=nr=14:nf=-30:tn=1,lowpass=f=12000," \
     "acompressor=threshold=-20dB:ratio=3:attack=5:release=80," if DENOISE else ""
 graph = ";".join(chains) + ";" + "".join(labels) + f"concat=n={len(labels)}:v=0:a=1," \
-    + clean + "loudnorm=I=-14:TP=-1.5:LRA=7[out]"
+    + clean + "loudnorm=I=-15.5:TP=-1.5:LRA=9[out]"
 subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", "raw/audio48.wav", "-filter_complex", graph, "-map", "[out]",
                 "-ar", "48000", "public/voice.wav" if DENOISE else "public/voice_raw.wav"], check=True)
 

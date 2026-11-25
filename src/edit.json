@@ -4,43 +4,8 @@
  "segments": [
   {
    "srcStart": 0.0,
-   "srcEnd": 4.733333333333333,
-   "outStart": 0.0
-  },
-  {
-   "srcStart": 4.733333333333333,
-   "srcEnd": 11.633333333333333,
-   "outStart": 4.733
-  },
-  {
-   "srcStart": 11.633333333333333,
-   "srcEnd": 16.466666666666665,
-   "outStart": 11.633
-  },
-  {
-   "srcStart": 16.466666666666665,
-   "srcEnd": 20.666666666666668,
-   "outStart": 16.467
-  },
-  {
-   "srcStart": 20.666666666666668,
-   "srcEnd": 26.0,
-   "outStart": 20.667
-  },
-  {
-   "srcStart": 26.0,
-   "srcEnd": 29.066666666666666,
-   "outStart": 26.0
-  },
-  {
-   "srcStart": 29.066666666666666,
-   "srcEnd": 32.86666666666667,
-   "outStart": 29.067
-  },
-  {
-   "srcStart": 32.86666666666667,
    "srcEnd": 35.9,
-   "outStart": 32.867
+   "outStart": 0.0
   }
  ],
  "words": [
