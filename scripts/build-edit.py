@@ -13,17 +13,12 @@ PAD = 0.08  # respiro antes/depois de cada trecho (s)
 
 # Trechos (índices de raw/segs.json) que ficam. Os demais são silêncio,
 # ruído ou falas erradas/repetidas.
-KEEP = [1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 26, 27,
-        28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 45,
-        46, 47, 48, 49, 50, 51, 52, 53, 54]
+KEEP = [0]
 
 # Ajustes dentro de um trecho: lista de (início, fim) em segundos da fonte.
 # 48: "o PT já tem uma..." -> corta depois de "PT" (ele se corrige no 49).
 # 52: "pra ano que vem, não, né?" -> remove a correção.
-SPLIT = {
-    48: [(None, 162.47)],
-    52: [(None, 175.46), (177.51, None)],
-}
+SPLIT = {}
 
 segs = json.load(open("raw/segs.json"))
 
@@ -63,6 +58,7 @@ for i in KEEP:
         s = a - PAD if pa is None else snap(pa)
         e = b + PAD if pb is None else snap(pb)
         ws = [w for w in words_of(i) if s - 0.05 <= (w["start"] + w["end"]) / 2 <= e + 0.05]
+        e = min(e, int(len(pcm) / sr * FPS) / FPS)  # não passa do fim do arquivo
         pieces.append([max(0.0, s), e, ws])
 
 # Junta trechos que se encostam e alinha tudo em frames.
@@ -86,8 +82,8 @@ for s, e, ws in merged:
     out_t += e - s
 
 # Limpeza do texto das legendas: erros do Whisper, reticências e maiúsculas.
-FIXES = {("vai", "ressaltar"): "vale", ("caber", "a"): "cabe"}
-PROPER = {"lula", "bolsonaro", "rio", "janeiro", "pt", "senado", "câmara", "deputados", "ruas"}
+FIXES = {("distol", "da"): "digital"}
+PROPER = {"amanda", "reserva", "black", "friday"}
 for k, w in enumerate(words):
     nxt = words[k + 1]["text"].strip(",.?!").lower() if k + 1 < len(words) else ""
     t = w["text"].replace("...", "").replace("…", "")
@@ -100,7 +96,17 @@ for k, w in enumerate(words):
         t = t[0].upper() + t[1:]
     w["text"] = t
 
-json.dump({"fps": FPS, "duration": round(out_t, 3), "segments": segments, "words": words},
+# Punch-ins: sem cortes de fala, troca o zoom nesses pontos (s da fonte) para manter o ritmo.
+# Só afeta o vídeo; o áudio segue contínuo.
+PUNCH = [4.72, 11.62, 16.48, 20.67, 26.00, 29.08, 32.85]
+vsegments = []
+for sg in segments:
+    s, e = sg["srcStart"], sg["srcEnd"]
+    cuts = [round(p * FPS) / FPS for p in PUNCH if s + 0.5 < p < e - 0.5]
+    for a, b in zip([s] + cuts, cuts + [e]):
+        vsegments.append({"srcStart": a, "srcEnd": b, "outStart": round(sg["outStart"] + a - s, 3)})
+
+json.dump({"fps": FPS, "duration": round(out_t, 3), "segments": vsegments, "words": words},
           open("src/edit.json", "w"), ensure_ascii=False, indent=1)
 
 # Áudio: cortes com micro-fade (evita estalos), redução de ruído e volume -14 LUFS.
@@ -119,4 +125,4 @@ graph = ";".join(chains) + ";" + "".join(labels) + f"concat=n={len(labels)}:v=0:
 subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", "raw/audio48.wav", "-filter_complex", graph, "-map", "[out]",
                 "-ar", "48000", "public/voice.wav" if DENOISE else "public/voice_raw.wav"], check=True)
 
-print(f"{len(segments)} cortes, {len(words)} palavras, duração final {out_t:.1f}s (original 187.8s)")
+print(f"{len(segments)} cortes, {len(words)} palavras, duração final {out_t:.1f}s ")

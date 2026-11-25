@@ -74,7 +74,7 @@ const Center: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 );
 
 // Checklist que marca cada item no momento em que a palavra é dita.
-const Checklist: React.FC<{ title: string; items: { label: string; at: number }[]; sceneStart: number }> = ({ title, items, sceneStart }) => {
+export const Checklist: React.FC<{ title: string; items: { label: string; at: number }[]; sceneStart: number }> = ({ title, items, sceneStart }) => {
   const frame = useCurrentFrame();
   const t = sceneStart + frame / FPS;
   return (
@@ -113,116 +113,80 @@ const sc = (startPhrase: string, endPhrase: string, render: Scene["render"]): Sc
 };
 
 export const scenes: Scene[] = [
-  sc("já tem uma Câmara", "tipo de governo", () => (
+  sc("primeira Black Friday", "na arena", () => (
     <Center>
-      <Pill dark>CONGRESSO NACIONAL</Pill>
-      <div style={{ display: "flex", gap: 30 }}>
-        <Card delay={4} style={{ width: 400, textAlign: "center" }}>
-          <div style={{ fontSize: 56, fontWeight: 800 }}>Câmara</div>
-          <div style={{ fontSize: 34, color: "#777" }}>dos Deputados</div>
-        </Card>
-        <Card delay={22} style={{ width: 400, textAlign: "center" }}>
-          <div style={{ fontSize: 56, fontWeight: 800 }}>Senado</div>
-          <div style={{ fontSize: 34, color: "#777" }}>Federal</div>
-        </Card>
-      </div>
-      <Card delay={40} style={{ padding: "26px 44px" }}>
-        <div style={{ fontSize: 44, fontWeight: 800, color: theme.orange }}>maioria contra o governo</div>
+      <Pill dark>RESERVA · NA ARENA</Pill>
+      <Card delay={4} style={{ width: 640, textAlign: "center", background: "#111" }}>
+        <div style={{ fontFamily: theme.mono, fontSize: 30, color: "#aaa", letterSpacing: "0.05em" }}>PRIMEIRA</div>
+        <div style={{ fontSize: 118, fontWeight: 800, color: "#fff", letterSpacing: "-0.03em", lineHeight: 1 }}>BLACK</div>
+        <div style={{ fontSize: 118, fontWeight: 800, color: theme.orange, letterSpacing: "-0.03em", lineHeight: 1 }}>FRIDAY</div>
       </Card>
     </Center>
   )),
-  sc("quase impossível", "de passar", () => (
-    <Center>
-      <Card style={{ width: 760 }}>
-        <div style={{ fontFamily: theme.mono, fontSize: 30, color: "#888" }}>proposta_do_governo.pdf</div>
-        {[0, 1, 2].map((k) => (
-          <div key={k} style={{ height: 22, borderRadius: 11, background: "#e9ecf5", margin: "26px 0", width: `${90 - k * 18}%` }} />
-        ))}
-      </Card>
-      <Card delay={8} style={{ padding: "22px 40px", background: theme.orange, transform: "rotate(-6deg)" }}>
-        <div style={{ fontSize: 60, fontWeight: 800, color: "#fff" }}>QUASE IMPOSSÍVEL</div>
-      </Card>
-    </Center>
-  )),
-  sc("nós fomos pra rua", "nós divulgamos", (s) => (
-    <Center>
-      <Pill dark>COMO GANHAMOS</Pill>
-      <Checklist
-        sceneStart={s}
-        title="mobilização.md"
-        items={[
-          { label: "fomos pra rua", at: findPhrase("pra rua")[0] },
-          { label: "fizemos barulho", at: findPhrase("fizemos barulho")[0] },
-          { label: "divulgamos", at: findPhrase("divulgamos")[0] },
-        ]}
-      />
-    </Center>
-  )),
-  sc("esquerda e direita", "família Bolsonaro", (s) => <Union sceneStart={s} />),
-  sc("qual é o dever", "de cada um", () => (
+  sc("bateu a primeira meta", "mais gritou", (s) => <Meta sceneStart={s} />),
+  sc("as expectativas foram criadas", "estão altíssimas", (s) => <Hype sceneStart={s} />),
+  sc("veio pra ganhar", "esse jogo", () => (
     <Center>
       <Card style={{ width: 300, height: 300, display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ fontSize: 220, fontWeight: 800, color: theme.accent }}>?</div>
+        <div style={{ fontSize: 190, lineHeight: 1 }}>🏆</div>
       </Card>
-      <Pill dark>O DEVER DE CADA UM</Pill>
-    </Center>
-  )),
-  sc("da segurança pública do Rio", "Rio de Janeiro", () => (
-    <Center>
-      <Pill dark>RIO DE JANEIRO</Pill>
-      <Card delay={4} style={{ width: 760, textAlign: "center" }}>
-        <div style={{ fontFamily: theme.mono, fontSize: 30, color: "#888" }}>responsável por</div>
-        <div style={{ fontSize: 70, fontWeight: 800, color: theme.accent, letterSpacing: "-0.02em" }}>segurança pública</div>
-        <div style={{ fontSize: 44, fontWeight: 600 }}>= governador do estado</div>
-      </Card>
-    </Center>
-  )),
-  sc("cabe a gente fiscalizar", "se mobilizar", (s) => (
-    <Center>
-      <Checklist
-        sceneStart={s}
-        title="nosso_papel.md"
-        items={[
-          { label: "fiscalizar", at: findPhrase("fiscalizar")[0] },
-          { label: "se mobilizar", at: findPhrase("se mobilizar", findPhrase("fiscalizar")[0])[0] },
-        ]}
-      />
-    </Center>
-  )),
-  sc("daqui a quatro anos", "em quem votar", () => (
-    <Center>
-      <Pill dark>PRÓXIMA ELEIÇÃO</Pill>
-      <Card delay={4} style={{ textAlign: "center", width: 520 }}>
-        <div style={{ fontSize: 200, fontWeight: 800, color: theme.accent, lineHeight: 1 }}>4</div>
-        <div style={{ fontSize: 56, fontWeight: 800 }}>anos</div>
-      </Card>
+      <Pill dark>VEIO PRA GANHAR</Pill>
     </Center>
   )),
 ];
 
-const Union: React.FC<{ sceneStart: number }> = () => {
+// Barra de meta que enche e marca no momento de "meta".
+const Meta: React.FC<{ sceneStart: number }> = ({ sceneStart }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const p = spring({ frame: frame - 18, fps, config: { damping: 16 } });
-  const box = (label: string, color: string, dir: number) => (
-    <div
-      style={{
-        position: "absolute", top: 640, left: 540 - 210 + dir * (420 - 200 * p),
-        width: 420, padding: "34px 0", textAlign: "center", borderRadius: 999,
-        background: "#fff", boxShadow: theme.cardShadow, fontSize: 58, fontWeight: 800, color,
-      }}
-    >
-      {label}
-    </div>
-  );
+  const t = sceneStart + frame / FPS;
+  const hit = findPhrase("meta")[0];
+  const fill = interpolate(t, [sceneStart + 0.2, hit], [0.1, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const done = t >= hit;
   return (
-    <AbsoluteFill>
-      {box("esquerda", theme.orange, -1)}
-      {box("direita", theme.accent, 1)}
-      <div style={{ position: "absolute", top: 860, width: "100%", textAlign: "center", opacity: p }}>
-        <Pill dark>JUNTOS NAS URNAS</Pill>
+    <Center>
+      <Card style={{ width: 760 }}>
+        <div style={{ fontFamily: theme.mono, fontSize: 30, color: "#888", display: "flex", justifyContent: "space-between" }}>
+          <span>meta_1</span>
+          <span style={{ color: done ? theme.accent : "#888" }}>{Math.round(fill * 100)}%</span>
+        </div>
+        <div style={{ height: 40, borderRadius: 20, background: "#e9ecf5", marginTop: 26, overflow: "hidden" }}>
+          <div style={{ height: "100%", width: `${fill * 100}%`, borderRadius: 20, background: theme.accent }} />
+        </div>
+        <div style={{ fontSize: 58, fontWeight: 800, marginTop: 30, letterSpacing: "-0.02em", opacity: done ? 1 : 0.3 }}>
+          {done ? "✓ " : ""}primeira meta batida
+        </div>
+      </Card>
+      {t >= findPhrase("a marca que")[0] && (
+        <Card style={{ padding: "22px 40px", background: theme.orange, transform: "rotate(-4deg)" }}>
+          <div style={{ fontSize: 54, fontWeight: 800, color: "#fff" }}>A MARCA QUE MAIS GRITOU</div>
+        </Card>
+      )}
+    </Center>
+  );
+};
+
+// Medidor de expectativa que sobe até "altíssimas".
+const Hype: React.FC<{ sceneStart: number }> = ({ sceneStart }) => {
+  const frame = useCurrentFrame();
+  const t = sceneStart + frame / FPS;
+  const top = findPhrase("estão altíssimas")[1];
+  const lvl = interpolate(t, [sceneStart + 0.2, top], [0.15, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return (
+    <Center>
+      <Pill dark>EXPECTATIVAS</Pill>
+      <div style={{ display: "flex", alignItems: "flex-end", gap: 26, height: 440 }}>
+        {[0.25, 0.45, 0.65, 0.85, 1].map((h, k) => {
+          const on = lvl >= h - 0.05;
+          return (
+            <div key={k} style={{ width: 110, height: 440 * h, borderRadius: 24, boxShadow: theme.cardShadow,
+              background: on ? (k === 4 ? theme.orange : theme.accent) : "#fff", transition: "none" }} />
+          );
+        })}
       </div>
-    </AbsoluteFill>
+      <div style={{ fontSize: 96, fontWeight: 800, letterSpacing: "-0.03em", color: theme.orange, opacity: lvl > 0.95 ? 1 : 0 }}>
+        ALTÍSSIMAS
+      </div>
+    </Center>
   );
 };
 

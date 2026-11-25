@@ -5,11 +5,9 @@ import { theme } from "./theme";
 
 // Palavras que ganham destaque quando aparecem no bloco.
 const KEYWORDS = new Set([
-  "difícil", "impossível", "dever", "mobilização", "rua", "barulho", "divulgamos",
-  "juntaram", "continuar", "internet", "povo", "ensinar", "segurança", "errou",
-  "piora", "fiscalizar", "mobilizar", "prioritário", "envolvidos", "atento",
-  "projetar", "reeleito", "manchado", "nascer", "votar", "ruins", "Lula",
-  "Bolsonaro", "Senado", "Deputados", "governador", "população", "eleito",
+  "Amanda", "Reserva", "Friday", "arena", "expectativas", "Altíssimas", "altíssimas",
+  "animadíssima", "animado", "galera", "meta", "gritou", "expectativa", "evento",
+  "criadas", "ganhar", "jogo", "vambora", "atentos",
 ]);
 
 type Block = { words: Word[]; hi: number; start: number; end: number };
