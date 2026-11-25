@@ -17,5 +17,8 @@ zscale=t=bt709:m=bt709:r=tv,format=yuv420p,eq=gamma=0.97:saturation=1.05:contras
 Frases curtas (3–8 palavras), separadas à mão em pontos naturais; tempos das palavras do whisper.cpp (`-ml 1 -sow -ojf`).
 Atenção: o Whisper inventa frases em trechos de silêncio no fim — conferir com a energia do áudio.
 
+## Qualidade
+SEMPRE máxima: fps original (60), x264 CRF 14 preset slow, AAC 320k. Entrega por Artefato em partes de 19 MB juntadas no download.
+
 ## Áudio
 `acompressor=threshold=-24dB:ratio=4:attack=5:release=120:makeup=3,alimiter=limit=0.89:level=false,loudnorm=I=-10:TP=-1.0:LRA=7`, 48 kHz, AAC 192k.
