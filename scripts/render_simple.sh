@@ -3,7 +3,10 @@
 # Uso: render_simple.sh ENTRADA INICIO FIM LEGENDA.ass SAIDA.mp4 [sem_cor]
 set -euo pipefail
 cd "$(dirname "$0")/.."
-TONE="zscale=w=1080:h=1920:t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=hable:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p,eq=gamma=0.97:saturation=1.05:contrast=1.12"
+# tamanho de saída segue a orientação do vídeo (vertical 1080x1920, horizontal 1920x1080)
+read W H ROT <<<"$(ffprobe -v error -select_streams v:0 -show_entries stream=width,height:stream_side_data=rotation -of csv=p=0 "$1" | tr ',\n' '  ')"
+if { [ "$W" -gt "$H" ] && [ -z "${ROT:-}" ]; } || { [ "$W" -lt "$H" ] && [ -n "${ROT:-}" ]; }; then OW=1920; OH=1080; else OW=1080; OH=1920; fi
+TONE="zscale=w=$OW:h=$OH:t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=hable:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p,eq=gamma=0.97:saturation=1.05:contrast=1.12"
 [ "${6:-}" = "sem_cor" ] && TONE="format=yuv420p"
 # iPhone com áudio espacial: a 1ª faixa pode ser APAC (sem decoder); usa a primeira faixa AAC
 AIDX=$(ffprobe -v error -select_streams a -show_entries stream=codec_name -of csv=p=0 "$1" | grep -n -m1 aac | cut -d: -f1); AIDX=$(( ${AIDX:-1} - 1 ))
